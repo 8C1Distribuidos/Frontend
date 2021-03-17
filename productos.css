@@ -164,3 +164,125 @@
   transform: translate(-50%,-50%);
   border-radius: 20px;
 }
+/* Sidebar Destilados */
+#sidebar-wrapper{
+  z-index:1;
+  position: absolute;
+  width:0;
+  height:100%;
+  overflow-y:hidden;
+  background: #111111f1;
+  opacity:1;
+	transition:all .5s;
+	display:flex;
+	align-items:center;
+}
+
+#menu-toggle{
+	transition:all .3s;
+	font-size:2em;
+}
+/* Change the width of the sidebar to display it*/
+#wrapper.menuDisplayed #sidebar-wrapper{
+  width:50%;
+  height: 1201px;
+  margin-top: -1.2%;
+}
+
+#wrapper.menuDisplayed #page-content-wrapper{
+  padding-left:250px;
+}
+
+/* Sidebar styling */
+.sidebar-nav{
+  padding:0;
+  list-style:none; 
+	transition:all .5s;
+	width:100%;
+	text-align:center;
+}
+
+.sidebar-nav li{
+  line-height:60px;  
+	width:100%;
+	transition:all .3s;
+	padding:10px;
+}
+
+.sidebar-nav li a {
+  display:block;
+  text-decoration:none;
+  color:#ddd;
+}
+
+.sidebar-nav li:hover{
+  background:#625d5f55;
+  width: 1000px;
+}
+
+/* Sidebar Vinos */
+#sidebar-wrapper_vinos{
+  right: -1px;
+  z-index:1;
+  position: absolute;
+  width:0;
+  height:100%;
+  overflow-y:hidden;
+  background: #111111f1;
+  opacity:1;
+	transition:all .5s;
+	display:flex;
+	align-items:center;
+}
+
+#menu-toggle_vinos{
+	transition:all .3s;
+	font-size:2em;
+}
+/* Change the width of the sidebar to display it*/
+#wrapper_vinos.menuDisplayed_vinos #sidebar-wrapper_vinos{
+  width:50%;
+  height: 1201px;
+  margin-top: -1.2%;  
+}
+
+#wrapper_vinos.menuDisplayed_vinos #page-content-wrapper_vinos{
+  padding-right:250px;
+}
+
+/* Sidebar styling */
+.sidebar-nav_vinos{
+  padding:0;
+  list-style:none; 
+	transition:all .5s;
+	width:100%;
+	text-align:center;
+}
+
+.sidebar-nav_vinos li{
+  line-height:60px;  
+	width:100%;
+	transition:all .3s;
+	padding:10px;
+}
+
+.sidebar-nav_vinos li a {
+  display:block;
+  text-decoration:none;
+  color:#ddd;
+}
+
+.sidebar-nav_vinos li:hover{
+  background:#625d5f55;
+  width: 900px;
+}
+
+.profile-userpic {
+	padding-top: 4px;
+}
+
+.profile-userpic img {
+	margin: 0 auto;
+	width: 20%;
+	height: 20%;
+}

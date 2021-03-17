@@ -47,6 +47,42 @@
 
   <br>
   </header>
+
+  <body>
+  <div id="wrapper">
+    <!-- Sidebar -->
+    <div id="sidebar-wrapper">
+      <ul class="sidebar-nav">
+      <div class="profile-userpic">
+						<img src="img/splash.png" class="img-responsive" alt="foto">
+					</div>
+        <li><a href="Destilados/brandy.php">Brandy</a></li>
+        <li><a href="Destilados/tequila.php">Tequila</a></li>
+        <li><a href="Destilados/cognac.php">Cognac</a></li>
+        <li><a href="Destilados/ginebra.php">Ginebra</a></li>
+        <li><a href="Destilados/mezcal.php">Mezcal</a></li>
+        <li><a href="Destilados/ron.php">Ron</a></li>
+        <li><a href="Destilados/whisky.php">Whisky</a></li>
+        <li><a href="Destilados/vodka.php">Vodka</a></li>
+      </ul>
+    </div>
+
+     <div id="wrapper_vinos">
+    <!-- Sidebar -->
+    <div id="sidebar-wrapper_vinos">
+      <ul class="sidebar-nav_vinos">
+      <div class="profile-userpic">
+						<img src="img/vinosplash.png" class="img-responsive" alt="foto">
+					</div>
+        <li><a href="Vinos/blanco.php">Blanco</a></li>
+        <li><a href="Vinos/espumoso.php">Espumoso</a></li>
+        <li><a href="Vinos/tinto.php">Tinto</a></li>
+        <li><a href="Vinos/rosado.php">Rosado</a></li>
+        <li><a href="Vinos/champagne.php">Champagne</a></li>
+        <li><a href="Vinos/dePostre.php">De Postre</a></li>
+        <li><a href="Vinos/sinAlcohol.php">Sin Alcohol</a></li>
+      </ul>
+    </div>
 <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
 
 
@@ -59,14 +95,14 @@
 
 <section class="hero-section">
   <div class="ard-grid">
-    <a class="ard" href="vinos.php">
+    <a class="ard" href="#" id ="menu-toggle_vinos">
     <div class="ard__background" style="background-image: url(https://i.blogs.es/576a60/istock-837387558/450_1000.jpg)"></div>
       <div class="ard__content">
         <h1 size="120px" class="ard__heading">Vinos</h1>
         <p class="ard__category">Poesías <br> embotelladas</p>
       </div>
     </a>
-    <a class="ard" href="destilados.php">
+    <a class="ard" href="#" id ="menu-toggle">
     <div class="ard__background" style="background-image: url(https://bloximages.newyork1.vip.townnews.com/elvocero.com/content/tncms/assets/v3/editorial/7/80/780b6693-bd68-535f-9788-e347b0dfae70/59356158997bc.image.jpg)"></div>
       <div class="ard__content">
         <h1 class="aaard__heading">Destilados</h1>
@@ -80,6 +116,6 @@
    </section>
   
   </body>
-
+  <script src="sidebar.js"></script> 
 
 </html>
