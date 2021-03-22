@@ -1,0 +1,148 @@
+body
+{
+	margin:0;
+	padding:0;
+	background-color:#424242;
+	background-image: url('../img/almacenista.jpg');
+    background-size: cover;
+    background-repeat: repeat;
+    background-position: top;
+	font-size: 18px;   
+
+}
+.box
+{
+	width:1270px;
+	padding:20px;
+	background-color:#EEEEEE;
+	border:1px solid #ccc;
+	border-radius:5px;
+	margin-top:200px;
+		
+}
+.row-text{
+	font-family: "Optima";
+	display: block;
+	font-size: 1px;
+	color: #e4e0dc;
+	text-align: right;
+	position: absolute;
+	padding: 101px 20px;
+	top: 10%;
+	left: 50%;
+}
+
+.milky {
+    font-family: "Optima";
+	display: block;
+	font-size: 100px;
+	color: #e4e0dc;
+	text-shadow: 0 8px 9px #54524d, 0px -2px 1px rgb(164, 164, 164);  
+	letter-spacing: 1px;
+	text-align: right;
+	position: absolute;
+	padding: 101px 20px;
+	top: 10%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+	border-radius: 20px;
+	}
+
+
+	   .orange-circle-button {
+		   box-shadow: 2px 6px 0 2px rgba(0,0,0,0.1);
+		   border: .3em solid #746a74;
+		   font-size: 1em;
+		   line-height: 1.1em;
+		   color: #f5e6e6;
+		   background-color: #3c383a;
+		   margin: auto;
+		   margin-right: 20px;
+		   border-radius: 50%;
+		   height: 5em;
+		   width: 5em;
+		   position: relative;
+	   }
+	   .orange-circle-button:hover {
+		   color:#e5d6d6;
+		   background-color: #0e9d7e;
+		   text-decoration: none;
+		   border: .9em solid #0f8062;
+		   
+	   }
+	   .orange-circle-button:visited {
+		   color:#e9d6e5;
+		   background-color: #e84d0e;
+		   text-decoration: none;
+		   
+	   }
+	   .orange-circle-link-greater-than {
+		   font-size: 9em;
+	   }
+
+
+	   /*UPDATE BUTTON*/
+
+	   .update-circle-button {
+		box-shadow: 2px 6px 0 2px rgba(0,0,0,0.1);
+		border: .5em solid #0c0c0c;
+		font-size: 1em;
+		line-height: 1.1em;
+		color: #f5e6e6;
+		background-color: #4a4949;	
+		padding:1px 1px 1px 1px;
+		border-radius: 50%;
+		height: 4em;
+		width: 4em;
+		position: center;
+	}
+	.update-circle-button:hover {
+		color:#e5d6d6;
+		background-color:  #959500;
+		text-decoration: none;
+		border: .9em solid #666f03;
+		
+	}
+	.update-circle-button:visited {
+		color:#e9d6e5;
+		background-color: #e80e0e;
+		text-decoration: none;
+		
+	}
+	.update-circle-link-greater-than {
+		font-size: 9em;
+	}
+
+
+	 /*DELETE BUTTON*/
+
+	 .delete-circle-button {
+		box-shadow: 2px 6px 0 2px rgba(0,0,0,0.1);
+		border: .5em solid #0c0c0c;
+		font-size: 1em;
+		line-height: 1.1em;
+		color: #f5e6e6;
+		background-color: #4a4949;
+		padding:1px 1px 1px 1px;
+		margin-right: 20px;
+		border-radius: 50%;
+		height: 4em;
+		width: 4em;
+		position: relative;
+	}
+	.delete-circle-button:hover {
+		color:#e5d6d6;
+		background-color: #a90606;
+		text-decoration: none;
+		border: .9em solid #c51111;
+		
+	}
+	.delete-circle-button:visited {
+		color:#bc0808;
+		background-color: #782809;
+		text-decoration: none;
+		
+	}
+	.delete-circle-link-greater-than {
+		font-size: 9em;
+	}

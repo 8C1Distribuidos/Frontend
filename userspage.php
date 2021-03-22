@@ -6,10 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="userspage.css">
+    <link rel="stylesheet" href="css/userspage.css">
     <link rel="stylesheet" href="fontawesome/css/all.css">
 
-    <title>Inicio</title>
+    <title>Usuario</title>
     <link rel="shortcut icon" href="img/logo_icon.jpg" >
   </head>
   <body>
@@ -46,7 +46,7 @@
                               </h6>
                       <ul class="nav nav-tabs" id="myTab" role="tablist">
                           <li class="nav-item">
-                              <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Informción</a>
+                              <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Información</a>
                           </li>
                       </ul>
                   </div>

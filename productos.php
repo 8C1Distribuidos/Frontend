@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="productos.css">
+    <link rel="stylesheet" href="css/productos.css">
     <link rel="stylesheet" href="fontawesome/css/all.css">
-    <title>Leckere Weine</title>
+    <title>Catálogos</title>
     <link rel="shortcut icon" href="img/logo_icon.jpg" >
   </head>
   <body>
@@ -23,13 +23,9 @@
                     </a>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" type="button"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <a class="nav-link" href="productos.php" id="navbar" type="button" >
                       Productos
                     </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                      <a class="dropdown-item" href="vinos.php">Vinos</a>
-                      <a class="dropdown-item" href="destilados.php">Destilados</a>
-                    </div>
                  </li>
              
                </ul>
@@ -109,6 +105,7 @@
         <p class="aaard__category">Historias <br> líquidas</p>
       </div>
     </a>
+    
 </section> <br><br><br>  <br><br><br>  <br><br><br>  <br><br><br> 
 <section class="footer">
 
@@ -116,6 +113,6 @@
    </section>
   
   </body>
-  <script src="sidebar.js"></script> 
+  <script src="js/sidebar.js"></script> 
 
 </html>
