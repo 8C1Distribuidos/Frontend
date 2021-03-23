@@ -1,3 +1,7 @@
+<?php
+	
+?>
+
 <html>
 	<head>
 		<title>Productos</title>
@@ -11,7 +15,7 @@
 		<link rel="stylesheet" href="css/info_Producto.css">
 	</head>
 	<body>
-		<div class="milky" align="center">Informacion del producto</div>
+		<div class="milky" align="center">Informacion del producto </div>
 		<div class="container box">
 			<br />
 			<div class="table-responsive">
@@ -53,11 +57,13 @@
 					"orderable":false,
 				},
 			],
-			
 		});
-	});
+	});/*
 	$(document).on('click', '.update', function(){
 		var productos_id = $(this).attr("id");
+		if (isset($_GET['clasificacion'])) {
+			var clasificacion = $_GET['clasificacion'];
+		}
 		$.ajax({
 			url:"fetch_single.php",
 			method:"POST",
@@ -65,15 +71,17 @@
 			dataType:"json",
 			success:function(data)
 			{
-				$('#productosModal').modal('show');
-				$('#nombre').val(data.nombre);
-				$('#clasificacion').val(data.clasificacion);
-				$('#stock').val(data.stock);
-				$('#costo').val(data.costo);
-				$('.modal-title').text("Editar producto");
-				$('#productos_id').val(productos_id);
-				$('#productos_uploaded_image').html(data.productos_image);
+				if (data.clasificacion == "Blanco") {
+					$('#productosModal').modal('show');
+					$('#nombre').val(data.nombre);
+					$('#clasificacion').val(data.clasificacion);
+					$('#stock').val(data.stock);
+					$('#costo').val(data.costo);
+					$('.modal-title').text("Editar producto");
+					$('#productos_id').val(productos_id);
+					$('#productos_uploaded_image').html(data.productos_image);
+				}
 			}
 		})
-	});
+	});*/
 </script>
