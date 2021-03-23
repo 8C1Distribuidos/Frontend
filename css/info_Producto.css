@@ -1,0 +1,51 @@
+body
+{
+	margin:0;
+	padding:0;
+	background-color:#424242;
+	background-image: url('../img/almacenista.jpg');
+    background-size: cover;
+    background-repeat: repeat;
+    background-position: top;
+	font-size: 18px;   
+
+}
+.box
+{
+	width:1270px;
+	padding:20px;
+	background-color:#EEEEEE;
+	border:1px solid #ccc;
+	border-radius:5px;
+	margin-top:200px;
+		
+}
+.row-text{
+	font-family: "Optima";
+	display: block;
+	font-size: 1px;
+	color: #e4e0dc;
+	text-align: right;
+	position: absolute;
+	padding: 101px 20px;
+	top: 10%;
+	left: 50%;
+}
+
+.milky {
+    font-family: "Optima";
+	display: block;
+	font-size: 20px;
+	color: #e4e0dc;
+	text-shadow: 0 8px 9px #54524d, 0px -2px 1px rgb(164, 164, 164);  
+	letter-spacing: 1px;
+	text-align: left;
+	position: absolute;
+    padding: 101px 20px;
+	top: 10%;
+	left: 20%;
+    text-align: left;
+	transform: translate(-50%,-50%);
+	border-radius: 20px;
+	margin-top: 50px;
+	}
