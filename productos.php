@@ -52,14 +52,14 @@
       <div class="profile-userpic">
 						<img src="img/splash.png" class="img-responsive" alt="foto">
 					</div>
-        <li><a href="Destilados/brandy.php">Brandy</a></li>
-        <li><a href="Destilados/tequila.php">Tequila</a></li>
-        <li><a href="Destilados/cognac.php">Cognac</a></li>
-        <li><a href="Destilados/ginebra.php">Ginebra</a></li>
-        <li><a href="Destilados/mezcal.php">Mezcal</a></li>
-        <li><a href="Destilados/ron.php">Ron</a></li>
-        <li><a href="Destilados/whisky.php">Whisky</a></li>
-        <li><a href="Destilados/vodka.php">Vodka</a></li>
+        <li><a href="info_Producto.php"search="Brandy">Brandy</a></li>
+        <li><a href="info_Producto.php"clasificacion="Tequila">Tequila</a></li>
+        <li><a href="info_Producto.php"clasificacion="Cognac">Cognac</a></li>
+        <li><a href="info_Producto.php"clasificacion="Ginebra">Ginebra</a></li>
+        <li><a href="info_Producto.php"clasificacion="Mezcal">Mezcal</a></li>
+        <li><a href="info_Producto.php"clasificacion="Ron">Ron</a></li>
+        <li><a href="info_Producto.php"clasificacion="Whisky">Whisky</a></li>
+        <li><a href="info_Producto.php"clasificacion="Vodka">Vodka</a></li>
       </ul>
     </div>
 
@@ -70,13 +70,13 @@
       <div class="profile-userpic">
 						<img src="img/vinosplash.png" class="img-responsive" alt="foto">
 					</div>
-        <li><a href="Vinos/blanco.php">Blanco</a></li>
-        <li><a href="Vinos/espumoso.php">Espumoso</a></li>
-        <li><a href="Vinos/tinto.php">Tinto</a></li>
-        <li><a href="Vinos/rosado.php">Rosado</a></li>
-        <li><a href="Vinos/champagne.php">Champagne</a></li>
-        <li><a href="Vinos/dePostre.php">De Postre</a></li>
-        <li><a href="Vinos/sinAlcohol.php">Sin Alcohol</a></li>
+        <li><a href="info_Producto.php"search="Blanco">Blanco</a></li>
+        <li><a href="info_Producto.php"clasificacion="Espumoso">Espumoso</a></li>
+        <li><a href="info_Producto.php"value="Tinto">Tinto</a></li>
+        <li><a href="info_Producto.php"clasificacion="Rosado">Rosado</a></li>
+        <li><a href="info_Producto.php"clasificacion="Champagne">Champagne</a></li>
+        <li><a href="info_Producto.php"clasificacion="De Postre">De Postre</a></li>
+        <li><a href="info_Producto.php"clasificacion="Sin Alcohol">Sin Alcohol</a></li>
       </ul>
     </div>
 <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
