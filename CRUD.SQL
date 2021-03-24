@@ -33,3 +33,4 @@ INSERT INTO `clasificacion` VALUES (
 (NULL, 'Champagne',1), (NULL, 'Vino de postre', 1), (NULL, 'Vino espumoso',1 ), (NULL, 'Vino rosado', 1),
 (NULL, 'Vino sin alcohol', 1), (NULL, 'Vino tinto',1);
 
+

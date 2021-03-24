@@ -45,60 +45,44 @@
   </header>
 
   <body>
-  <div id="wrapper">
-    <!-- Sidebar -->
+  <!--<div id="wrapper">
+    
     <div id="sidebar-wrapper">
       <ul class="sidebar-nav">
-      <div class="profile-userpic">
-						<img src="img/splash.png" class="img-responsive" alt="foto">
-					</div>
-        <li><a href="info_Producto.php"search="Brandy">Brandy</a></li>
-        <li><a href="info_Producto.php"clasificacion="Tequila">Tequila</a></li>
-        <li><a href="info_Producto.php"clasificacion="Cognac">Cognac</a></li>
-        <li><a href="info_Producto.php"clasificacion="Ginebra">Ginebra</a></li>
-        <li><a href="info_Producto.php"clasificacion="Mezcal">Mezcal</a></li>
-        <li><a href="info_Producto.php"clasificacion="Ron">Ron</a></li>
-        <li><a href="info_Producto.php"clasificacion="Whisky">Whisky</a></li>
-        <li><a href="info_Producto.php"clasificacion="Vodka">Vodka</a></li>
+        <div class="profile-userpic">
+					<img src="img/splash.png" class="img-responsive" alt="foto">
+        </div>
+        <li><a href="destilados.php"search="Blanco">Ver destilados</a></li>
       </ul>
     </div>
-
-     <div id="wrapper_vinos">
-    <!-- Sidebar -->
+    <div id="wrapper_vinos">
+    
     <div id="sidebar-wrapper_vinos">
       <ul class="sidebar-nav_vinos">
-      <div class="profile-userpic">
-						<img src="img/vinosplash.png" class="img-responsive" alt="foto">
-					</div>
-        <li><a href="info_Producto.php"search="Blanco">Blanco</a></li>
-        <li><a href="info_Producto.php"clasificacion="Espumoso">Espumoso</a></li>
-        <li><a href="info_Producto.php"value="Tinto">Tinto</a></li>
-        <li><a href="info_Producto.php"clasificacion="Rosado">Rosado</a></li>
-        <li><a href="info_Producto.php"clasificacion="Champagne">Champagne</a></li>
-        <li><a href="info_Producto.php"clasificacion="De Postre">De Postre</a></li>
-        <li><a href="info_Producto.php"clasificacion="Sin Alcohol">Sin Alcohol</a></li>
+        <div class="profile-userpic">
+					<img src="img/vinosplash.png" class="img-responsive" alt="foto">
+				</div>
+        <li><a href="vinos.php"search="Blanco">Ver vinos</a></li>
       </ul>
     </div>
-<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
-
+<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet"> -->
 
   <div class="milky">
-  <p style = "font-family:Brush;">
-  Catálogos
-</p>
-   </div>
-
+    <p style = "font-family:Brush;">
+      Catálogos
+    </p>
+  </div>
 
 <section class="hero-section">
   <div class="ard-grid">
-    <a class="ard" href="#" id ="menu-toggle_vinos">
+    <a class="ard" href="vinos.php">
     <div class="ard__background" style="background-image: url(https://i.blogs.es/576a60/istock-837387558/450_1000.jpg)"></div>
       <div class="ard__content">
         <h1 size="120px" class="ard__heading">Vinos</h1>
         <p class="ard__category">Poesías <br> embotelladas</p>
       </div>
     </a>
-    <a class="ard" href="#" id ="menu-toggle">
+    <a class="ard" href="destilados.php">
     <div class="ard__background" style="background-image: url(https://bloximages.newyork1.vip.townnews.com/elvocero.com/content/tncms/assets/v3/editorial/7/80/780b6693-bd68-535f-9788-e347b0dfae70/59356158997bc.image.jpg)"></div>
       <div class="ard__content">
         <h1 class="aaard__heading">Destilados</h1>
