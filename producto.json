@@ -2,8 +2,8 @@
     {
         "id": 3,
         "name": "miau",
-        "image": "13.jpg",
-        "cost": null,
+        "image": "upload/VTvilbao.png",
+        "cost": 20,
         "stock": 30,
         "clasificarion": "Whiskey"
     }

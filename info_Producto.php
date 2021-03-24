@@ -42,7 +42,7 @@
 </html>
 
 <script type="text/javascript" language="javascript" >
-/*
+
 	$(document).ready(function(){
 		var dataTable = $('#productos_data').DataTable({
 			"processing":true,
@@ -84,5 +84,5 @@
 				}
 			}
 		})
-	});*/
+	});
 </script>
