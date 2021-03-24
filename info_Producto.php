@@ -42,6 +42,7 @@
 </html>
 
 <script type="text/javascript" language="javascript" >
+/*
 	$(document).ready(function(){
 		var dataTable = $('#productos_data').DataTable({
 			"processing":true,
@@ -58,7 +59,7 @@
 				},
 			],
 		});
-	});/*
+	});
 	$(document).on('click', '.update', function(){
 		var productos_id = $(this).attr("id");
 		if (isset($_GET['clasificacion'])) {
