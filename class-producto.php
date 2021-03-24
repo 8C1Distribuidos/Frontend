@@ -86,7 +86,7 @@
             "image" => $this -> image, 
             "cost" => $this -> cost, 
             "stock" => $this -> stock,
-            "clasificarion" => $this -> clasification  
+            "clasification" => $this -> clasification  
         );
         $archivo=fopen("producto.json","w");
         fwrite($archivo,json_encode($productos));
