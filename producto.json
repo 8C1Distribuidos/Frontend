@@ -1,0 +1,18 @@
+{
+    "0": {
+        "id": 1,
+        "name": "solecito de mar",
+        "image": "1.jpg",
+        "cost": null,
+        "stock": 17,
+        "clasification": "Whiskey"
+    },
+    "": {
+        "id": 1,
+        "name": "solecito de mar",
+        "image": "1.jpg",
+        "cost": null,
+        "stock": 17,
+        "clasification": "Whiskey"
+    }
+}
