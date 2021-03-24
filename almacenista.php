@@ -1,3 +1,23 @@
+<?php
+	include('database.php');
+	include('Models/Clasificacion.php');
+	include('Models/Catalogo.php');
+	$db = new Database();
+   	$query = "Select * From clasificacion ";
+   	$clasificaciones=$db->exeQuery($query);
+	$query2= "SELECT * FROM Catalogo
+	INNER JOIN Clasificacion as  Clasificacion on Clasificacion.id_catalogo= Catalogo.id
+	 GROUP BY Catalogo.id";
+	$Catalogo2=$db->exeQuery($query);
+	$query3= "SELECT * FROM Clasificacion
+	INNER JOIN Catalogo as  Catalogo on Clasificacion.id_catalogo= Catalogo.id WHERE Catalogo.id='1'";
+	$Catalogo1=$db->exeQuery($query);
+	//importamos archivos para usarlos
+	//creamos nuestro objeto para la base de datos 
+	//variable query que tiene la query para extraer los datos de clasificacion
+	//ejecuta la query 
+?>
+
 <html>
 	<head>
 		<title>Productos</title>
@@ -41,10 +61,8 @@
 		</div>
 		
 	</body>
-
 	
 </html>
-
 <div id="productosModal" class="modal fade">
 	<div class="modal-dialog">
 		<form method="post" id="productos_form" enctype="multipart/form-data">
@@ -58,8 +76,17 @@
 					<input type="text" name="nombre" id="nombre" class="form-control" />
 					<br />
 					<label>Ingrese clasificacion</label>
-					<input type="text" name="clasificacion" id="clasificacion" class="form-control" />
+                    <br/>
+					<select name="clasificacion">
+						<option selected value="0"> Elige una opción </option>
+							<?php
+								//recorre el arreglo arrojado como reusltado de la query y lo convierte en un objeto tipo clasificación para su mostrado
+								while($row = mysqli_fetch_object($clasificaciones,"Clasificacion"))							
+								{echo  "<option value=".$row -> id_clasificacion. ">". $row -> nombre."</option>";}
+							?>
+					</select>
 					<br />
+                    <br />
                     <label>Ingrese stock</label>
 					<input type="text" name="stock" id="stock" class="form-control" />
 					<br />
@@ -80,7 +107,6 @@
 		</form>
 	</div>
 </div>
-
 <script type="text/javascript" language="javascript" >
 $(document).ready(function(){
 	$('#add_button').click(function(){
@@ -105,9 +131,7 @@ $(document).ready(function(){
 				"orderable":false,
 			},
 		],
-
 	});
-
 	$(document).on('submit', '#productos_form', function(event){
 		event.preventDefault();
 		var nombre = $('#nombre').val();
