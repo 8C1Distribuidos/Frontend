@@ -1,18 +1,10 @@
-{
-    "0": {
-        "id": 1,
-        "name": "solecito de mar",
-        "image": "1.jpg",
+[
+    {
+        "id": 3,
+        "name": "miau",
+        "image": "13.jpg",
         "cost": null,
-        "stock": 17,
-        "clasification": "Whiskey"
-    },
-    "": {
-        "id": 1,
-        "name": "solecito de mar",
-        "image": "1.jpg",
-        "cost": null,
-        "stock": 17,
-        "clasification": "Whiskey"
+        "stock": 30,
+        "clasificarion": "Whiskey"
     }
-}
+]
