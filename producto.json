@@ -1,30 +1,18 @@
 [
-    {
-        "id": 3,
-        "name": "miau",
-        "stock": 30,
-        "clasification": "Whiskey"
-    },
-    {
-        "id": 7,
-        "name": "grrr",
-        "image": "12.jpg",
-        "stock": 20,
-        "clasification": "Whiskey"
-    },
+  
     {
         "id": 9,
         "name": "grrr",
         "image": "12.jpg",
-        "cost": null,
+        "cost": 120,
         "stock": 20,
-        "clasificarion": "Whiskey"
+        "clasification": "Whiskey"
     },
     {
         "id": 10,
         "name": "grrr",
         "image": "12.jpg",
-        "cost": null,
+        "cost": 110,
         "stock": 20,
         "clasification": "Whiskey"
     }
