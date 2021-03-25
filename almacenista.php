@@ -31,7 +31,6 @@
 							<th width="15%">Imagen</th>
 							<th width="8%">ID</th>
 							<th width="35%">Nombre</th>
-							<th width="35%">Categoria</th>
                             <th width="20%">Clasificación</th>
                             <th width="10%">Stock</th>
                             <th width="10%">Costo</th>
