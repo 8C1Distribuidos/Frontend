@@ -122,27 +122,21 @@ $(document).ready(function(){
 				return false;
 			}
 		}	
-		if(nombre != '' && clasificacion != '' && stock != '' && costo != '')
-		{
-			$.ajax({
-				url:"insert.php",
-				method:'POST',
-				data:new FormData(this),
-				contentType:false,
-				processData:false,
-				success:function(data)
-				{
-					alert(data);
-					$('#productos_form')[0].reset();
-					$('#productosModal').modal('hide');
-					dataTable.ajax.reload();
-				}
-			});
-		}
-		else
-		{
-			alert("Complete los campos");
-		}
+		$.ajax({
+			url:"insert.php",
+			method:'POST',
+			data:new FormData(this),
+			contentType:false,
+			processData:false,
+			success:function(data)
+			{
+				alert(data);
+				$('#productos_form')[0].reset();
+				$('#productosModal').modal('hide');
+				dataTable.ajax.reload();
+			}
+		});
+		
 	});
 	
 	$(document).on('click', '.update', function(){
