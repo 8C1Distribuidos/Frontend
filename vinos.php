@@ -50,13 +50,6 @@
         <div class="images">
           <img src="upload\VTvilbao.png"/>
         </div>
-        <div class="slideshow-buttons">
-          <div class="one"></div>
-          <div class="two"></div>
-          <div class="three"></div>
-          <div class="four"></div>
-        </div>
-    
         <div class="product">
           <p>Vinos</p>
           <h1>Bilbao</h1>

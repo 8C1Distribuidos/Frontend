@@ -46,33 +46,52 @@
             </li>
         </ul>
     </div>
-
+<!--
     <div class="container">
         <div class="images">
           <img src="upload\VTvilbao.png"/>
         </div>
-        <div class="slideshow-buttons">
-          <div class="one"></div>
-          <div class="two"></div>
-          <div class="three"></div>
-          <div class="four"></div>
-        </div>
-    
+        
         <div class="product">
           <p>Vinos</p>
-            <?php
+            php
                 $data = json_decode(file_get_contents("producto.json"), true);
                 for($i=0; $i<count($data); $i++){
                     echo "<h1>" .$data[$i]["name"]."</h1>";
                     echo "<h2>$" .$data[$i]["cost"]."</h2>";
-                    echo "<desc>" .$data[$i]["clasificarion"]."</desc><br>";
+                    echo "<desc>" .$data[$i]["clasificacion"]."</desc><br>";
                     echo "<desc>En almacen: " .$data[$i]["stock"]."</desc>";
                 }
-            ?> 
+            
           <div class="buttons">
             <button class="add">Agregar al carrito</button>
           </div>
-        </div>
+        </div>-->
       </div>
   </body>
 </html>
+<script>
+    $(document).ready(function(){
+        var url  = "http://localhost:3000/producto";
+        $.getJSON(url, function( data ) {
+            var obj = data;
+            for(var i=0;i<obj.length;i++)
+            {
+                var tr  ="<div class='container'>"+
+                        "<div class='product'>" +
+                        "<p>Vinos</p>" +
+                        "<td><img src="+obj[i]["imagen"]+"></td>"+
+                        "<td>"+obj[i]["id"]+"</td>"+
+                        "<h1>"+obj[i]["name"]+"</h1>"+
+                        "<h2>"+"$"+obj[i]["precio"]+"</h2>"+
+                        "<p class="desc">"+obj[i]["clasificacion"][0]["name"]+"</p>"+
+                        "<p class="desc">"+obj[i]["stock"]+"<p>"+
+                        "<div class='buttons'>" +
+                          "<button class='add'>Agregar al carrito</button>" +
+                        "</div></div></div>";
+            $("#productos_data").append(tr);
+            }
+        });
+    }); 
+
+</script>
