@@ -21,42 +21,35 @@
         <h3>Vinos</h3>
         </div>
         <div class="nav" id="wine_menu">
-        <ul>
+          <ul>
             <li>
-            <a href="#portfolio">Blanco</a>
+            <a href="#blanco">Blanco</a>
             </li>
             <li>
-                <a href="#calendar">Espumoso</a>
+              <a href="#espumoso">Espumoso</a>
             </li>
             <li>
-            <a href="#resume">Tinto</a>
+              <a href="#tinto">Tinto</a>
             </li>
             <li>
-            <a href="#blog">Rosado</a>
+              <a href="#rosado">Rosado</a>
             </li>
             <li>
-            <a href="#blog">Champagne</a>
+              <a href="#champagne">Champagne</a>
             </li>
             <li>
-            <a href="#blog">De postre</a>
+              <a href="#dePostre">De postre</a>
             </li>
             <li>
-            <a href="#blog">Sin alcohol</a>
+              <a href="#sinAlcohol">Sin alcohol</a>
             </li>
-        </ul>
+          </ul>
     </div>
 
-    <div class="container">
+    <!--<div class="container">
         <div class="images">
           <img src="upload\VTvilbao.png"/>
         </div>
-        <div class="slideshow-buttons">
-          <div class="one"></div>
-          <div class="two"></div>
-          <div class="three"></div>
-          <div class="four"></div>
-        </div>
-    
         <div class="product">
           <p>Vinos</p>
           <h1>Bilbao</h1>
@@ -66,7 +59,30 @@
             <button class="add">Agregar al carrito</button>
           </div>
         </div>
-      </div>
+      </div>-->
   </body>
 </html>
 
+<script>
+  $(document).ready(function(){
+      var url  = "http://localhost:3000/products";
+      $.getJSON(url, function( data ) {
+          var obj = data;
+          for(var i=0;i<obj.length;i++)
+          {
+            var tr  ="<div class="container">"+
+                        "<div class="images">"+
+                          "<img src="+obj[i]["imagen"]+">"+
+                        "</div>"+
+                        "<div class="product">"+
+                          "<p>"+obj[i]["clasificacion"][0]["catalogo"][0]["name"]+"</p>"+
+                          "<h1>"+obj[i]["name"]+"</h1>"+
+                          "<h2>"+"$"+obj[i]["precio"]+"</h2>"+
+                          "<p></p>"+
+                        "</div>"
+                      "</div>";
+          $("#productos_data").append(tr);
+          }
+      });
+  }); 
+</script>
