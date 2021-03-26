@@ -64,19 +64,18 @@
 					<input type="text" name="catalogo" id="catalogo" class="form-control required" disabled/>
 					<br />
                     <label>Ingrese stock</label>
-					<input type="text" name="stock" id="stock" class="form-control required" />
+					<input type="number" name="stock" id="stock" class="form-control required" />
 					<br />
                     <label>Ingrese el costo</label>
-					<input type="text" name="costo" id="costo" class="form-control required" />
+					<input type="number" name="costo" id="costo" class="form-control required" />
 					<br />
 					<label>Seleccionar imagen del producto</label>
-					<input type="file" name="productos_image" id="productos_image" />
+					<input type="file" name="imagen" id="imagen" />
 					<span id="productos_uploaded_image"></span>
 				</div>
 				<div class="modal-footer">
-					<input type="hidden" name="productos_id" id="productos_id" />
-					<input type="hidden" name="operation" id="operation" />
-					<input type="submit" name="action" id="action" class="btn btn-success" value="Add" />
+					<input type="hidden" name="id" id="id" />
+					<input type="submit" name="action" id="action" class="btn btn-success" value="Add"/> 
 					<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
 				</div>
 			</div>
@@ -87,8 +86,7 @@
 
 <script type="text/javascript" language="javascript">
     $(document).ready(function(){
-        var url  = "http://localhost:3000/products";
-        $.getJSON(url, function( data ) {
+        $.getJSON("http://localhost:3000/products", function( data ) {
             var obj = data;
             for(var i=0;i<obj.length;i++)
             {
@@ -119,42 +117,84 @@
                 $('#costo').val(obj[0]["precio"]);
                 $('#producto_id').val(productos_id);
                 $('#productos_uploaded_image').html(obj[0]["imagen"]);
-                $('#action').val("Edit");
-                $('#operation').val("Edit");
+                $('#action').val("Update");
             });
         });
-        $(document).on('submit', '#productos_form', function(event){
-		event.preventDefault();
-		var nombre = $('#nombre').val();
-		var clasificacion = $('#clasificacion').val();
-        var stock = $('#stock').val();
-		var costo = $('#costo').val();
-		var extension = $('#productos_image').val().split('.').pop().toLowerCase();
-		if(extension != '')
-		{
-			if(jQuery.inArray(extension, ['gif','png','jpg','jpeg']) == -1)
-			{
-				alert("Invalid Image File");
-				$('#productos_image').val('');
-				return false;
-			}
-		}	
-		$.ajax({
-			url:"http://localhost:3000/newProduct",
-			method:'POST',
-			data:new FormData(this),
-			contentType:false,
-			processData:false,
-			success:function(data)
-			{
-				alert(data);
-				$('#productos_form')[0].reset();
-				$('#productosModal').modal('hide');
-				
-			}
-		});
-		
-	});
+        $('#add_button').click(function(){
+            $('#productos_form')[0].reset();
+            $('.modal-title').text("Añadir Producto");
+            $('#action').val("Add");
+            $('#productos_uploaded_image').html('');
+        });
+
+        $(document).on('submit', '#productos_form',function(event){
+            var extension = $('#imagen').val().split('.').pop().toLowerCase();
+            if(extension != '')
+            {
+                if(jQuery.inArray(extension, ['gif','png','jpg','jpeg']) == -1)
+                {
+                    alert("Invalid Image File");
+                    $('#imagen').val('');
+                    return false;
+                }
+            }
+            function toJSONString( form ) {
+                var obj = {};
+                var elements = form.querySelectorAll( "input, select, textarea" );
+                for( var i = 0; i < elements.length; ++i ) {
+                    var element = elements[i];
+                    var name = element.name;
+                    var value = element.value;
+
+                    if( name && name!="action") {
+                        obj[ name ] = value;
+                    }
+                }
+                return JSON.stringify( obj );
+            }
+            var json = toJSONString( this );
+            event.preventDefault();
+            var x= $('#action').val();
+            if( x == "Add"){
+
+                $.ajax({
+                    url:"http://localhost:3000/products",
+                    type:"POST",
+                    data:json,
+                    dataType:"json",
+                    contentType:"application/json",
+                    success:function(data)
+                    {
+                        $('#productos_form')[0].reset();
+                        $('#productosModal').modal('hide');
+                        //dataTable.ajax.reload();
+                    }
+                });
+            }else{
+                //PUT actualizar 
+            }     
+	    });
+        $(document).on('click', '.delete', function(){
+		var productos_id = $(this).attr("id");
+            if(confirm("¿Estás seguro de eliminar esto?"))
+            {
+                $.ajax({
+                    url:"http://localhost:3000/products/"+productos_id,
+                    type:"DELETE",
+                    dataType:"json",
+                    contentType:"application/json",
+                    success:function(data)
+                    {
+                        alert(data);
+                        dataTable.ajax.reload();
+                    }
+                });
+            }
+            else
+            {
+                return false;	
+            }
+        });
     }); 
 
    

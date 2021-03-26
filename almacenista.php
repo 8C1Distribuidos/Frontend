@@ -168,7 +168,7 @@ $(document).ready(function(){
 		{
 			$.ajax({
 				url:"delete.php",
-				method:"POST",
+				method:"DELETE",
 				data:{productos_id:productos_id},
 				success:function(data)
 				{
