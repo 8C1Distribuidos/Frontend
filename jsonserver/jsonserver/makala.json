@@ -1,0 +1,24 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "Vino La Cetto",
+      "clasificacion":[
+        {
+          "id": 1,
+          "name":"Vino blanco", 
+          "catalogo": [
+            {
+              "id": 1,
+              "name":"Vinos"
+            }
+          ]
+        }
+      ],
+      "stock": "50",
+      "precio": "500",
+      "imagen": "upload/VTcetto.png"
+    }
+    
+  ]
+}
