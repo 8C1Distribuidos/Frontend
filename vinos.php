@@ -79,7 +79,7 @@
                           "<h1>"+obj[i]["name"]+"</h1>"+
                           "<h2>"+"$"+obj[i]["precio"]+"</h2>"+
                           "<p></p>"+
-                        "</div>"
+                        "</div>"+
                       "</div>";
           $("#productos_data").append(tr);
           }
