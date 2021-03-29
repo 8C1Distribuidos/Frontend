@@ -1,7 +1,5 @@
 {
-  "prueba": {
-
-  },
+  "prueba": {},
   "clasificacion": [
     {
       "id": 1,
@@ -194,12 +192,23 @@
       "id": 2
     },
     {
-      "nombre": "Vino",
-      "catalogo": "",
-      "stock": "12",
+      "id": 3,
+      "name": "Ron Jack Sparrow",
+      "clasificacion": [
+        {
+          "id": 13,
+          "name": "Ron",
+          "catalogo": [
+            {
+              "id": 2,
+              "name": "Destilados"
+            }
+          ]
+        }
+      ],
+      "stock": "50",
       "costo": "500",
-      "imagen": "upload/VRchivite.png",
-      "id": 3
+      "imagen": "upload/destilados.jpg"
     }
   ]
 }
