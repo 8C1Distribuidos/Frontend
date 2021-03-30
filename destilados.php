@@ -104,20 +104,20 @@
       for(var i=0;i<obj.length;i++)
       {
         if (obj[i]["clasificacion"][0]["name"]==clasificacion) {
-          var tr  ="<div class=\"container\">"+
-                    "<div class=\"images\">"+
-                      "<img src="+obj[i]["imagen"]+">"+
-                    "</div>"+
-                    "<div class=\"product\">"+
-                      "<p>"+obj[i]["clasificacion"][0]["name"]+"</p>"+
-                      "<h1>"+obj[i]["name"]+"</h1>"+
-                      "<h2>"+"$"+obj[i]["costo"]+"</h2>"+
-                      "<p class=\"desc\">"+"</p>"+
-                      "<div class=\"buttons\">"+
-                        "<button class=\"add\">"+"Agregar al carrito"+"</button>"+
+          var tr =  "<div class= container >"+
+                      "<div class= images >"+
+                        "<img src="+obj[i]["imagen"]+">"+
                       "</div>"+
-                    "</div>"+
-                  "</div>";
+                      "<div class= product >"+
+                        "<p>"+obj[i]["clasificacion"][0]["name"]+"</p>"+
+                        "<h1>"+obj[i]["name"]+"</h1>"+
+                        "<h2>"+"$"+obj[i]["costo"]+"</h2>"+
+                        "<p class= desc >"+"</p>"+
+                        "<div class= buttons>"+
+                          "<button class= add >"+"Agregar al carrito"+"</button>"+
+                        "</div>"+
+                      "</div>"+
+                    "</div>";
           $("#tarjetita").append(tr);
         }
       }

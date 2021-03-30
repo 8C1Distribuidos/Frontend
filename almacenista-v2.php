@@ -125,8 +125,7 @@
                 var option  ="<option value="+classifications[i]["id"]+">"+classifications[i]["name"]+"</option>";
                 $("#clasificacion_menu").append(option);
             }
-            document.getElementById("catalogo").value = classifications[0]["catalogo"][0]["name"];
-            
+            //document.getElementById("catalogo").value = classifications[0]["catalogo"][0]["name"];
         });
 
         //Select On change 
@@ -163,6 +162,7 @@
         $(document).on('submit', '#productos_form',function(event){
             event.preventDefault();
             var extension = $('#imagen').val().split('.').pop().toLowerCase();
+
             if(extension != '')
             {
                 if(jQuery.inArray(extension, ['gif','png','jpg','jpeg']) == -1)
@@ -176,23 +176,22 @@
             //Formulario a JSON
             function toJSONString( form ) {
                 var obj = {};
-                var elements = form.querySelectorAll( "input, select, textarea" );
+                var elements = form.querySelectorAll( "input, select" );
                 for( var i = 0; i < elements.length; ++i ) {
                     var element = elements[i];
                     var name = element.name;
                     var value = element.value;
                     if( name && name=="clasificacion") {
                         var clasificacion = classifications.find( clasification => clasification.id ==  value);
-                        obj[name] = {
+                        /*obj[name] = {
                             id: clasificacion.id,
                             name: clasificacion.name
                         };
-                        //alert(clasificacion.name);
-                        //obj[name] = clasificacion;
-                        //obj[name][0]["id"] = clasificacion.id;
-                        //obj[name][0]["name"] = clasificacion.name;
-                        //obj[name]["catalogo"][0]["id"] = clasificacion.catalogo[0].id;
-                        //obj[name]["catalogo"][0]["name"] = clasificacion.catalogo[0].name;*/
+                        obj[name] = clasificacion;
+                        obj[name][0]["id"] = clasificacion.id;
+                        obj[name][0]["name"] = clasificacion.name;
+                        obj[name]["catalogo"][0]["id"] = clasificacion.catalogo[0].id;
+                        obj[name]["catalogo"][0]["name"] = clasificacion.catalogo[0].name;*/
                     }
                     if( name && name!="action" && name!="catalogo") {
                         obj[ name ] = value;
@@ -213,15 +212,15 @@
                     contentType:"application/json",
                     success:function(data)
                     {
-                        alert(data["name"]);
                         $('#productos_form')[0].reset();
                         $('#productosModal').modal('hide');
-                        obj.push(json);
+                        products.push(json);
                         $('#productos_data > tbody').empty();
                         loadTable();
                     }
                 });
             }else{
+                //PUT
                 $.ajax({
                     url:"http://localhost:3000/products",
                     type:"PUT",
@@ -230,15 +229,14 @@
                     contentType:"application/json",
                     success:function(data)
                     {
-                        alert(data["name"]);
                         $('#productos_form')[0].reset();
                         $('#productosModal').modal('hide');
-                        obj.push(json);
+                        //Remplazar elemento
+                        //products.push(json);
                         $('#productos_data > tbody').empty();
                         loadTable();
                     }
                 });
-                //UPDATE
             }     
 	    });
         $(document).on('click', '.delete', function(){
@@ -252,9 +250,9 @@
                     contentType:"application/json",
                     success:function(data)
                     {
-                        for( var i = 0; i < obj.length; i++){     
-                            if ( obj[i]["id"] == productos_id) { 
-                                obj.splice(i, 1); 
+                        for( var i = 0; i < products.length; i++){     
+                            if ( products[i]["id"] == productos_id) { 
+                                products.splice(i, 1); 
                                 break; 
                             }
                         }  
