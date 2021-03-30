@@ -222,6 +222,22 @@
                     }
                 });
             }else{
+                $.ajax({
+                    url:"http://localhost:3000/products",
+                    type:"PUT",
+                    data:json,
+                    dataType:"json",
+                    contentType:"application/json",
+                    success:function(data)
+                    {
+                        alert(data["name"]);
+                        $('#productos_form')[0].reset();
+                        $('#productosModal').modal('hide');
+                        obj.push(json);
+                        $('#productos_data > tbody').empty();
+                        loadTable();
+                    }
+                });
                 //UPDATE
             }     
 	    });

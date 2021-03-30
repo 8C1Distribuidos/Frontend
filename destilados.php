@@ -106,7 +106,7 @@
         if (obj[i]["clasificacion"][0]["name"]==clasificacion) {
           var tr  ="<div class=\"container\">"+
                     "<div class=\"images\">"+
-                      "<img src="+obj[i]["imagen"]+"/>"+
+                      "<img src="+obj[i]["imagen"]+">"+
                     "</div>"+
                     "<div class=\"product\">"+
                       "<p>"+obj[i]["clasificacion"][0]["name"]+"</p>"+
