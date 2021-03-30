@@ -1,5 +1,3 @@
-
-
 <html>
 	<head>
 		<title>Productos</title>
@@ -64,7 +62,7 @@
                     <select class="form-control" name="clasificacion" id="clasificacion_menu"></select>
                     <br/>
                     <label>Catalogo</label>
-					<input type="text" name="catalogo" id="catalogo" class="form-control"/>
+					<input type="text" name="catalogo" id="catalogo" class="form-control" readonly="true"/>
 					<br />
                     <label>Ingrese stock</label>
 					<input type="number" name="stock" id="stock" class="form-control required" />
@@ -73,12 +71,12 @@
 					<input type="number" name="costo" id="costo" class="form-control required" />
 					<br />
 					<label>Seleccionar imagen del producto</label>
-					<input type="file" name="imagen" id="imagen" />
+					<input type="file" name="imagen" id="imagen" class="form-control required"/>
 					<span id="productos_uploaded_image"></span>
 				</div>
 				<div class="modal-footer">
 					<input type="hidden" name="id" id="id" />
-					<input type="submit" name="action" id="action" class="btn btn-success" value="Add"/> 
+					<input type="submit" name="action" id="action" class="btn btn-success"/> 
 					<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
 				</div>
 			</div>
@@ -88,6 +86,16 @@
 
 
 <script type="text/javascript" language="javascript">
+    function upload_image(){
+        if(isset($_FILES["productos_image"])){
+            $extension = explode('.', $_FILES['productos_image']['name']);
+            $new_name = rand() . '.' . $extension[1];
+            $destination = './upload/' . $new_name;
+            move_uploaded_file($_FILES['productos_image']['tmp_name'], $destination);
+            return $new_name;
+        }
+    }
+    
     $(document).ready(function(){
         //Varibles
         var products;
@@ -149,7 +157,6 @@
                 $('#action').val("Update");
         });
 
-
         //ADD Boton
         $('#add_button').click(function(){
             $('#productos_form')[0].reset();
@@ -181,18 +188,14 @@
                     var element = elements[i];
                     var name = element.name;
                     var value = element.value;
-                    if( name && name=="clasificacion") {
+                    /*if( name && name=="clasificacion") {
                         var clasificacion = classifications.find( clasification => clasification.id ==  value);
-                        /*obj[name] = {
-                            id: clasificacion.id,
-                            name: clasificacion.name
-                        };
                         obj[name] = clasificacion;
                         obj[name][0]["id"] = clasificacion.id;
                         obj[name][0]["name"] = clasificacion.name;
-                        obj[name]["catalogo"][0]["id"] = clasificacion.catalogo[0].id;
-                        obj[name]["catalogo"][0]["name"] = clasificacion.catalogo[0].name;*/
-                    }
+                        obj[name][0]["catalogo"][0]["id"] = clasificacion.catalogo[0].id;
+                        obj[name][0]["catalogo"][0]["name"] = clasificacion.catalogo[0].name;
+                    }*/
                     if( name && name!="action" && name!="catalogo") {
                         obj[ name ] = value;
                     }
@@ -229,10 +232,8 @@
                     contentType:"application/json",
                     success:function(data)
                     {
-                        $('#productos_form')[0].reset();
                         $('#productosModal').modal('hide');
-                        //Remplazar elemento
-                        //products.push(json);
+                        products.reverse(json);
                         $('#productos_data > tbody').empty();
                         loadTable();
                     }
