@@ -209,6 +209,38 @@
       "stock": "50",
       "costo": "500",
       "imagen": "upload/destilados.jpg"
+    },
+    {
+      "nombre": "aaa",
+      "catalogo": "",
+      "stock": "14",
+      "costo": "200",
+      "imagen": "C:\\fakepath\\VRbaigorri.png",
+      "id": 4
+    },
+    {
+      "nombre": "Michel",
+      "catalogo": "",
+      "stock": "14",
+      "costo": "600",
+      "imagen": "",
+      "id": 5
+    },
+    {
+      "nombre": "qqqq",
+      "catalogo": "",
+      "stock": "26",
+      "costo": "500",
+      "imagen": "",
+      "id": 6
+    },
+    {
+      "nombre": "aa",
+      "catalogo": "",
+      "stock": "14",
+      "costo": "200",
+      "imagen": "",
+      "id": 7
     }
   ]
 }

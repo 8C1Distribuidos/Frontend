@@ -58,7 +58,7 @@
 				</div>
 				<div class="modal-body">
 					<label>Ingrese el nombre</label>
-					<input type="text" name="nombre" id="name" class="form-control required" />
+					<input type="text" name="name" id="name" class="form-control required" />
 					<br />
 					<label>Ingrese clasificacion</label>
                     <select class="form-control" id="clasificacion_menu"></select>
