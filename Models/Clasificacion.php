@@ -1,7 +1,7 @@
 <?php
     class Clasificacion {
         public $id;
-        public $nombre;
+        public $name;
         public $id_catalogo;
     }
 ?>

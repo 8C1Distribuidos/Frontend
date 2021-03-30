@@ -16,7 +16,7 @@ if(isset($_POST["productos_id"]))
 
         //`image`, `nombre`, `clasificacion`, `stock`,`costo`
         
-		$output["nombre"] = $row["nombre"];
+		$output["name"] = $row["name"];
 		$output["clasificacion"] = $row["clasificacion"];
         $output["stock"] = $row["stock"];
 		$output["costo"] = $row["costo"];

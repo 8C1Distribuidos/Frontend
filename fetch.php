@@ -6,7 +6,7 @@ $output = array();
 $query .= "SELECT * FROM productos ";
 if(isset($_POST["search"]["value"]))
 {
- $query .= 'WHERE nombre LIKE "%'.$_POST["search"]["value"].'%" ';
+ $query .= 'WHERE name LIKE "%'.$_POST["search"]["value"].'%" ';
  $query .= 'OR clasificacion LIKE "%'.$_POST["search"]["value"].'%" ';
  $query .= 'OR costo LIKE "%'.$_POST["search"]["value"].'%" ';
  $query .= 'OR stock LIKE "%'.$_POST["search"]["value"].'%" ';
@@ -44,7 +44,7 @@ foreach($result as $row)
  $sub_array = array();
  $sub_array[] = $image;
  $sub_array[] = $row["id"];
- $sub_array[] = $row["nombre"];
+ $sub_array[] = $row["name"];
  $sub_array[] = $row["clasificacion"];
  $sub_array[] = $row["stock"];
  $sub_array[] = $row["costo"];

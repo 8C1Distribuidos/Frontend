@@ -1,7 +1,5 @@
 {
-  "prueba": {
-
-  },
+  "prueba": {},
   "clasificacion": [
     {
       "id": 1,
@@ -194,12 +192,55 @@
       "id": 2
     },
     {
-      "nombre": "Vino",
-      "catalogo": "",
-      "stock": "12",
+      "id": 3,
+      "name": "Ron Jack Sparrow",
+      "clasificacion": [
+        {
+          "id": 13,
+          "name": "Ron",
+          "catalogo": [
+            {
+              "id": 2,
+              "name": "Destilados"
+            }
+          ]
+        }
+      ],
+      "stock": "50",
       "costo": "500",
-      "imagen": "upload/VRchivite.png",
-      "id": 3
+      "imagen": "upload/destilados.jpg"
+    },
+    {
+      "nombre": "aaa",
+      "catalogo": "",
+      "stock": "14",
+      "costo": "200",
+      "imagen": "C:\\fakepath\\VRbaigorri.png",
+      "id": 4
+    },
+    {
+      "nombre": "Michel",
+      "catalogo": "",
+      "stock": "14",
+      "costo": "600",
+      "imagen": "",
+      "id": 5
+    },
+    {
+      "nombre": "qqqq",
+      "catalogo": "",
+      "stock": "26",
+      "costo": "500",
+      "imagen": "",
+      "id": 6
+    },
+    {
+      "nombre": "aa",
+      "catalogo": "",
+      "stock": "14",
+      "costo": "200",
+      "imagen": "",
+      "id": 7
     }
   ]
 }
