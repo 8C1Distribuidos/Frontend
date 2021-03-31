@@ -1,3 +1,6 @@
+
+
+
 <html>
 	<head>
 		<title>Productos</title>
@@ -86,16 +89,6 @@
 
 
 <script type="text/javascript" language="javascript">
-    function upload_image(){
-        if(isset($_FILES["productos_image"])){
-            $extension = explode('.', $_FILES['productos_image']['name']);
-            $new_name = rand() . '.' . $extension[1];
-            $destination = './upload/' . $new_name;
-            move_uploaded_file($_FILES['productos_image']['tmp_name'], $destination);
-            return $new_name;
-        }
-    }
-    
     $(document).ready(function(){
         //Varibles
         var products;

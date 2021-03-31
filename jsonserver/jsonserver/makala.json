@@ -241,6 +241,14 @@
       "costo": "200",
       "imagen": "",
       "id": 7
+    },
+    {
+      "name": "asdsad",
+      "clasificacion": "4",
+      "stock": "2",
+      "costo": "3450",
+      "imagen": "C:\\fakepath\\VTcetto.png",
+      "id": 8
     }
   ]
 }
