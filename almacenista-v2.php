@@ -1,5 +1,6 @@
 
 
+
 <html>
 	<head>
 		<title>Productos</title>
@@ -64,7 +65,7 @@
                     <select class="form-control" name="clasificacion" id="clasificacion_menu"></select>
                     <br/>
                     <label>Catalogo</label>
-					<input type="text" name="catalogo" id="catalogo" class="form-control"/>
+					<input type="text" name="catalogo" id="catalogo" class="form-control" readonly="true"/>
 					<br />
                     <label>Ingrese stock</label>
 					<input type="number" name="stock" id="stock" class="form-control required" />
@@ -73,12 +74,12 @@
 					<input type="number" name="costo" id="costo" class="form-control required" />
 					<br />
 					<label>Seleccionar imagen del producto</label>
-					<input type="file" name="imagen" id="imagen" />
+					<input type="file" name="imagen" id="imagen" class="form-control required"/>
 					<span id="productos_uploaded_image"></span>
 				</div>
 				<div class="modal-footer">
 					<input type="hidden" name="id" id="id" />
-					<input type="submit" name="action" id="action" class="btn btn-success" value="Add"/> 
+					<input type="submit" name="action" id="action" class="btn btn-success"/> 
 					<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
 				</div>
 			</div>
@@ -148,7 +149,6 @@
                 $('#productos_uploaded_image').html(obj.imagen);
                 $('#action').val("Update");
         });
-
 
         //ADD Boton
         $('#add_button').click(function(){
@@ -221,7 +221,6 @@
                     contentType:"application/json",
                     success:function(data)
                     {
-                        $('#productos_form')[0].reset();
                         $('#productosModal').modal('hide');
                         for( var i = 0; i < products.length; i++){     
                             if ( products[i]["id"] == obj.id) { 
