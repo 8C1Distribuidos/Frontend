@@ -107,8 +107,8 @@
                     "<td><img src="+products[i]["imagen"]+"></td>"+
                     "<td>"+products[i]["id"]+"</td>"+
                     "<td>"+products[i]["name"]+"</td>"+
-                    "<td>"+products[i]["clasificacion"][0]["name"]+"</td>"+
-                    "<td>"+products[i]["clasificacion"][0]["catalogo"][0]["name"]+"</td>"+
+                    "<td>"+products[i]["clasificacion"]["name"]+"</td>"+
+                    "<td>"+products[i]["clasificacion"]["catalogo"]["name"]+"</td>"+
                     "<td>"+products[i]["stock"]+"</td>"+
                     "<td>"+"$"+products[i]["costo"]+"</td>"+
                     "<td><button type='button' name='update' id="+products[i]["id"]+ " class='btn btn-default update-circle-button update' ><svg xmlns=http://www.w3.org/2000/svg width=16 height=16 fill=currentColor class='bi bi-pencil-fill' viewBox=0 0 16 16><path d='M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708l-3-3zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207l6.5-6.5zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.499.499 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11l.178-.178z'/></svg></button></td>"+
@@ -125,23 +125,23 @@
                 var option  ="<option value="+classifications[i]["id"]+">"+classifications[i]["name"]+"</option>";
                 $("#clasificacion_menu").append(option);
             }
-            //document.getElementById("catalogo").value = classifications[0]["catalogo"][0]["name"];
         });
 
         //Select On change 
         $('#clasificacion_menu').change(function(){
             var obj = classifications.find( clasification => clasification.id ==  this.value);
-            document.getElementById("catalogo").value = obj.catalogo[0].name;
+            document.getElementById("catalogo").value = obj.catalogo.name;
         })
 
         //Modal UPDATE
         $(document).on('click', '.update', function(){
-            const obj = products.find( product => product.id ==  $(this).attr("id"));
+            var obj = products.find( product => product.id ==  $(this).attr("id"));
+            var clas = classifications.find(clasification => clasification.id == obj.clasificacion.id);
             $('#productosModal').modal('show');
                 $('.modal-title').text("Editar producto");
                 $('#name').val(obj.name);
-                $('#clasificacion').val(obj.clasificacion.name);
-                $('#catalogo').val(obj.clasificacion[0].catalogo[0].name);
+                $('#clasificacion_menu').val(obj.clasificacion.id);
+                $('#catalogo').val(obj.clasificacion.catalogo.name);
                 $('#stock').val(obj.stock);
                 $('#costo').val(obj.costo);
                 $('#id').val(obj.id);
@@ -154,6 +154,7 @@
         $('#add_button').click(function(){
             $('#productos_form')[0].reset();
             $('.modal-title').text("Añadir Producto");
+            document.getElementById("catalogo").value = classifications[0]["catalogo"]["name"];
             $('#action').val("Add");
             $('#productos_uploaded_image').html('');
         });
@@ -174,27 +175,18 @@
             }
 
             //Formulario a JSON
+            var obj = {};
             function toJSONString( form ) {
-                var obj = {};
                 var elements = form.querySelectorAll( "input, select" );
                 for( var i = 0; i < elements.length; ++i ) {
                     var element = elements[i];
                     var name = element.name;
                     var value = element.value;
-                    if( name && name=="clasificacion") {
-                        var clasificacion = classifications.find( clasification => clasification.id ==  value);
-                        /*obj[name] = {
-                            id: clasificacion.id,
-                            name: clasificacion.name
-                        };
-                        obj[name] = clasificacion;
-                        obj[name][0]["id"] = clasificacion.id;
-                        obj[name][0]["name"] = clasificacion.name;
-                        obj[name]["catalogo"][0]["id"] = clasificacion.catalogo[0].id;
-                        obj[name]["catalogo"][0]["name"] = clasificacion.catalogo[0].name;*/
+                    if( name && name=="clasificacion") { 
+                        obj[name]= classifications.find( clasification => clasification.id ==  value);
                     }
-                    if( name && name!="action" && name!="catalogo") {
-                        obj[ name ] = value;
+                    if( name && name!="action" && name!="catalogo"&& name!="clasificacion") {
+                        obj[name] = value;
                     }
                 }
                 return JSON.stringify( obj );
@@ -214,7 +206,7 @@
                     {
                         $('#productos_form')[0].reset();
                         $('#productosModal').modal('hide');
-                        products.push(json);
+                        products.push(obj);
                         $('#productos_data > tbody').empty();
                         loadTable();
                     }
@@ -222,7 +214,7 @@
             }else{
                 //PUT
                 $.ajax({
-                    url:"http://localhost:3000/products",
+                    url:"http://localhost:3000/products/"+obj.id,
                     type:"PUT",
                     data:json,
                     dataType:"json",
@@ -231,8 +223,12 @@
                     {
                         $('#productos_form')[0].reset();
                         $('#productosModal').modal('hide');
-                        //Remplazar elemento
-                        //products.push(json);
+                        for( var i = 0; i < products.length; i++){     
+                            if ( products[i]["id"] == obj.id) { 
+                                products[i] = obj;
+                                break; 
+                            }
+                        }  
                         $('#productos_data > tbody').empty();
                         loadTable();
                     }
