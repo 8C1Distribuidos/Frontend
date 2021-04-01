@@ -4,251 +4,169 @@
     {
       "id": 1,
       "name": "Vino blanco",
-      "catalogo": [
-        {
-          "id": 1,
-          "name": "Vinos"
-        }
-      ]
+      "catalogo": {
+        "id": 1,
+        "name": "Vinos"
+      }
     },
     {
       "id": 2,
       "name": "Vino espumoso",
-      "catalogo": [
-        {
-          "id": 1,
-          "name": "Vinos"
-        }
-      ]
+      "catalogo": {
+        "id": 1,
+        "name": "Vinos"
+      }
     },
     {
       "id": 3,
       "name": "Vino tinto",
-      "catalogo": [
-        {
-          "id": 1,
-          "name": "Vinos"
-        }
-      ]
+      "catalogo": {
+        "id": 1,
+        "name": "Vinos"
+      }
     },
     {
       "id": 4,
       "name": "Vino rosado",
-      "catalogo": [
-        {
-          "id": 1,
-          "name": "Vinos"
-        }
-      ]
+      "catalogo": {
+        "id": 1,
+        "name": "Vinos"
+      }
     },
     {
       "id": 5,
       "name": "Vino champagne",
-      "catalogo": [
-        {
-          "id": 1,
-          "name": "Vinos"
-        }
-      ]
+      "catalogo": {
+        "id": 1,
+        "name": "Vinos"
+      }
     },
     {
       "id": 6,
       "name": "Vino de postre",
-      "catalogo": [
-        {
-          "id": 1,
-          "name": "Vinos"
-        }
-      ]
+      "catalogo": {
+        "id": 1,
+        "name": "Vinos"
+      }
     },
     {
       "id": 7,
       "name": "Vino sin alcohol",
-      "catalogo": [
-        {
-          "id": 1,
-          "name": "Vinos"
-        }
-      ]
+      "catalogo": {
+        "id": 1,
+        "name": "Vinos"
+      }
     },
     {
       "id": 8,
       "name": "Brandy",
-      "catalogo": [
-        {
-          "id": 2,
-          "name": "Destilados"
-        }
-      ]
+      "catalogo": {
+        "id": 2,
+        "name": "Destilados"
+      }
     },
     {
       "id": 9,
       "name": "Tequila",
-      "catalogo": [
-        {
-          "id": 2,
-          "name": "Destilados"
-        }
-      ]
+      "catalogo": {
+        "id": 2,
+        "name": "Destilados"
+      }
     },
     {
       "id": 10,
       "name": "Cognac",
-      "catalogo": [
-        {
-          "id": 2,
-          "name": "Destilados"
-        }
-      ]
+      "catalogo": {
+        "id": 2,
+        "name": "Destilados"
+      }
     },
     {
       "id": 11,
       "name": "Ginebra",
-      "catalogo": [
-        {
-          "id": 2,
-          "name": "Destilados"
-        }
-      ]
+      "catalogo": {
+        "id": 2,
+        "name": "Destilados"
+      }
     },
     {
       "id": 12,
       "name": "Mezcal",
-      "catalogo": [
-        {
-          "id": 2,
-          "name": "Destilados"
-        }
-      ]
+      "catalogo": {
+        "id": 2,
+        "name": "Destilados"
+      }
     },
     {
       "id": 13,
       "name": "Ron",
-      "catalogo": [
-        {
-          "id": 2,
-          "name": "Destilados"
-        }
-      ]
+      "catalogo": {
+        "id": 2,
+        "name": "Destilados"
+      }
     },
     {
       "id": 14,
       "name": "Whisky",
-      "catalogo": [
-        {
-          "id": 2,
-          "name": "Destilados"
-        }
-      ]
+      "catalogo": {
+        "id": 2,
+        "name": "Destilados"
+      }
     },
     {
       "id": 15,
       "name": "Vodka",
-      "catalogo": [
-        {
-          "id": 2,
-          "name": "Destilados"
-        }
-      ]
+      "catalogo": {
+        "id": 2,
+        "name": "Destilados"
+      }
     }
   ],
   "products": [
     {
       "id": 1,
       "name": "Vino La Cetto",
-      "clasificacion": [
-        {
+      "clasificacion": {
+        "id": 1,
+        "name": "Vino blanco",
+        "catalogo": {
           "id": 1,
-          "name": "Vino blanco",
-          "catalogo": [
-            {
-              "id": 1,
-              "name": "Vinos"
-            }
-          ]
+          "name": "Vinos"
         }
-      ],
+      },
       "stock": "50",
       "costo": "500",
       "imagen": "upload/VTcetto.png"
     },
     {
       "name": "Vino blanco",
-      "clasificacion": [
-        {
+      "clasificacion": {
+        "id": 1,
+        "name": "Vino blanco",
+        "catalogo": {
           "id": 1,
-          "name": "Vino blanco",
-          "catalogo": [
-            {
-              "id": 1,
-              "name": "Vinos"
-            }
-          ]
+          "name": "Vinos"
         }
-      ],
+      },
       "stock": "12",
       "costo": "500",
       "imagen": "upload/VRconde.png",
       "id": 2
     },
     {
-      "id": 3,
-      "name": "Ron Jack Sparrow",
-      "clasificacion": [
-        {
-          "id": 13,
-          "name": "Ron",
-          "catalogo": [
-            {
-              "id": 2,
-              "name": "Destilados"
-            }
-          ]
+      "name": "r",
+      "clasificacion": {
+        "id": 1,
+        "name": "Vino blanco",
+        "catalogo": {
+          "id": 1,
+          "name": "Vinos"
         }
-      ],
-      "stock": "50",
-      "costo": "500",
-      "imagen": "upload/1085608961.png"
-    },
-    {
-      "nombre": "aaa",
-      "catalogo": "",
-      "stock": "14",
-      "costo": "200",
-      "imagen": "C:\\fakepath\\VRbaigorri.png",
-      "id": 4
-    },
-    {
-      "nombre": "Michel",
-      "catalogo": "",
-      "stock": "14",
-      "costo": "600",
-      "imagen": "",
-      "id": 5
-    },
-    {
-      "nombre": "qqqq",
-      "catalogo": "",
-      "stock": "26",
-      "costo": "500",
-      "imagen": "",
-      "id": 6
-    },
-    {
-      "nombre": "aa",
-      "catalogo": "",
-      "stock": "14",
-      "costo": "200",
-      "imagen": "",
-      "id": 7
-    },
-    {
-      "name": "asdsad",
-      "clasificacion": "4",
-      "stock": "2",
-      "costo": "3450",
-      "imagen": "C:\\fakepath\\VTcetto.png",
-      "id": 8
+      },
+      "stock": "22",
+      "costo": "2",
+      "imagen": "upload/r_983745.png",
+      "id": 3
     }
   ]
 }

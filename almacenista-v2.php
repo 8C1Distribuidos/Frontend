@@ -1,6 +1,3 @@
-
-
-
 <html>
 	<head>
 		<title>Productos</title>
@@ -59,22 +56,22 @@
 				</div>
 				<div class="modal-body">
 					<label>Ingrese el nombre</label>
-					<input type="text" name="name" id="name" class="form-control required" />
+					<input type="text" name="name" id="name" class="form-control "required />
 					<br />
 					<label>Ingrese clasificacion</label>
-                    <select class="form-control" name="clasificacion" id="clasificacion_menu"></select>
+                    <select class="form-control" name="clasificacion" id="clasificacion_menu" required></select>
                     <br/>
                     <label>Catalogo</label>
 					<input type="text" name="catalogo" id="catalogo" class="form-control" readonly="true"/>
 					<br />
                     <label>Ingrese stock</label>
-					<input type="number" name="stock" id="stock" class="form-control required" />
+					<input type="number" name="stock" id="stock" class="form-control"required />
 					<br />
                     <label>Ingrese el costo</label>
-					<input type="number" name="costo" id="costo" class="form-control required" />
+					<input type="number" name="costo" id="costo" class="form-control"required />
 					<br />
 					<label>Seleccionar imagen del producto</label>
-					<input type="file" name="imagen" id="imagen" class="form-control required"/>
+					<input type="file" name="imagen" id="imagen" onclick="upload_image();" class="form-control" required/>
 					<span id="productos_uploaded_image"></span>
 				</div>
 				<div class="modal-footer">
@@ -87,6 +84,42 @@
 	</div>
 </div>
 
+<?php 
+function upload_image()
+{
+ if(isset($_FILES["imagen"]))
+ {
+  $extension = explode('.', $_FILES['imagen']['name']);
+  $new_name = rand() . '.' . $extension[1];
+  $destination = './upload/' . $new_name;
+  move_uploaded_file($_FILES['imagen']['tmp_name'], $destination);
+  return $new_name;
+ }
+}
+
+?>
+
+<?php 
+function update($id)
+{
+    $users = AdminLogin::find($id);
+
+    if(Input::hasFile('image_file'))
+    {
+        $usersImage = public_path("uploads/images/{$users->image_file}"); // get previous image from folder
+        if (File::exists($usersImage)) { // unlink or remove previous image from folder
+            unlink($usersImage);
+        }
+        $file = Input::file('image_file');
+        $name = time() . '-' . $file->getClientOriginalName();
+        $file = $file->move(('uploads/images'), $name);
+        $users->image_file= $name;
+    }
+    $users->save();
+    return response()->json($users);
+}
+
+?>
 
 <script type="text/javascript" language="javascript">
     $(document).ready(function(){
@@ -159,11 +192,12 @@
             $('#productos_uploaded_image').html('');
         });
 
-        //POST/UPDATE producto
+        //POST/UPDATE/Create product
         $(document).on('submit', '#productos_form',function(event){
             event.preventDefault();
+            //verify the extension
             var extension = $('#imagen').val().split('.').pop().toLowerCase();
-
+            console.log($('#imagen').val());
             if(extension != '')
             {
                 if(jQuery.inArray(extension, ['gif','png','jpg','jpeg']) == -1)
@@ -174,21 +208,38 @@
                 }
             }
 
-            //Formulario a JSON
+
+
+
+
+            //Creacion del objeto a formato json
             var obj = {};
             function toJSONString( form ) {
                 var elements = form.querySelectorAll( "input, select" );
+                var nameProduct;//almacena el nombre del producto
+                var ident=Math.floor(Math.random() * 999999);
                 for( var i = 0; i < elements.length; ++i ) {
                     var element = elements[i];
                     var name = element.name;
                     var value = element.value;
+                    if(name && name=="name"){
+                        nameProduct=value;
+                    }
                     if( name && name=="clasificacion") { 
                         obj[name]= classifications.find( clasification => clasification.id ==  value);
                     }
                     if( name && name!="action" && name!="catalogo"&& name!="clasificacion") {
                         obj[name] = value;
                     }
+                   if(name && name=="imagen"){//creacion del nombre de la imagen del producto
+                    let procesado;
+                    procesado = nameProduct.replace(/\s+/g, '');      // > "Textodeejemplo"
+                     obj[name]= ('upload/' + procesado + '_' + ident + '.' + extension);
+                   }
                 }
+                
+                console.log(obj);
+                 
                 return JSON.stringify( obj );
             }
             

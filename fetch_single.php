@@ -1,6 +1,5 @@
 <?php
-include('db.php');
-include('function.php');
+include('almacenista-v2.php');
 if(isset($_POST["productos_id"]))
 {
 	$output = array();
