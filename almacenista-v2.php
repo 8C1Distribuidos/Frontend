@@ -156,14 +156,16 @@ function update($id)
             $("#productos_data").append(tr);
             };
         }
-        function uploadFile(){
-            
-            var filename = $('#filename').val();   
-            filename  = "Anamiau";               //To save file with this name
+        function uploadFile(imagen){
+            //var filename = $('#filename').val();   
+            var filename  = imagen;               //To save file with this name
+            alert(imagen);
+            alert(filename);
             var file_data = $('.fileToUpload').prop('files')[0];    //Fetch the file
             var form_data = new FormData();
             form_data.append("file",file_data);
             form_data.append("filename",filename);
+            alert(filename);
             $.ajax({
                 url: "load.php",                      //Server api to receive the file
                         type: "POST",
@@ -264,7 +266,8 @@ function update($id)
                    if(name && name=="imagen"){//creacion del nombre de la imagen del producto
                     let procesado;
                     procesado = nameProduct.replace(/\s+/g, '');      // > "Textodeejemplo"
-                     obj[name]= ('upload/' + procesado + '_' + ident + '.' + extension);
+                     //obj[name]= ('upload/' + procesado + '_' + ident + '.' + extension);
+                     obj[name]= (procesado + '_' + ident + '.' + extension);
                    }
                 }
                 
