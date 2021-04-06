@@ -144,7 +144,7 @@ function update($id)
             for(var i=0;i<products.length;i++)
             {
             var tr  ="<tr>"+
-                    "<td><img src="+products[i]["imagen"]+"></td>"+
+                    "<td><img src= upload/"+products[i]["imagen"]+"></td>"+
                     "<td>"+products[i]["id"]+"</td>"+
                     "<td>"+products[i]["name"]+"</td>"+
                     "<td>"+products[i]["clasificacion"]["name"]+"</td>"+
@@ -267,7 +267,7 @@ function update($id)
                     let procesado;
                     procesado = nameProduct.replace(/\s+/g, '');      // > "Textodeejemplo"
                      //obj[name]= ('upload/' + procesado + '_' + ident + '.' + extension);
-                     obj[name]= (procesado + '_' + ident + '.' + extension);
+                     obj[name]= (procesado + '_' + ident);
                    }
                 }
                 
