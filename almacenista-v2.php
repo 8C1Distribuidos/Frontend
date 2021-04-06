@@ -156,26 +156,28 @@ function update($id)
             $("#productos_data").append(tr);
             };
         }
-        function uploadFile(imagen_nombre){
-            var filename = imagen_nombre;                     //To save file with this name
+        function uploadFile(){
+            
+            var filename = $('#filename').val();   
+            filename  = "Anamiau";               //To save file with this name
             var file_data = $('.fileToUpload').prop('files')[0];    //Fetch the file
             var form_data = new FormData();
             form_data.append("file",file_data);
             form_data.append("filename",filename);
             $.ajax({
-            url: "load.php",                      //Server api to receive the file
-            type: "POST",
-            dataType: 'script',
-            cache: false,
-            contentType: false,
-            processData: false,
-            data: form_data,
-            success:function(dat2){
-                if(dat2==1) alert("Successful");
-                else alert("Unable to Upload");
-            }
-            });
-        }
+                url: "load.php",                      //Server api to receive the file
+                        type: "POST",
+                        dataType: 'script',
+                        cache: false,
+                        contentType: false,
+                        processData: false,
+                        data: form_data,
+                    success:function(dat2){
+                        if(dat2==1) alert("Successful");
+                        else alert("Unable to Upload");
+          }
+    });
+}
         
         //GET clasificaciones 
         $.getJSON("http://localhost:3000/clasificacion", function( data ) {
