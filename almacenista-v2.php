@@ -71,7 +71,7 @@
 					<input type="number" name="costo" id="costo" class="form-control"required />
 					<br />
 					<label>Seleccionar imagen del producto</label>
-					<input type="file" name="imagen" id="imagen" onclick="upload_image();" class="form-control" required/>
+					<input type="file" name="imagen" id="imagen"  class="form-control" required/>
 					<span id="productos_uploaded_image"></span>
 				</div>
 				<div class="modal-footer">
@@ -83,6 +83,11 @@
 		</form>
 	</div>
 </div>
+
+
+
+
+
 
 <?php 
 function upload_image()
@@ -198,18 +203,22 @@ function update($id)
             //verify the extension
             var extension = $('#imagen').val().split('.').pop().toLowerCase();
             console.log($('#imagen').val());
+           /*
             if(extension != '')
             {
+                
                 if(jQuery.inArray(extension, ['gif','png','jpg','jpeg']) == -1)
                 {
                     alert("Formato de imagen no valido");
                     $('#imagen').val('');
                     return false;
                 }
+
             }
 
+            */
 
-
+        
 
 
             //Creacion del objeto a formato json
@@ -255,6 +264,7 @@ function update($id)
                     contentType:"application/json",
                     success:function(data)
                     {
+                        uploadFile(this,obj.imagen);
                         $('#productos_form')[0].reset();
                         $('#productosModal').modal('hide');
                         products.push(obj);
@@ -314,6 +324,25 @@ function update($id)
         });
     }); 
 
-   
+function uploadFile(form,imagen_nombre) {
+        let formData = new FormData(); 
+        formData.append("file", imagen.files[0]);
+        formData.append("nombre", imagen_nombre);
+        console.log(formData);
+        $.ajax({
+                    url:"upload.php",
+                    type:"POST",
+                    dataType:'script',
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                    data: formData,
+                    success:function(data)
+                    {
+                        alert("succesful")
+                    }
+        });
+        
+}
     
 </script>
