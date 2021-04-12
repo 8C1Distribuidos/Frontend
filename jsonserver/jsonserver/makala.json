@@ -124,33 +124,33 @@
   ],
   "products": [
     {
-      "name": "ana",
+      "name": "Vino La Cetto",
       "clasificacion": {
-        "id": 1,
-        "name": "Vino blanco",
+        "id": 3,
+        "name": "Vino tinto",
         "catalogo": {
           "id": 1,
           "name": "Vinos"
         }
       },
-      "stock": "1",
-      "costo": "2",
-      "imagen": "ana_872479.jpg",
+      "stock": "23",
+      "costo": "500",
+      "imagen": "VinoLaCetto_105582.png",
       "id": 1
     },
     {
-      "name": "miau",
+      "name": "Vino Conde",
       "clasificacion": {
-        "id": 1,
-        "name": "Vino blanco",
+        "id": 4,
+        "name": "Vino rosado",
         "catalogo": {
           "id": 1,
           "name": "Vinos"
         }
       },
-      "stock": "1",
-      "costo": "1",
-      "imagen": "miau_339570",
+      "stock": "12",
+      "costo": "750",
+      "imagen": "VinoConde_164332.png",
       "id": 2
     }
   ]
