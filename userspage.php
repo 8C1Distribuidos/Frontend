@@ -6,8 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/userspage.css">
     <link rel="stylesheet" href="fontawesome/css/all.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+    <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>		
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css" />
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+	
+
+    <link rel="stylesheet" href="css/userspage.css">
 
     <title>Usuario</title>
     <link rel="shortcut icon" href="img/logo_icon.jpg" >
@@ -30,10 +40,7 @@
               <div class="col-md-4">
                   <div class="profile-img">
                       <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" alt=""/>
-                      <div class="file btn btn-lg btn-primary">
-                          Cambiar foto
-                          <input type="file" name="file"/>
-                      </div>
+                      <button type="button" id="add_button"  data-toggle="modal" data-target="#userImageModal" class="file btn btn-lg btn-primary">Cambiar foto</button>
                   </div>
               </div>
               <div class="col-md-6">
@@ -52,7 +59,7 @@
                   </div>
               </div>
               <div class="col-md-2">
-                  <input type="submit" class="profile-edit-btn" name="btnAddMore" value="Editar perfil"/>
+                  <button type="button" class="profile-edit-btn" name="profileEdit" id="add_button"  data-toggle="modal" data-target="#productosModal">Editar Perfil</button>
               </div>
           </div>
           <div class="row">
@@ -62,7 +69,7 @@
                   </div>
               </div>
               <div class="col-md-8">
-                  <div class="tab-content profile-tab" id="myTabContent">
+                  <div class="tab-content profile-tab" id="userInfo">
                       <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab"></div>
                                   <div class="row">
                                       <div class="col-md-6">
@@ -94,9 +101,75 @@
       </form>           
   </div>
 </form>
-
+<!--///////////////////////////////////////////////////////////////////////-->
+<!--Form to edit the user data-->
+<div id="productosModal" class="modal fade">
+	<div class="modal-dialog">
+		<form method="post" id="productos_form" enctype="multipart/form-data">
+			<div class="modal-content">
+				<div class="modal-header">
+                <h4 class="modal-title">Editar perfil</h4>
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+				</div>
+				<div class="modal-body">
+					<label>Nombre(s)</label>
+					<input type="text" name="name" id="name" class="form-control "required />
+					<br />
+					<label>Apellido paterno</label>
+                    <input type="text" class="form-control" name="lastNameP" id="lastNameP" required/>
+                    <br/>
+                    <label>Apellido materno</label>
+					<input type="text" name="lastNameM" id="lastNameM" class="form-control"required />
+					<br />
+                    <label>Contraseña</label>
+					<input type="text" name="password" id="password" class="form-control"required />
+					<br />
+                    <label>Repetir contraseña</label>
+					<input type="text" name="passwordR" id="passwordR" class="form-control"required />
+					<br />
+                    <label>Email</label>
+					<input type="text" name="email" id="email" class="form-control"required />
+					<br />
+					<label>Seleccionar imagen del producto</label>
+					<input type="file" name="imagen" id="imagen" onclick="upload_image();" class="form-control" required/>
+					<span id="productos_uploaded_image"></span>
+				</div>
+				<div class="modal-footer">
+					<input type="hidden" name="id" id="id" />
+					<input type="submit" name="action" id="action" class="btn btn-success"/> 
+					<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
   <!--/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
-    <footer class="bg-light text-center text-lg-start">
+<!--Form to edit the user data-->
+<div id="userImageModal" class="modal fade">
+	<div class="modal-dialog">
+		<form method="post" id="productos_form" enctype="multipart/form-data">
+			<div class="modal-content">
+				<div class="modal-header">
+                <h4 class="modal-title">Editar perfil</h4>
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+				</div>
+				<div class="modal-body">
+					<label>Seleccionar imagen del producto</label>
+					<input type="file" name="imagen" id="imagen" onclick="upload_image();" class="form-control" required/>
+					<span id="productos_uploaded_image"></span>
+				</div>
+				<div class="modal-footer">
+					<input type="hidden" name="id" id="id" />
+					<input type="submit" name="action" id="action" class="btn btn-success"/> 
+					<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
+  <!--/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
+
+  <footer class="bg-light text-center text-lg-start">
       <div class="row" style="background-color: rgba(0, 0, 0, 0.2); margin-top: 12.45%;">
     </div>
     </footer>
@@ -125,3 +198,139 @@
     </body>
 
 </html>
+
+<script>
+  /*
+  $(document).ready(function(){
+    clasificacion="Vino blanco";
+    updatecont()
+  }); 
+  var clasificacion;
+  $("#blanco-tab").on('click', function(){
+    clasificacion = "Vino blanco";
+    updatecont();
+  });
+  $("#espumoso-tab").on('click', function(){
+    clasificacion = "Vino espumoso";
+    updatecont();
+  });
+  $("#tinto-tab").on('click', function(){
+    clasificacion = "Vino tinto";
+    updatecont();
+  });
+  $("#rosado-tab").on('click', function(){
+    clasificacion = "Vino rosado";
+    updatecont();
+  });
+  $("#champagne-tab").on('click', function(){
+    clasificacion = "Vino champagne";
+    updatecont();
+  });
+  $("#dePostre-tab").on('click', function(){
+    clasificacion = "Vino de postre";
+    updatecont();
+  });
+  $("#sinAlcohol-tab").on('click', function(){
+    clasificacion = "Vino sin alcohol";
+    updatecont();
+  });*/
+  function updatecont(){
+    var url  = "http://localhost:3000/users";
+    $.getJSON(url, function( data ) {
+      var obj = data;
+      $("#userInfo").empty();
+      for(var i=0;i<obj.length;i++)
+      {
+        var tr  ="<div class=\"row\">"+
+                    "<div class=\"col-md-6\">"+
+                        "<label>"+"Correo"+"</label>"+
+                    "</div>"+
+                    "<div class=\"col-md-6\">"+
+                        "<p>"+obj[i]["email"]+"</p>"+
+                    "</div>"+
+                "</div>"+
+                "<div class=\"row\">"+
+                    "<div class=\"col-md-6\">"+
+                        "<label>"+"Nombre"+"</label>"+
+                    "</div>"+
+                    "<div class=\"col-md-6\">"+
+                        "<p>"+obj[i]["name"]+ " " + obj[i]["lastNameP"]+ " " + obj[i]["lastNameM"]+"</p>"+
+                    "</div>"+
+                "</div>"+
+                "<div class=\"row\">"+
+                    "<div class=\"col-md-6\">"+
+                        "<label>"+"Contraseña"+"</label>"+
+                    "</div>"+
+                    "<div class=\"col-md-6\">"+
+                        "<p>"+obj[i]["password"]+"</p>"+
+                    "</div>"+
+                "</div>";
+        $("#userInfo").append(tr);
+        
+      }
+    });
+  }
+  $(document).on('submit', '#productos_form',function(event){
+        var extension = $('#imagen').val().split('.').pop().toLowerCase();
+        if(extension != '')
+        {
+            if(jQuery.inArray(extension, ['gif','png','jpg','jpeg']) == -1)
+            {
+                alert("Invalid Image File");
+                $('#imagen').val('');
+                return false;
+            }
+        }
+        function toJSONString( form ) {
+            var obj = {};
+            var elements = form.querySelectorAll( "input, select, textarea" );
+            for( var i = 0; i < elements.length; ++i ) {
+                var element = elements[i];
+                var name = element.name;
+                var value = element.value;
+
+                if( name && name!="action") {
+                    obj[ name ] = value;
+                }
+            }
+            return JSON.stringify( obj );
+        }
+        var json = toJSONString( this );
+        event.preventDefault();
+        var x= $('#action').val();
+        if( x == "Add"){
+            $.ajax({
+                url:"http://localhost:3000/users",
+                type:"POST",
+                data:json,
+                dataType:"json",
+                contentType:"application/json",
+                success:function(data)
+                {
+                    $('#users-form')[0].reset();
+                    $('#productosModal').modal('hide');
+                    obj.push(json);
+                    $('#productos_data > tbody').empty();
+                    loadTable();
+                }
+            });
+        }else{
+            //UPDATE
+        } 
+    });
+
+    //Modal UPDATE
+    $(document).on('click', '.profileEdit', function(){
+            var obj = products.find( product => product.id ==  $(this).attr("id"));
+            $('#productosModal').modal('show');
+            $('.modal-title').text("Editar perfil de usuario");
+            $('#name').val(obj.name);
+            $('#lastNameP').val(obj.clasificacion.lastNameP);
+            $('#lastNameM').val(obj.clasificacion.lastNameM);
+            $('#stock').val(obj.stock);
+            $('#costo').val(obj.costo);
+            $('#id').val(obj.id);
+            $('#productos_uploaded_image').html(obj.imagen);
+            $('#action').val("Update");
+        });
+</script>

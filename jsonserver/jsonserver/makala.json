@@ -168,5 +168,23 @@
       "imagen": "upload/r_983745.png",
       "id": 3
     }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "name": "Anette Michel",
+      "lastNameP": "Ortiz",
+      "lastNameM": "Anaya",
+      "password":"1234",
+      "email": "blabla@gmail.com"
+    },
+    {
+      "id": 2,
+      "name": "Santiago",
+      "lastNameP": "Lara",
+      "lastNameM": "Agraz",
+      "password":"567",
+      "email": "blublu@gmail.com"
+    }
   ]
 }

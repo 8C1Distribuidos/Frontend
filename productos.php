@@ -45,27 +45,6 @@
   </header>
 
   <body>
-  <!--<div id="wrapper">
-    
-    <div id="sidebar-wrapper">
-      <ul class="sidebar-nav">
-        <div class="profile-userpic">
-					<img src="img/splash.png" class="img-responsive" alt="foto">
-        </div>
-        <li><a href="destilados.php"search="Blanco">Ver destilados</a></li>
-      </ul>
-    </div>
-    <div id="wrapper_vinos">
-    
-    <div id="sidebar-wrapper_vinos">
-      <ul class="sidebar-nav_vinos">
-        <div class="profile-userpic">
-					<img src="img/vinosplash.png" class="img-responsive" alt="foto">
-				</div>
-        <li><a href="vinos.php"search="Blanco">Ver vinos</a></li>
-      </ul>
-    </div>
-<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet"> -->
 
   <div class="milky">
     <p style = "font-family:Brush;">
