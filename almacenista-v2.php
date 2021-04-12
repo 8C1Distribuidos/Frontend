@@ -228,7 +228,6 @@ function update($id)
             //verify the extension
             var extension = $('#imagen').val().split('.').pop().toLowerCase();
             console.log($('#imagen').val());
-           /*
             if(extension != '')
             {
                 
@@ -240,9 +239,6 @@ function update($id)
                 }
 
             }
-
-            */
-
 
             //Creacion del objeto a formato json
             var obj = {};
@@ -294,6 +290,7 @@ function update($id)
                         products.push(obj);
                         $('#productos_data > tbody').empty();
                         loadTable();
+                        location.reload();
                     }
                 });
             }else{

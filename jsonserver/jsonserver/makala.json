@@ -152,6 +152,21 @@
       "costo": "750",
       "imagen": "VinoConde_164332.png",
       "id": 2
+    },
+    {
+      "name": "Vino Byott",
+      "clasificacion": {
+        "id": 4,
+        "name": "Vino rosado",
+        "catalogo": {
+          "id": 1,
+          "name": "Vinos"
+        }
+      },
+      "stock": "12",
+      "costo": "800",
+      "imagen": "VinoByott_510057.png",
+      "id": 3
     }
   ]
 }
