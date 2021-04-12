@@ -124,48 +124,48 @@
   ],
   "products": [
     {
-      "id": 1,
       "name": "Vino La Cetto",
       "clasificacion": {
-        "id": 1,
-        "name": "Vino blanco",
+        "id": 3,
+        "name": "Vino tinto",
         "catalogo": {
           "id": 1,
           "name": "Vinos"
         }
       },
-      "stock": "50",
+      "stock": "23",
       "costo": "500",
-      "imagen": "upload/VTcetto.png"
+      "imagen": "VinoLaCetto_105582.png",
+      "id": 1
     },
     {
-      "name": "Vino blanco",
+      "name": "Vino Conde",
       "clasificacion": {
-        "id": 1,
-        "name": "Vino blanco",
+        "id": 4,
+        "name": "Vino rosado",
         "catalogo": {
           "id": 1,
           "name": "Vinos"
         }
       },
       "stock": "12",
-      "costo": "500",
-      "imagen": "upload/VRconde.png",
+      "costo": "750",
+      "imagen": "VinoConde_164332.png",
       "id": 2
     },
     {
-      "name": "r",
+      "name": "Vino Byott",
       "clasificacion": {
-        "id": 1,
-        "name": "Vino blanco",
+        "id": 4,
+        "name": "Vino rosado",
         "catalogo": {
           "id": 1,
           "name": "Vinos"
         }
       },
-      "stock": "22",
-      "costo": "2",
-      "imagen": "upload/r_983745.png",
+      "stock": "12",
+      "costo": "800",
+      "imagen": "VinoByott_510057.png",
       "id": 3
     }
   ],

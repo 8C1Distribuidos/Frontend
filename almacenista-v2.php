@@ -2,12 +2,13 @@
 	<head>
 		<title>Productos</title>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
 		<script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
 		<script src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>		
 		<link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css" />
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 		<link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	
 		<link rel="stylesheet" href="css/almacenista.css">
 		
@@ -71,7 +72,7 @@
 					<input type="number" name="costo" id="costo" class="form-control"required />
 					<br />
 					<label>Seleccionar imagen del producto</label>
-					<input type="file" name="imagen" id="imagen" onclick="upload_image();" class="form-control" required/>
+					<input type="file" name="imagen" id="imagen"  class="fileToUpload" required/>
 					<span id="productos_uploaded_image"></span>
 				</div>
 				<div class="modal-footer">
@@ -83,6 +84,11 @@
 		</form>
 	</div>
 </div>
+
+
+
+
+
 
 <?php 
 function upload_image()
@@ -121,7 +127,7 @@ function update($id)
 
 ?>
 
-<script type="text/javascript" language="javascript">
+<script>
     $(document).ready(function(){
         //Varibles
         var products;
@@ -138,7 +144,7 @@ function update($id)
             for(var i=0;i<products.length;i++)
             {
             var tr  ="<tr>"+
-                    "<td><img src="+products[i]["imagen"]+"></td>"+
+                    "<td><img src= upload/"+products[i]["imagen"]+(products[i]["imagen"]).substr(-4)+"></td>"+
                     "<td>"+products[i]["id"]+"</td>"+
                     "<td>"+products[i]["name"]+"</td>"+
                     "<td>"+products[i]["clasificacion"]["name"]+"</td>"+
@@ -150,6 +156,30 @@ function update($id)
             $("#productos_data").append(tr);
             };
         }
+        function uploadFile(imagen){
+            //var filename = $('#filename').val();   
+            var filename  = imagen;               //To save file with this name
+            alert(imagen);
+            alert(filename);
+            var file_data = $('.fileToUpload').prop('files')[0];    //Fetch the file
+            var form_data = new FormData();
+            form_data.append("file",file_data);
+            form_data.append("filename",filename);
+            alert(filename);
+            $.ajax({
+                url: "load.php",                      //Server api to receive the file
+                        type: "POST",
+                        dataType: 'script',
+                        cache: false,
+                        contentType: false,
+                        processData: false,
+                        data: form_data,
+                    success:function(dat2){
+                        if(dat2==1) alert("Successful");
+                        else alert("Unable to Upload");
+          }
+    });
+}
         
         //GET clasificaciones 
         $.getJSON("http://localhost:3000/clasificacion", function( data ) {
@@ -165,7 +195,7 @@ function update($id)
         $('#clasificacion_menu').change(function(){
             var obj = classifications.find( clasification => clasification.id ==  this.value);
             document.getElementById("catalogo").value = obj.catalogo.name;
-        })
+        });
 
         //Modal UPDATE
         $(document).on('click', '.update', function(){
@@ -200,17 +230,15 @@ function update($id)
             console.log($('#imagen').val());
             if(extension != '')
             {
+                
                 if(jQuery.inArray(extension, ['gif','png','jpg','jpeg']) == -1)
                 {
                     alert("Formato de imagen no valido");
                     $('#imagen').val('');
                     return false;
                 }
+
             }
-
-
-
-
 
             //Creacion del objeto a formato json
             var obj = {};
@@ -234,7 +262,8 @@ function update($id)
                    if(name && name=="imagen"){//creacion del nombre de la imagen del producto
                     let procesado;
                     procesado = nameProduct.replace(/\s+/g, '');      // > "Textodeejemplo"
-                     obj[name]= ('upload/' + procesado + '_' + ident + '.' + extension);
+                     //obj[name]= ('upload/' + procesado + '_' + ident + '.' + extension);
+                     obj[name]= (procesado + '_' + ident + '.' + extension);
                    }
                 }
                 
@@ -255,11 +284,13 @@ function update($id)
                     contentType:"application/json",
                     success:function(data)
                     {
+                        uploadFile(obj.imagen);
                         $('#productos_form')[0].reset();
-                        $('#productosModal').modal('hide');
+                        //$('#productosModal').modal('hide');
                         products.push(obj);
                         $('#productos_data > tbody').empty();
                         loadTable();
+                        location.reload();
                     }
                 });
             }else{
@@ -312,8 +343,10 @@ function update($id)
                 return false;	
             }
         });
+        
     }); 
 
-   
+
+    
     
 </script>
