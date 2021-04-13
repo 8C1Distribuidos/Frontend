@@ -1,13 +1,13 @@
 <html>
 	<head>
 		<title>Productos</title>
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
 		<script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
 		<script src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>		
 		<link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css" />
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 		<link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	
 		<link rel="stylesheet" href="css/almacenista.css">
@@ -159,28 +159,49 @@ function update($id)
         function uploadFile(imagen){
             //var filename = $('#filename').val();   
             var filename  = imagen;               //To save file with this name
-            alert(imagen);
-            alert(filename);
             var file_data = $('.fileToUpload').prop('files')[0];    //Fetch the file
-            var form_data = new FormData();
-            form_data.append("file",file_data);
-            form_data.append("filename",filename);
-            alert(filename);
-            $.ajax({
-                url: "load.php",                      //Server api to receive the file
-                        type: "POST",
-                        dataType: 'script',
-                        cache: false,
-                        contentType: false,
-                        processData: false,
-                        data: form_data,
-                    success:function(dat2){
-                        if(dat2==1) alert("Successful");
-                        else alert("Unable to Upload");
-          }
-    });
-}
+            if(file_data != null){
+                var form_data = new FormData();
+                form_data.append("file",file_data);
+                form_data.append("filename",filename);
+                alert(form_data.get(filename));
+                $.ajax({
+                    url: "load.php",                      //Server api to receive the file
+                            type: "POST",
+                            dataType: 'script',
+                            cache: false,
+                            contentType: false,
+                            processData: false,
+                            data: form_data,
+                        success:function(dat2){
+                            if(dat2==1) alert("Successful");
+                            else alert("Unable to Upload");
+                }
+           });
+        }
         
+}
+    function deleteFile(imagen)
+    {
+        var filename  = imagen;    
+        var form_data = new FormData();
+        form_data.append("filename",filename);
+        alert(filename);
+        $.ajax({
+            url: "delete.php",                      //Server api to receive the file
+                    type: "POST",
+                    dataType: 'script',
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                    data: form_data,
+                success:function(dat2){
+                    if(dat2==1) alert("Successful");
+                    else alert("Unable to Upload");
+                }
+        });
+    }
+
         //GET clasificaciones 
         $.getJSON("http://localhost:3000/clasificacion", function( data ) {
             classifications = data;
@@ -211,6 +232,7 @@ function update($id)
                 $('#id').val(obj.id);
                 $('#productos_uploaded_image').html(obj.imagen);
                 $('#action').val("Update");
+                $('#imagen').removeAttr('required');
         });
 
         //ADD Boton
@@ -260,10 +282,16 @@ function update($id)
                         obj[name] = value;
                     }
                    if(name && name=="imagen"){//creacion del nombre de la imagen del producto
-                    let procesado;
-                    procesado = nameProduct.replace(/\s+/g, '');      // > "Textodeejemplo"
-                     //obj[name]= ('upload/' + procesado + '_' + ident + '.' + extension);
-                     obj[name]= (procesado + '_' + ident + '.' + extension);
+                        if( $('#action').val() == "Update"){
+                            var product = products.find( product => product.id ==  document.getElementById("id").value);
+                            alert(product.id);
+                            obj[name] = product.imagen;
+                        }else{   
+                            let procesado;
+                            procesado = nameProduct.replace(/\s+/g, '');      // > "Textodeejemplo"
+                            //obj[name]= ('upload/' + procesado + '_' + ident + '.' + extension);
+                            obj[name]= ( ident + '.' + extension);
+                        }
                    }
                 }
                 
@@ -287,9 +315,6 @@ function update($id)
                         uploadFile(obj.imagen);
                         $('#productos_form')[0].reset();
                         //$('#productosModal').modal('hide');
-                        products.push(obj);
-                        $('#productos_data > tbody').empty();
-                        loadTable();
                         location.reload();
                     }
                 });
@@ -304,14 +329,8 @@ function update($id)
                     success:function(data)
                     {
                         $('#productosModal').modal('hide');
-                        for( var i = 0; i < products.length; i++){     
-                            if ( products[i]["id"] == obj.id) { 
-                                products[i] = obj;
-                                break; 
-                            }
-                        }  
-                        $('#productos_data > tbody').empty();
-                        loadTable();
+                        uploadFile(obj.imagen);
+                        location.reload();
                     }
                 });
             }     
@@ -327,14 +346,17 @@ function update($id)
                     contentType:"application/json",
                     success:function(data)
                     {
+                        var imagen;
                         for( var i = 0; i < products.length; i++){     
                             if ( products[i]["id"] == productos_id) { 
+                                imagen = products[i]["imagen"];
                                 products.splice(i, 1); 
                                 break; 
                             }
                         }  
                         $('#productos_data > tbody').empty();
                         loadTable();
+                        deleteFile(imagen);
                     }
                 });
             }

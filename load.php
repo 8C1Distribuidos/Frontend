@@ -1,5 +1,5 @@
 <?php
-
+  
   $filename = $_POST['filename'];
 
   $target_directory = "upload/";
@@ -10,7 +10,10 @@
   //move_uploaded_file($_FILES["file"]["tmp_name"],$newfilename);   // tmp_name is the file temprory stored in the server
 
   //Now to check if uploaded or not
-
+  $resource = "upload/".$filename;
+  if(file_exists ($filename)){
+    unlink($resource);
+  }
   if(move_uploaded_file($_FILES["file"]["tmp_name"],$newfilename)) echo 1;
   else echo 0;
 

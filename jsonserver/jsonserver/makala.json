@@ -133,40 +133,10 @@
           "name": "Vinos"
         }
       },
-      "stock": "23",
-      "costo": "500",
-      "imagen": "VinoLaCetto_105582.png",
+      "stock": "12",
+      "costo": "250",
+      "imagen": "237168.png",
       "id": 1
-    },
-    {
-      "name": "Vino Conde",
-      "clasificacion": {
-        "id": 4,
-        "name": "Vino rosado",
-        "catalogo": {
-          "id": 1,
-          "name": "Vinos"
-        }
-      },
-      "stock": "12",
-      "costo": "750",
-      "imagen": "VinoConde_164332.png",
-      "id": 2
-    },
-    {
-      "name": "Vino Byott",
-      "clasificacion": {
-        "id": 4,
-        "name": "Vino rosado",
-        "catalogo": {
-          "id": 1,
-          "name": "Vinos"
-        }
-      },
-      "stock": "12",
-      "costo": "800",
-      "imagen": "VinoByott_510057.png",
-      "id": 3
     }
   ],
   "users": [
@@ -175,7 +145,7 @@
       "name": "Anette Michel",
       "lastNameP": "Ortiz",
       "lastNameM": "Anaya",
-      "password":"1234",
+      "password": "1234",
       "email": "blabla@gmail.com"
     },
     {
@@ -183,7 +153,7 @@
       "name": "Santiago",
       "lastNameP": "Lara",
       "lastNameM": "Agraz",
-      "password":"567",
+      "password": "567",
       "email": "blublu@gmail.com"
     }
   ]
