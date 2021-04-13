@@ -144,7 +144,7 @@ function update($id)
             for(var i=0;i<products.length;i++)
             {
             var tr  ="<tr>"+
-                    "<td><img src= upload/"+products[i]["imagen"]+(products[i]["imagen"]).substr(-4)+"></td>"+
+                    "<td><img src= upload/"+products[i]["imagen"]+"></td>"+
                     "<td>"+products[i]["id"]+"</td>"+
                     "<td>"+products[i]["name"]+"</td>"+
                     "<td>"+products[i]["clasificacion"]["name"]+"</td>"+
@@ -164,7 +164,6 @@ function update($id)
                 var form_data = new FormData();
                 form_data.append("file",file_data);
                 form_data.append("filename",filename);
-                alert(form_data.get(filename));
                 $.ajax({
                     url: "load.php",                      //Server api to receive the file
                             type: "POST",
@@ -186,7 +185,6 @@ function update($id)
         var filename  = imagen;    
         var form_data = new FormData();
         form_data.append("filename",filename);
-        alert(filename);
         $.ajax({
             url: "delete.php",                      //Server api to receive the file
                     type: "POST",
@@ -196,8 +194,8 @@ function update($id)
                     processData: false,
                     data: form_data,
                 success:function(dat2){
-                    if(dat2==1) alert("Successful");
-                    else alert("Unable to Upload");
+                    if(dat2==1) alert("Failed");
+                    else alert("Successful");
                 }
         });
     }
@@ -245,8 +243,8 @@ function update($id)
         });
 
         //POST/UPDATE/Create product
-        $(document).on('submit', '#productos_form',function(event){
-            event.preventDefault();
+        $(document).on('submit', '#productos_form',function(e){
+            e.preventDefault();
             //verify the extension
             var extension = $('#imagen').val().split('.').pop().toLowerCase();
             console.log($('#imagen').val());
@@ -290,7 +288,7 @@ function update($id)
                             let procesado;
                             procesado = nameProduct.replace(/\s+/g, '');      // > "Textodeejemplo"
                             //obj[name]= ('upload/' + procesado + '_' + ident + '.' + extension);
-                            obj[name]= ( ident + '.' + extension);
+                            obj[name]= ident;
                         }
                    }
                 }
@@ -303,6 +301,7 @@ function update($id)
             var json = toJSONString( this );
 
             if( $('#action').val() == "Add"){
+            
                 //POST
                 $.ajax({
                     url:"http://localhost:3000/products",
@@ -335,7 +334,8 @@ function update($id)
                 });
             }     
 	    });
-        $(document).on('click', '.delete', function(){
+        $(document).on('click', '.delete', function(e){
+        e.preventDefault();
 		var productos_id = $(this).attr("id");
             if(confirm("¿Estás seguro de eliminar esto?"))
             {
