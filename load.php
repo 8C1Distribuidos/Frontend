@@ -3,19 +3,15 @@
   $filename = $_POST['filename'];
 
   $target_directory = "upload/";
-  $target_file = $target_directory.basename($_FILES["file"]["name"]);   //name is to get the file name of uploaded file
-  //$filetype = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
   $newfilename = $target_directory.$filename;
 
-  //move_uploaded_file($_FILES["file"]["tmp_name"],$newfilename);   // tmp_name is the file temprory stored in the server
-
-  //Now to check if uploaded or not
   $resource = "upload/".$filename;
-  if(file_exists ($filename)){
-    unlink($resource);
+    if(unlink($resource)) echo 1;
+    else echo 2;
+  if($_FILES["file"]!=null){
+    if(move_uploaded_file($_FILES["file"]["tmp_name"],$newfilename)) echo 1;
+    else echo 2;
   }
-  if(move_uploaded_file($_FILES["file"]["tmp_name"],$newfilename)) echo 1;
-  else echo 0;
 
 
  ?>

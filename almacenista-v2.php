@@ -90,42 +90,7 @@
 
 
 
-<?php 
-function upload_image()
-{
- if(isset($_FILES["imagen"]))
- {
-  $extension = explode('.', $_FILES['imagen']['name']);
-  $new_name = rand() . '.' . $extension[1];
-  $destination = './upload/' . $new_name;
-  move_uploaded_file($_FILES['imagen']['tmp_name'], $destination);
-  return $new_name;
- }
-}
 
-?>
-
-<?php 
-function update($id)
-{
-    $users = AdminLogin::find($id);
-
-    if(Input::hasFile('image_file'))
-    {
-        $usersImage = public_path("uploads/images/{$users->image_file}"); // get previous image from folder
-        if (File::exists($usersImage)) { // unlink or remove previous image from folder
-            unlink($usersImage);
-        }
-        $file = Input::file('image_file');
-        $name = time() . '-' . $file->getClientOriginalName();
-        $file = $file->move(('uploads/images'), $name);
-        $users->image_file= $name;
-    }
-    $users->save();
-    return response()->json($users);
-}
-
-?>
 
 <script>
     $(document).ready(function(){
@@ -144,7 +109,7 @@ function update($id)
             for(var i=0;i<products.length;i++)
             {
             var tr  ="<tr>"+
-                    "<td><img src= upload/"+products[i]["imagen"]+"></td>"+
+                    "<td><img width = '300' heigth = '400' src= upload/"+products[i]["imagen"]+"></td>"+
                     "<td>"+products[i]["id"]+"</td>"+
                     "<td>"+products[i]["name"]+"</td>"+
                     "<td>"+products[i]["clasificacion"]["name"]+"</td>"+
@@ -160,24 +125,22 @@ function update($id)
             //var filename = $('#filename').val();   
             var filename  = imagen;               //To save file with this name
             var file_data = $('.fileToUpload').prop('files')[0];    //Fetch the file
-            if(file_data != null){
                 var form_data = new FormData();
                 form_data.append("file",file_data);
                 form_data.append("filename",filename);
                 $.ajax({
                     url: "load.php",                      //Server api to receive the file
-                            type: "POST",
-                            dataType: 'script',
-                            cache: false,
-                            contentType: false,
-                            processData: false,
-                            data: form_data,
-                        success:function(dat2){
-                            if(dat2==1) alert("Successful");
-                            else alert("Unable to Upload");
+                    type: "POST",
+                    dataType: 'script',
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                    data: form_data,
+                    success:function(dat2){
+                    if(dat2==1) alert("OK");
+                    else alert("Error");
                 }
            });
-        }
         
 }
     function deleteFile(imagen)
@@ -247,19 +210,15 @@ function update($id)
             e.preventDefault();
             //verify the extension
             var extension = $('#imagen').val().split('.').pop().toLowerCase();
-            console.log($('#imagen').val());
             if(extension != '')
             {
-                
                 if(jQuery.inArray(extension, ['gif','png','jpg','jpeg']) == -1)
                 {
                     alert("Formato de imagen no valido");
                     $('#imagen').val('');
                     return false;
                 }
-
             }
-
             //Creacion del objeto a formato json
             var obj = {};
             function toJSONString( form ) {
@@ -282,7 +241,6 @@ function update($id)
                    if(name && name=="imagen"){//creacion del nombre de la imagen del producto
                         if( $('#action').val() == "Update"){
                             var product = products.find( product => product.id ==  document.getElementById("id").value);
-                            alert(product.id);
                             obj[name] = product.imagen;
                         }else{   
                             let procesado;
@@ -292,16 +250,11 @@ function update($id)
                         }
                    }
                 }
-                
-                console.log(obj);
-                 
                 return JSON.stringify( obj );
             }
             
             var json = toJSONString( this );
-
             if( $('#action').val() == "Add"){
-            
                 //POST
                 $.ajax({
                     url:"http://localhost:3000/products",
@@ -312,9 +265,8 @@ function update($id)
                     success:function(data)
                     {
                         uploadFile(obj.imagen);
+                        setTimeout(reload,1000);
                         $('#productos_form')[0].reset();
-                        //$('#productosModal').modal('hide');
-                        location.reload();
                     }
                 });
             }else{
@@ -327,12 +279,16 @@ function update($id)
                     contentType:"application/json",
                     success:function(data)
                     {
-                        $('#productosModal').modal('hide');
                         uploadFile(obj.imagen);
-                        location.reload();
+                        setTimeout(reload,1000);
+                        
                     }
                 });
-            }     
+            }  
+            function reload() {
+                location.reload();
+            } 
+             
 	    });
         $(document).on('click', '.delete', function(e){
         e.preventDefault();
@@ -356,7 +312,7 @@ function update($id)
                         }  
                         $('#productos_data > tbody').empty();
                         loadTable();
-                        deleteFile(imagen);
+                        uploadFile(imagen);
                     }
                 });
             }
@@ -367,8 +323,4 @@ function update($id)
         });
         
     }); 
-
-
-    
-    
 </script>
