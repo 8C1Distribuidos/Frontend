@@ -1,6 +1,6 @@
 {
   "prueba": {},
-  "Catalogs":[
+  "Catalogs": [
     {
       "id": 1,
       "name": "Vinos"
@@ -139,21 +139,7 @@
       "image_Link": "VTCetto",
       "price": "30",
       "stock": "40",
-      "category": { 
-        "id": 14,
-        "name": "Whisky",
-        "catalog": {
-          "id": 2,
-          "name": "Destilados"
-        }
-      }
-    },{
-      "id": 2,
-      "name": "Vino seleccion",
-      "image_Link": "VRbaigorri",
-      "price": "30",
-      "stock": "40",
-      "category": { 
+      "category": {
         "id": 14,
         "name": "Whisky",
         "catalog": {
@@ -163,12 +149,12 @@
       }
     },
     {
-      "id": 3,
+      "id": 2,
       "name": "Vino seleccion",
-      "image_Link": "VTprego",
+      "image_Link": "VRbaigorri",
       "price": "30",
       "stock": "40",
-      "category": { 
+      "category": {
         "id": 14,
         "name": "Whisky",
         "catalog": {
@@ -176,6 +162,38 @@
           "name": "Destilados"
         }
       }
+    },
+    {
+      "name": "Vino seleccion",
+      "category": {
+        "id": 14,
+        "name": "Whisky",
+        "catalog": {
+          "id": 2,
+          "name": "Destilados"
+        }
+      },
+      "stock": "40",
+      "price": "31",
+      "imagen": "C:\\fakepath\\VTvilbao.png",
+      "image_Link": "VTprego",
+      "id": 3
+    },
+    {
+      "name": "aaaa",
+      "category": {
+        "id": 1,
+        "name": "Vino blanco",
+        "catalog": {
+          "id": 1,
+          "name": "Vinos"
+        }
+      },
+      "stock": "14",
+      "price": "16",
+      "imagen": "C:\\fakepath\\VRbyott.png",
+      "image_Link": 104470,
+      "id": 4
     }
   ],
   "Users": [

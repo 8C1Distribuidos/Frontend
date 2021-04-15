@@ -105,7 +105,7 @@
             for(var i=0;i<products.length;i++)
             {
             var tr  ="<tr>"+
-                    "<td><img width = '300' heigth = '400' src= upload/"+products[i]["imagen"]+"></td>"+
+                    "<td><img width = '300' heigth = '400' src= upload/"+products[i]["image_Link"]+"></td>"+
                     "<td>"+products[i]["id"]+"</td>"+
                     "<td>"+products[i]["name"]+"</td>"+
                     "<td>"+products[i]["category"]["name"]+"</td>"+
@@ -153,7 +153,7 @@
         //Select On change 
         $('#clasificacion_menu').change(function(){
             var obj = classifications.find( clasification => clasification.id ==  this.value);
-            document.getElementById("catalogo").value = obj.catalog.name;
+            document.getElementById("catalog").value = obj.catalog.name;
         });
 
         //Modal UPDATE
@@ -177,7 +177,7 @@
         $('#add_button').click(function(){
             $('#productos_form')[0].reset();
             $('.modal-title').text("Añadir Producto");
-            document.getElementById("catalogo").value = classifications[0]["catalog"]["name"];
+            document.getElementById("catalog").value = classifications[0]["catalog"]["name"];
             $('#action').val("Add");
             $('#image_Link').html('');
         });
@@ -235,14 +235,14 @@
                     success:function(data)
                     {
                         uploadFile(obj.image_Link);
-                        setTimeout(reload,1000);
+                        setTimeout(reload,100);
                         $('#productos_form')[0].reset();
                     }
                 });
             }else{
                 //PUT
                 $.ajax({
-                    url:urlProducts+obj.id,
+                    url:urlProducts+ "/"+obj.id,
                     type:"PUT",
                     data:json,
                     dataType:"json",
@@ -250,7 +250,7 @@
                     success:function(data)
                     {
                         uploadFile(obj.image_Link);
-                        setTimeout(reload,1000);
+                        setTimeout(reload,100);
                         $('#productos_form')[0].reset();
                     }
                 });
@@ -266,7 +266,7 @@
             if(confirm("¿Estás seguro de eliminar esto?"))
             {
                 $.ajax({
-                    url:urlProducts+productos_id,
+                    url:urlProducts+ "/"+productos_id,
                     type:"DELETE",
                     dataType:"json",
                     contentType:"application/json",

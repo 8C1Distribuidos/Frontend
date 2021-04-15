@@ -12,7 +12,6 @@
 </head>
   <body>
       <div class="registration-form">
-        <form method="post" id="registration-form" class="registration-form" enctype="multipart/form-data">
                     <div class="form-icon">
                         <span><i class="icon icon-user"></i></span>
                     </div>
@@ -41,37 +40,36 @@
                             </div>
                         </div>
                     </div>
-                    <div class="tab-pane fade" id="signUp" role="tabpanel" aria-labelledby="signUp-tab" class="modal fade">
-                        <div class="form-group">
-                            <input type="text" class="form-control item" id="firtsName" name="firtsName" placeholder="Nombre(s)">
+                    <form method="post" id="registration-form" name="registration-form" enctype="multipart/form-data">
+                        <div class="tab-pane fade" id="signUp" role="tabpanel" aria-labelledby="signUp-tab" class="modal fade">
+                            <div class="form-group">
+                                <input type="text" class="form-control item" id="firtsName" name="firtsName" placeholder="Nombre(s)">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control item" id="paternalName" name="paternalName" placeholder="Apellido paterno">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control item" id="maternalName" name="maternalName" placeholder="Apellido materno">
+                            </div>
+                            <div class="form-group">
+                                <input type="password" class="form-control item" id="password" name="password" placeholder="Contraseña">
+                            </div>
+                            <!--<div class="form-group">
+                                <input type="password" class="form-control item" id="password2" name="password2" placeholder="Repetir contraseña">
+                            </div>-->
+                            <div class="form-group">
+                                <input type="text" class="form-control item" id="email" name="email" placeholder="Email">
+                            </div>
+                            <div class="form-group">
+                                <input type="date" class="form-control item" id="birthDate" name="birthDate" placeholder="Email">
+                            </div>
+                            <div class="form-group">
+                                <a  type="submit" class="btn btn-block create-account" id="createAccount" name="createAccount">Crear cuenta </a>
+                            </div>
+                            <input type="hidden" name="id" id="id" />
+                            <input type="hidden" name="role" id="role" />
                         </div>
-                        <div class="form-group">
-                            <input type="text" class="form-control item" id="paternalName" name="paternalName" placeholder="Apellido paterno">
-                        </div>
-                        <div class="form-group">
-                            <input type="text" class="form-control item" id="maternalName" name="maternalName" placeholder="Apellido materno">
-                        </div>
-                        <div class="form-group">
-                            <input type="password" class="form-control item" id="password" name="password" placeholder="Contraseña">
-                        </div>
-                        <!--<div class="form-group">
-                            <input type="password" class="form-control item" id="password2" name="password2" placeholder="Repetir contraseña">
-                        </div>-->
-                        <div class="form-group">
-                            <input type="text" class="form-control item" id="email" name="email" placeholder="Email">
-                        </div>
-                        <div class="form-group">
-                            <input type="date" class="form-control item" id="birthDate" name="birthDate" placeholder="Email">
-                        </div>
-                        <div class="form-group">
-                            <a href="userspage.php" type="submit" class="btn btn-block create-account" id="createAccount" name="createAccount">Crear cuenta </a>
-                        </div>
-                        <input type="hidden" name="id" id="id" />
-                        <input type="hidden" name="role" id="role" />
-                    </div>
-                </div>
-
-        </form>
+                    </form>
     </div>
 
         <!--footer goes here--->
@@ -129,10 +127,6 @@ function update($id)
         var classifications;
         var urlProducts = "http://localhost:3000/Users"
 
-        //GET productos
-        $.getJSON(urlProducts, function( data ) {
-            users = data;
-        });
         /*
         
         //GET clasificaciones 
@@ -169,6 +163,7 @@ function update($id)
             //a('.modal-title').text("Añadir Producto");
            // document.getElementById("catalogo").value = classifications[0]["catalogo"]["name"];
             $('#createAccount').val("Add");
+            alert("1");
             //a('#productos_uploaded_image').html('');
         }); 
 
@@ -176,21 +171,22 @@ function update($id)
         $(document).on('submit', '#registration-form',function(event){
             event.preventDefault();
             //verify the extension
-            
-
-
+            alert("1.5");
             //Creacion del objeto a formato json
             var obj = {};
             function toJSONString( form ) {
                 var elements = form.querySelectorAll( "input" );
                 var nameUser;//almacena el nombre del producto
                 //var ident=Math.floor(Math.random() * 999999);
+                alert("1.7");
                 for( var i = 0; i < elements.length; ++i ) {
                     var element = elements[i];
                     var name = element.name;
                     var value = element.value;
+                    alert("2");
                     if( name && name!="createAccount" && name!="catalog") {
                         obj[name] = value;
+                        alert("3");
                     }
                     /* if( name && name=="clasificacion") { 
                         obj[name]= classifications.find( clasification => clasification.id ==  value);
@@ -200,18 +196,14 @@ function update($id)
                     }
                    if(name && name=="imagen"){//creacion del nombre de la imagen del producto
                     let procesado;*/
-                    procesado = nameUser.replace(/\s+/g, '');      // > "Textodeejemplo"
-                    obj[name]= ('upload/' + procesado + '_' + ident + '.' + extension);
-                   
                 }
                 
                 console.log(obj);
-                 
                 return JSON.stringify(obj);
             }
             
             var json = toJSONString( this );
-
+            alert("4");
             if( $('#createAccount').val() == "Add"){
                 //POST
                 $.ajax({
