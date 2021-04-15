@@ -178,22 +178,26 @@
       }
     }
   ],
-  "users": [
+  "Users": [
     {
       "id": 1,
-      "name": "Anette Michel",
-      "lastNameP": "Ortiz",
-      "lastNameM": "Anaya",
+      "firstName": "Anette Michel",
+      "paternalName": "Ortiz",
+      "maternalName": "Anaya",
       "password": "1234",
-      "email": "blabla@gmail.com"
+      "email": "blabla@gmail.com",
+      "birthDate": "",
+      "role": "Cliente"
     },
     {
       "id": 2,
-      "name": "Santiago",
-      "lastNameP": "Lara",
-      "lastNameM": "Agraz",
+      "firstName": "Santiago",
+      "paternalName": "Lara",
+      "maternalName": "Agraz",
       "password": "567",
-      "email": "blublu@gmail.com"
+      "email": "blublu@gmail.com",
+      "birthDate": "",
+      "role": "Cliente"
     }
   ]
 }
