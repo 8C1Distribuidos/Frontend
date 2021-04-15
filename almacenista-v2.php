@@ -205,7 +205,7 @@
                     var element = elements[i];
                     var name = element.name;
                     var value = element.value;
-                    if( name && name!="action" && name!="catalog") {
+                    if( name && name!="action" && name!="catalog" && name!="imagen") {
                         obj[name] = value;
                     }
                     if( name && name=="category") { 

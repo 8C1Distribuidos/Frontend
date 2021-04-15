@@ -198,24 +198,44 @@
   ],
   "Users": [
     {
-      "id": 1,
       "firstName": "Anette Michel",
       "paternalName": "Ortiz",
       "maternalName": "Anaya",
       "password": "1234",
       "email": "blabla@gmail.com",
       "birthDate": "",
-      "role": "Cliente"
+      "role": "Cliente",
+      "id": 1
     },
     {
-      "id": 2,
       "firstName": "Santiago",
       "paternalName": "Lara",
       "maternalName": "Agraz",
       "password": "567",
       "email": "blublu@gmail.com",
       "birthDate": "",
-      "role": "Cliente"
+      "role": "Cliente",
+      "id": 2
+    },
+    {
+      "firtsName": "Michel",
+      "paternalName": "Ortiz",
+      "maternalName": "aaa",
+      "password": "123",
+      "email": "anette.michel.ortiz@gmail.com",
+      "birthDate": "2021-04-12",
+      "role": "Cliente",
+      "id": 3
+    },
+    {
+      "firtsName": "aaaa",
+      "paternalName": "Ortiz",
+      "maternalName": "aaaaaaaaaaaaa",
+      "password": "aa",
+      "email": "anette.michel.ortiz@gmail.com",
+      "birthDate": "2021-03-30",
+      "role": "Cliente",
+      "id": 4
     }
   ]
 }
