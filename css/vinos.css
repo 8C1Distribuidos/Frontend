@@ -42,9 +42,9 @@ h3 {
 	text-shadow: 2px 2px 2px #554b4b;
 	color: #9c0613;
 }
- img {
-	 width: 290px;
-	 margin-top: 47px;
+ .img-t {
+	width: 290px;
+	margin-top: 30px;
 }
  .product {
 	 position: absolute;

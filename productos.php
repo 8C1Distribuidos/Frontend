@@ -5,77 +5,94 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/productos.css">
-    <link rel="stylesheet" href="fontawesome/css/all.css">
-    <title>Catálogos</title>
+    <title>Vinos</title>
     <link rel="shortcut icon" href="img/logo_icon.jpg" >
   </head>
-  <body>
-  <header>
-  <div align= "center"style="background: #E3DDCF"><a href="index.php"><img src="img/logo-top-1.png" height="50px" text-align= "center"></div></a>
-  <nav class="navbar navbar-dark bg-dark navbar-expand-md justify-content-center">
-        <div class="navbar-collapse collapse justify-content-between align-items-center w-100" id="collapsingNavbar2">
-            <ul class="navbar-nav mx-auto">
-                <li class="nav-item active">
-                   <a class="nav-link" href="index.php" id="navbar" type="button" >
-                      Inicio
-                    </a>
-                </li>
-                <li class="nav-item dropdown">
-                <a class="nav-link" href="productos.php" id="navbar" type="button" >
-                      Productos
-                    </a>
-                 </li>
-             
-               </ul>
-            <ul class="nav navbar-nav">
-                <li class="nav-item text-center" id="signup-btn">
-                <a href="userspage.php" class="nav-link" type="button"><span class="fa fa-user"></span><span class="d-none d-sm-inline d-xl-block px-1"></span></a>
-                </li>
-                <li class="nav-item text-center" id="login-btn">
-                    <a href="#" class="nav-link" data-toggle="modal" data-target="#"><span class="fa fa-shopping-cart"></span><span class="d-none d-sm-inline d-xl-block px-1"></span></a>
-                </li>
-                
-            </ul>
-        </div>
-    </nav>
+  <body > 
+    <!-- Header -->
+    <div align= "center"style="background: #E3DDCF"><a href="index.php"><img src="img/logo-top-1.png" height="90px" text-align= "center"></div></a>
+    <?php include('header.html'); ?>
 
-  <br>
-  </header>
-
-  <body>
-
-  <div class="milky">
-    <p style = "font-family:Brush;">
-      Catálogos
-    </p>
-  </div>
-
-<section class="hero-section">
-  <div class="ard-grid">
-    <a class="ard" href="vinos.php">
-    <div class="ard__background" style="background-image: url(https://i.blogs.es/576a60/istock-837387558/450_1000.jpg)"></div>
-      <div class="ard__content">
-        <h1 size="120px" class="ard__heading">Vinos</h1>
-        <p class="ard__category">Poesías <br> embotelladas</p>
+    <!--Header for wines-->
+    <div class="vinos_menu">
+      <h3>Vinos</h3>
+    </div>
+    </div>
+    <div class="nav" id="wine_menu">
+      <ul class="button" id="myTab" role="tablist">
+      </ul>
+    </div>
+    <div id="list-products">
+      <div id="tarjetita">
       </div>
-    </a>
-    <a class="ard" href="destilados.php">
-    <div class="ard__background" style="background-image: url(https://bloximages.newyork1.vip.townnews.com/elvocero.com/content/tncms/assets/v3/editorial/7/80/780b6693-bd68-535f-9788-e347b0dfae70/59356158997bc.image.jpg)"></div>
-      <div class="ard__content">
-        <h1 class="aaard__heading">Destilados</h1>
-        <p class="aaard__category">Historias <br> líquidas</p>
-      </div>
-    </a>
-    
-</section> <br><br><br>  <br><br><br>  <br><br><br>  <br><br><br> 
-<section class="footer">
+    </div>
+   
 
-   <?php include('footer.html'); ?> 
-   </section>
-  
+<script src="js/app.js"></script>
   </body>
-  <script src="js/sidebar.js"></script> 
-
 </html>
+
+<script>
+  
+  $(document).ready(function(){
+    var clasification;
+    var products;
+    var classifications;
+    var urlProducts = "http://localhost:3000/Products"
+
+    //GET productos
+    $.getJSON(urlProducts, function( data ) {
+        products = data;
+        console.log(products);
+    });
+
+    //GET clasificaciones 
+    $.getJSON("http://localhost:3000/Category", function( data ) {
+        classifications = data;
+        for(var i=0;i<classifications.length;i++)
+        {
+          var item =  "<li class= nav-item >"+
+                        "<a class= btn name= "+classifications[i]["name"]+" id="+classifications[i]["id"]+" data-toggle='tab' role='tab' aria-controls='blanco' aria-selected='false'>"+
+                        classifications[i]["name"]+"</a>"+
+                      "</li>";
+          $("#myTab").append(item);
+          
+        }
+        clasification = classifications[0]["name"];
+        updatecont(products);
+    });
+    var ul = document.getElementById('myTab');
+    ul.onclick = function(event) {
+      clasification = event.target.innerHTML;
+      updatecont(products);
+    };
+
+  function updatecont(products){
+
+      for(var i=0; i < products.length;i++)
+      {
+        if (products[i]["category"]["name"]== clasification) {
+          var tr  ="<div class=\"container\">"+
+                    "<div class=\"img-t\">"+
+                      "<img src= upload/"+products[i]["image_Link"]+">"+
+                    "</div>"+
+                    "<div class=\"product\">"+
+                      "<p>"+products[i]["category"]["name"]+"</p>"+
+                      "<h1>"+products[i]["name"]+"</h1>"+
+                      "<h2>"+"$"+products[i]["price"]+"</h2>"+
+                      "<input type=hidden value="+products[i]["stock"]+">"+
+                      "<p class=\"desc\">"+"</p>"+
+                      "<div class=\"buttons\">"+
+                        "<button class=\"add\"  data-id="+products[i]["id"]+">"+"Agregar al carrito"+"</button>"+
+                      "</div>"+
+                    "</div>"+
+                  "</div>";
+          $("#tarjetita").append(tr);
+        }
+      }
+  }
+
+  }); 
+  
+  
+</script>

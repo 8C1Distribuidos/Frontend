@@ -1,10 +1,20 @@
 {
   "prueba": {},
-  "clasificacion": [
+  "Catalogs":[
+    {
+      "id": 1,
+      "name": "Vinos"
+    },
+    {
+      "id": 2,
+      "name": "Destilados"
+    }
+  ],
+  "Category": [
     {
       "id": 1,
       "name": "Vino blanco",
-      "catalogo": {
+      "catalog": {
         "id": 1,
         "name": "Vinos"
       }
@@ -12,7 +22,7 @@
     {
       "id": 2,
       "name": "Vino espumoso",
-      "catalogo": {
+      "catalog": {
         "id": 1,
         "name": "Vinos"
       }
@@ -20,7 +30,7 @@
     {
       "id": 3,
       "name": "Vino tinto",
-      "catalogo": {
+      "catalog": {
         "id": 1,
         "name": "Vinos"
       }
@@ -28,7 +38,7 @@
     {
       "id": 4,
       "name": "Vino rosado",
-      "catalogo": {
+      "catalog": {
         "id": 1,
         "name": "Vinos"
       }
@@ -36,7 +46,7 @@
     {
       "id": 5,
       "name": "Vino champagne",
-      "catalogo": {
+      "catalog": {
         "id": 1,
         "name": "Vinos"
       }
@@ -44,7 +54,7 @@
     {
       "id": 6,
       "name": "Vino de postre",
-      "catalogo": {
+      "catalog": {
         "id": 1,
         "name": "Vinos"
       }
@@ -52,7 +62,7 @@
     {
       "id": 7,
       "name": "Vino sin alcohol",
-      "catalogo": {
+      "catalog": {
         "id": 1,
         "name": "Vinos"
       }
@@ -60,7 +70,7 @@
     {
       "id": 8,
       "name": "Brandy",
-      "catalogo": {
+      "catalog": {
         "id": 2,
         "name": "Destilados"
       }
@@ -68,7 +78,7 @@
     {
       "id": 9,
       "name": "Tequila",
-      "catalogo": {
+      "catalog": {
         "id": 2,
         "name": "Destilados"
       }
@@ -76,7 +86,7 @@
     {
       "id": 10,
       "name": "Cognac",
-      "catalogo": {
+      "catalog": {
         "id": 2,
         "name": "Destilados"
       }
@@ -84,7 +94,7 @@
     {
       "id": 11,
       "name": "Ginebra",
-      "catalogo": {
+      "catalog": {
         "id": 2,
         "name": "Destilados"
       }
@@ -92,7 +102,7 @@
     {
       "id": 12,
       "name": "Mezcal",
-      "catalogo": {
+      "catalog": {
         "id": 2,
         "name": "Destilados"
       }
@@ -100,7 +110,7 @@
     {
       "id": 13,
       "name": "Ron",
-      "catalogo": {
+      "catalog": {
         "id": 2,
         "name": "Destilados"
       }
@@ -108,7 +118,7 @@
     {
       "id": 14,
       "name": "Whisky",
-      "catalogo": {
+      "catalog": {
         "id": 2,
         "name": "Destilados"
       }
@@ -116,13 +126,58 @@
     {
       "id": 15,
       "name": "Vodka",
-      "catalogo": {
+      "catalog": {
         "id": 2,
         "name": "Destilados"
       }
     }
   ],
-  "products": [],
+  "Products": [
+    {
+      "id": 1,
+      "name": "Vino seleccion",
+      "image_Link": "VTCetto",
+      "price": "30",
+      "stock": "40",
+      "category": { 
+        "id": 14,
+        "name": "Whisky",
+        "catalog": {
+          "id": 2,
+          "name": "Destilados"
+        }
+      }
+    },{
+      "id": 2,
+      "name": "Vino seleccion",
+      "image_Link": "VRbaigorri",
+      "price": "30",
+      "stock": "40",
+      "category": { 
+        "id": 14,
+        "name": "Whisky",
+        "catalog": {
+          "id": 2,
+          "name": "Destilados"
+        }
+      }
+    },
+    {
+      "id": 3,
+      "name": "Vino seleccion",
+      "image_Link": "VTprego",
+      "price": "30",
+      "stock": "40",
+      "category": { 
+        "id": 14,
+        "name": "Whisky",
+        "catalog": {
+          "id": 2,
+          "name": "Destilados"
+        }
+      }
+    }
+  ],
   "users": [
     {
       "id": 1,
