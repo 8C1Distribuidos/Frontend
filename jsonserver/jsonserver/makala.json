@@ -134,11 +134,7 @@
   ],
   "Products": [
     {
-      "id": 1,
       "name": "Vino seleccion",
-      "image_Link": "VTCetto",
-      "price": "30",
-      "stock": "40",
       "category": {
         "id": 14,
         "name": "Whisky",
@@ -146,7 +142,11 @@
           "id": 2,
           "name": "Destilados"
         }
-      }
+      },
+      "stock": "40",
+      "price": "30",
+      "image_Link": "VTCetto",
+      "id": 1
     },
     {
       "id": 2,
@@ -178,22 +178,6 @@
       "imagen": "C:\\fakepath\\VTvilbao.png",
       "image_Link": "VTprego",
       "id": 3
-    },
-    {
-      "name": "aaaa",
-      "category": {
-        "id": 1,
-        "name": "Vino blanco",
-        "catalog": {
-          "id": 1,
-          "name": "Vinos"
-        }
-      },
-      "stock": "14",
-      "price": "16",
-      "imagen": "C:\\fakepath\\VRbyott.png",
-      "image_Link": 104470,
-      "id": 4
     }
   ],
   "Users": [
@@ -218,7 +202,7 @@
       "id": 2
     },
     {
-      "firtsName": "Michel",
+      "firstName": "Michel",
       "paternalName": "Ortiz",
       "maternalName": "aaa",
       "password": "123",
@@ -228,7 +212,7 @@
       "id": 3
     },
     {
-      "firtsName": "aaaa",
+      "firstName": "aaaa",
       "paternalName": "Ortiz",
       "maternalName": "aaaaaaaaaaaaa",
       "password": "aa",
@@ -236,6 +220,19 @@
       "birthDate": "2021-03-30",
       "role": "Cliente",
       "id": 4
+    }
+  ],
+  "Almacenistas": [
+    {
+      "firstName": "Enrique Tonatiuh",
+      "paternalName": "Pérez Cortés",
+      "maternalName": "Barba",
+      "password": "1234asd",
+      "email": "a17300218@gmail.com",
+      "birthDate": "2002-02-01",
+      "image_Link": 33266,
+      "id": 1,
+      "role": "Almacenista"
     }
   ]
 }

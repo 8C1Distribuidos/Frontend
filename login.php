@@ -45,7 +45,7 @@
             <div class="tab-pane fade" id="signUp" role="tabpanel" aria-labelledby="signUp-tab" class="modal fade">
                 <form method="post" id="registration-form" name="registration-form" enctype="multipart/form-data">
                     <div class="form-group">
-                        <input type="text" class="form-control item" id="firtsName" name="firtsName" placeholder="Nombre(s)">
+                        <input type="text" class="form-control item" id="firstName" name="firstName" placeholder="Nombre(s)">
                     </div>
                     <div class="form-group">
                         <input type="text" class="form-control item" id="paternalName" name="paternalName" placeholder="Apellido paterno">
