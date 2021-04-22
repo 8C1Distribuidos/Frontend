@@ -30,10 +30,10 @@
 							<th width="10%">Imagen</th>
 							<th width="8%">ID</th>
 							<th width="25%">Nombre</th>
-              <th width="15%">Apellidos</th>
-              <th width="15%">Contarseña</th>
-              <th width="10%">Email</th>
-              <th width="10%">Fecha nacimiento</th>
+                            <th width="15%">Apellidos</th>
+                            <th width="15%">Contarseña</th>
+                            <th width="10%">Email</th>
+                            <th width="10%">Fecha nacimiento</th>
 							<th width="10%">Editar</th>
 							<th width="10%">Borrar</th>
 						</tr>
@@ -140,9 +140,8 @@
                     if(dat2==1) alert("OK");
                     else alert("Error");
                 }
-           });
-        
-}
+            });
+        }
 
         //Modal UPDATE
         $(document).on('click', '.update', function(){
