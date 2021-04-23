@@ -197,25 +197,46 @@
 </html>
 
 <script>
+    //uploadFile("users/"+obj.photo, "loadFoto.php");
+    function uploadFile(imagen, url){
+            var filename  = imagen;  
+            //To save file with this name
+                var file_data = $('.fileToUpload').prop('files')[0];    //Fetch the file
+                var form_data = new FormData();
+                form_data.append("file",file_data);
+                form_data.append("filename",filename);
+                $.ajax({
+                    url: url,                      //Server api to receive the file
+                    type: "POST",
+                    dataType: 'script',
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                    data: form_data,
+                    success:function(dat2){
+                    if(dat2==1) alert("OK");
+                    else alert("Error");
+                }
+            });
+        }
   
   $(document).ready(function(){
     var usuario = usuarioLocalStorage();
     if (usuario == null) {
-        location.href = 'userspage.php';
+        location.href = 'login.php';
     }
-    updatecont()
+    updatecont();
   }); 
   function updatecont(){
-    var obj = usuarioLocalStorage()
+    var obj = usuarioLocalStorage();
+    console.log(obj);
         $("#userInfo").empty();
-        for(var i=0;i<obj.length;i++)
-        {
             var tr  ="<div class=\"row\">"+
                     "<div class=\"col-md-6\">"+
                         "<label>"+"Correo"+"</label>"+
                     "</div>"+
                     "<div class=\"col-md-6\">"+
-                        "<p>"+obj[i]["email"]+"</p>"+
+                        "<p>"+obj["email"]+"</p>"+
                     "</div>"+
                 "</div>"+
                 "<div class=\"row\">"+
@@ -223,7 +244,7 @@
                         "<label>"+"Nombre"+"</label>"+
                     "</div>"+
                     "<div class=\"col-md-6\">"+
-                        "<p>"+obj[i]["firstName"]+ " " + obj[i]["paternalName"]+ " " + obj[i]["maternalName"]+"</p>"+
+                        "<p>"+obj["firstName"]+ " " + obj["paternalName"]+ " " + obj["maternalName"]+"</p>"+
                     "</div>"+
                 "</div>"+
                 "<div class=\"row\">"+
@@ -231,11 +252,10 @@
                         "<label>"+"Contraseña"+"</label>"+
                     "</div>"+
                     "<div class=\"col-md-6\">"+
-                        "<p>"+obj[i]["password"]+"</p>"+
+                        "<p>"+obj["password"]+"</p>"+
                     "</div>"+
                 "</div>";
             $("#userInfo").append(tr);
-        }
     }
   $(document).on('submit', '#productos_form',function(event){
         var extension = $('#imagen').val().split('.').pop().toLowerCase();
@@ -259,6 +279,9 @@
                 if( name && name!="action") {
                     obj[ name ] = value;
                 }
+                if( name && name!="role") {
+                    obj[ name ] = JSON.parse(value);
+                }
             }
             return JSON.stringify( obj );
         }
@@ -276,7 +299,6 @@
                 {
                     $('#users-form')[0].reset();
                     $('#productosModal').modal('hide');
-
                 }
             });
         }
@@ -284,7 +306,8 @@
 
     //Modal UPDATE
     $(document).on('click', '.profileEdit', function(){
-        var obj = usuario;
+        var obj = usuarioLocalStorage();
+        console.log(obj);
             $('#productosModal').modal('show');
             $('.modal-title').text("Editar perfil de usuario");
             $('#name').val(obj.firstName);
@@ -293,6 +316,7 @@
             $('#stock').val(obj.password);
             $('#costo').val(obj.email);
             $('#id').val(obj.id);
+            $('#role').val(JSON.stringify(obj.role));
             $('#productos_uploaded_image').html(obj.imagen);
             $('#action').val("Update");
         });
