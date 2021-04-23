@@ -189,7 +189,7 @@
                     }
                 },
                 success:function(data)
-                {
+                { 
                     console.log(data);
                     if(data != null){
                         localStorage.setItem('usuario', data);
