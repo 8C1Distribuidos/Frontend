@@ -36,9 +36,9 @@
   
   $(document).ready(function(){
     var clasification;
-    var products;
+    var products = [];
     var classifications;
-    var urlProducts = "http://localhost:3000/Products"
+    var urlProducts = "http://25.98.13.19:5555/api/Product/GetAll"
 
     //GET productos
     $.getJSON(urlProducts, function( data ) {
@@ -47,7 +47,7 @@
     });
 
     //GET clasificaciones 
-    $.getJSON("http://localhost:3000/Category", function( data ) {
+    $.getJSON("http://25.98.13.19:5555/api/Category/GetAll", function( data ) {
         classifications = data;
         for(var i=0;i<classifications.length;i++)
         {
@@ -67,30 +67,30 @@
       updatecont(products);
     };
 
-  function updatecont(products){
-
-      for(var i=0; i < products.length;i++)
-      {
-        if (products[i]["category"]["name"]== clasification) {
-          var tr  ="<div class=\"container\">"+
-                    "<div class=\"img-t\">"+
-                      "<img src= upload/"+products[i]["image_Link"]+">"+
-                    "</div>"+
-                    "<div class=\"product\">"+
-                      "<p>"+products[i]["category"]["name"]+"</p>"+
-                      "<h1>"+products[i]["name"]+"</h1>"+
-                      "<h2>"+"$"+products[i]["price"]+"</h2>"+
-                      "<input type=hidden value="+products[i]["stock"]+">"+
-                      "<p class=\"desc\">"+"</p>"+
-                      "<div class=\"buttons\">"+
-                        "<button class=\"add\"  data-id="+products[i]["id"]+">"+"Agregar al carrito"+"</button>"+
+    function updatecont(){
+      console.log(products);
+        for(var i=0;i<products.length;i++)
+        {
+          if (products[i]["category"]["name"]== clasification) {
+            var tr  ="<div class=\"container\">"+
+                      "<div class=\"img-t\">"+
+                        "<img src= upload/"+products[i]["image_Link"]+">"+
                       "</div>"+
-                    "</div>"+
-                  "</div>";
-          $("#tarjetita").append(tr);
+                      "<div class=\"product\">"+
+                        "<p>"+products[i]["category"]["name"]+"</p>"+
+                        "<h1>"+products[i]["name"]+"</h1>"+
+                        "<h2>"+"$"+products[i]["price"]+"</h2>"+
+                        "<input type=hidden value="+products[i]["stock"]+">"+
+                        "<p class=\"desc\">"+"</p>"+
+                        "<div class=\"buttons\">"+
+                          "<button class=\"add\"  data-id="+products[i]["id"]+">"+"Agregar al carrito"+"</button>"+
+                        "</div>"+
+                      "</div>"+
+                    "</div>";
+            $("#tarjetita").append(tr);
+          }
         }
-      }
-  }
+    }
 
   }); 
   

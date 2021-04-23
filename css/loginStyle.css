@@ -6,13 +6,13 @@ body{
     background-position: top;
 }
 
-a{
+.n a:link{
     color: #e3ddcf;
     background-color: #A37b75;
 }
 
-.nav-tabs .nav-link.active {
-    color:#5e2126;
+ .n:active, .n a:hover, .n a:active{
+    color:#5e2126 !important;
     background-color: #e3ddcf;
     border-color: #e3ddcf;
 }

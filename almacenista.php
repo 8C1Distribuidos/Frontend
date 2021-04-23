@@ -73,10 +73,10 @@
 					<br />
 					<label>Seleccionar imagen del producto</label>
 					<input type="file" name="imagen" id="imagen"  class="fileToUpload" required/>
-					<span id="image_Link"></span>
+					<span id="imageLink"></span>
 				</div>
 				<div class="modal-footer">
-					<input type="hidden" name="id" id="id" />
+					<input type="hidden" name="id" id="id" value="1"/>
 					<input type="submit" name="action" id="action" class="btn btn-success"/> 
 					<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
 				</div>
@@ -92,10 +92,10 @@
         //Varibles
         var products;
         var classifications;
-        var urlProducts = "http://localhost:3000/Products"
+        var urlProducts = "http://25.98.13.19:5555/api/Product/"
 
         //GET productos
-        $.getJSON(urlProducts, function( data ) {
+        $.getJSON(urlProducts+"GetAll", function( data ) {
             products = data;
             loadTable();
         });
@@ -105,7 +105,7 @@
             for(var i=0;i<products.length;i++)
             {
             var tr  ="<tr>"+
-                    "<td><img width = '300' heigth = '400' src= upload/"+products[i]["image_Link"]+"></td>"+
+                    "<td><img width = '300' heigth = '400' src= upload/"+products[i]["imageLink"]+"></td>"+
                     "<td>"+products[i]["id"]+"</td>"+
                     "<td>"+products[i]["name"]+"</td>"+
                     "<td>"+products[i]["category"]["name"]+"</td>"+
@@ -141,7 +141,7 @@
 }
 
         //GET clasificaciones 
-        $.getJSON("http://localhost:3000/Category", function( data ) {
+        $.getJSON("http://25.98.13.19:5555/api/Category/GetAll", function( data ) {
             classifications = data;
             for(var i=0;i<classifications.length;i++)
             {
@@ -168,7 +168,7 @@
                 $('#stock').val(obj.stock);
                 $('#price').val(obj.price);
                 $('#id').val(obj.id);
-                $('#image_Link').html(obj.image_Link);
+                $('#imageLink').html(obj.imageLink);
                 $('#action').val("Update");
                 $('#imagen').removeAttr('required');
         });
@@ -214,11 +214,14 @@
                    if(name && name=="imagen"){//creacion del nombre de la imagen del producto
                         if( $('#action').val() == "Update"){
                             var product = products.find( product => product.id ==  document.getElementById("id").value);
-                            obj["image_Link"] = product.image_Link;
+                            obj["imageLink"] = (product.imageLink).toString();
                         }else{   
-                            obj["image_Link"]= ident;
+                            obj["imageLink"]= ident.toString();
                         }
                    }
+                   if( name && name=="stock" || name && name=="price" || name && name=="id") { 
+                        obj[name]= parseInt(value);
+                    }
                 }
                 return JSON.stringify( obj );
             }
@@ -226,30 +229,33 @@
             var json = toJSONString( this );
             if( $('#action').val() == "Add"){
                 //POST
+                console.log(json);
                 $.ajax({
-                    url:urlProducts,
+                    url:urlProducts+"Post",
                     type:"POST",
                     data:json,
                     dataType:"json",
                     contentType:"application/json",
                     success:function(data)
                     {
-                        uploadFile(obj.image_Link);
+
+                        uploadFile(obj.imageLink);
                         setTimeout(reload,100);
                         $('#productos_form')[0].reset();
                     }
                 });
             }else{
+                console.log(json);
                 //PUT
                 $.ajax({
-                    url:urlProducts+ "/"+obj.id,
+                    url:urlProducts+"Put",
                     type:"PUT",
                     data:json,
                     dataType:"json",
                     contentType:"application/json",
                     success:function(data)
                     {
-                        uploadFile(obj.image_Link);
+                        uploadFile(obj.imageLink);
                         setTimeout(reload,100);
                         $('#productos_form')[0].reset();
                     }

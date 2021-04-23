@@ -72,7 +72,7 @@
 <script>
 $(document).ready(function(){
   var catalogs;
-   $.getJSON("http://localhost:3000/Catalogs", function( data ) {
+   $.getJSON("http://25.98.13.19:5555/api/Catalog/GetAll", function( data ) {
     catalogs = data;
     loadSection();
   });
