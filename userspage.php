@@ -207,38 +207,12 @@
 <script>
   
   $(document).ready(function(){
+    usuarioLocalStorage()
+    if (usuario == null) {
+        location.href = 'userspage.php';
+    }
     updatecont()
   }); 
-  /*
-  var clasificacion;
-  $("#blanco-tab").on('click', function(){
-    clasificacion = "Vino blanco";
-    updatecont();
-  });
-  $("#espumoso-tab").on('click', function(){
-    clasificacion = "Vino espumoso";
-    updatecont();
-  });
-  $("#tinto-tab").on('click', function(){
-    clasificacion = "Vino tinto";
-    updatecont();
-  });
-  $("#rosado-tab").on('click', function(){
-    clasificacion = "Vino rosado";
-    updatecont();
-  });
-  $("#champagne-tab").on('click', function(){
-    clasificacion = "Vino champagne";
-    updatecont();
-  });
-  $("#dePostre-tab").on('click', function(){
-    clasificacion = "Vino de postre";
-    updatecont();
-  });
-  $("#sinAlcohol-tab").on('click', function(){
-    clasificacion = "Vino sin alcohol";
-    updatecont();
-  });*/
   function updatecont(){
     var url  = "http://localhost:3000/users";
     $.getJSON(url, function( data ) {
@@ -246,7 +220,7 @@
         $("#userInfo").empty();
         for(var i=0;i<obj.length;i++)
         {
-            if (obj[i]["id"]==1){
+            if (obj[i]["id"]==usuario[i]["id"]){
                 var tr  ="<div class=\"row\">"+
                         "<div class=\"col-md-6\">"+
                             "<label>"+"Correo"+"</label>"+
@@ -347,4 +321,14 @@
             $('#productos_uploaded_image').html(obj.imagen);
             $('#action').val("Update");
         });
+        //Para la variable de otra pagina
+    function usuarioLocalStorage() {
+        let usuario;
+        if(localStorage.getItem('usuario') == null) {
+            usuario = null;
+        } else {
+            usuario = JSON.parse( localStorage.getItem('usuario'));
+        }
+        return usuario;
+    }
 </script>
