@@ -33,7 +33,7 @@
     <?php include('header.html'); ?>
   <!--/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
   
-    <form method="post">
+<form method="post">
     <div class="container emp-profile">
       <form method="post">
           <div class="row">
@@ -71,30 +71,38 @@
               <div class="col-md-8">
                   <div class="tab-content profile-tab" id="userInfo">
                       <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab"></div>
-                                  <div class="row">
-                                      <div class="col-md-6">
-                                          <label>Correo</label>
-                                      </div>
-                                      <div class="col-md-6">
-                                          <p>correo@gmail.com</p>
-                                      </div>
-                                  </div>
-                                  <div class="row">
-                                      <div class="col-md-6">
-                                          <label>Nombre</label>
-                                      </div>
-                                      <div class="col-md-6">
-                                          <p>nombre apellidop apellidom</p>
-                                      </div>
-                                  </div>
-                                  <div class="row">
-                                      <div class="col-md-6">
-                                          <label>Contraseña</label>
-                                      </div>
-                                      <div class="col-md-6">
-                                          <p>123 456 7890</p>
-                                      </div>
-                                  </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Correo</label>
+                            </div>
+                            <div class="col-md-6">
+                                <p></p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Nombre</label>
+                            </div>
+                            <div class="col-md-6">
+                                <p></p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Contraseña</label>
+                            </div>
+                            <div class="col-md-6">
+                                <p></p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Fecha de cumpleaños</label>
+                            </div>
+                            <div class="col-md-6">
+                                <p></p>
+                            </div>
+                        </div>
                       </div>
               </div>
           </div>
@@ -108,7 +116,7 @@
 		<form method="post" id="productos_form" enctype="multipart/form-data">
 			<div class="modal-content">
 				<div class="modal-header">
-                <h4 class="modal-title">Editar perfil</h4>
+                    <h4 class="modal-title">Editar perfil</h4>
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
 				</div>
 				<div class="modal-body">
@@ -130,7 +138,7 @@
                     <label>Email</label>
 					<input type="text" name="email" id="email" class="form-control"required />
 					<br />
-					<label>Seleccionar imagen del producto</label>
+					<label>Seleccionar imagen del usuario</label>
 					<input type="file" name="imagen" id="imagen" onclick="upload_image();" class="form-control" required/>
 					<span id="productos_uploaded_image"></span>
 				</div>
@@ -150,11 +158,11 @@
 		<form method="post" id="productos_form" enctype="multipart/form-data">
 			<div class="modal-content">
 				<div class="modal-header">
-                <h4 class="modal-title">Editar perfil</h4>
+                    <h4 class="modal-title">Editar perfil</h4>
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
 				</div>
 				<div class="modal-body">
-					<label>Seleccionar imagen del producto</label>
+					<label>Seleccionar imagen del usuario</label>
 					<input type="file" name="imagen" id="imagen" onclick="upload_image();" class="form-control" required/>
 					<span id="productos_uploaded_image"></span>
 				</div>
@@ -169,29 +177,26 @@
 </div>
   <!--/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
 
-  <footer class="bg-light text-center text-lg-start">
-      <div class="row" style="background-color: rgba(0, 0, 0, 0.2); margin-top: 12.45%;">
-    </div>
-    </footer>
-    <footer class="bg-dark text-center text-lg-start text-light">
-      <div class="container-fluid">
+  
+<footer class="bg-dark text-center text-lg-start text-light">
+    <div class="container-fluid">
         <div class="row">
-          <div class="col-md-3">
-            <div> <img src="img/logo_invert.jpg"  height="50px"> </div>
+            <div class="col-md-3">
+                <div> <img src="img/logo_invert.jpg"  height="50px"> </div>
+            </div>
+            <div class="col-lg-3 col-md-11 mb-4 mb-md-0 p-3">
+                <span class="fa fa-phone-alt"></span> (+33)31235608
+            </div>
+            <div class="col-lg-3 col-md-12 mb-4 mb-md-0 p-3">
+                <span class="fa fa-envelope"></span> info@leckereweine.com
+            </div>
+            <div class="col-lg-3 col-md-12 mb-4 mb-md-0 p-3 text-right">
+                © Leckere Weine 2021 
+            </div>
         </div>
-        <div class="col-lg-3 col-md-11 mb-4 mb-md-0 p-3">
-          <span class="fa fa-phone-alt"></span> (+33)31235608
-        </div>
-        <div class="col-lg-3 col-md-12 mb-4 mb-md-0 p-3">
-        <span class="fa fa-envelope"></span> info@leckereweine.com
-        </div>
-        <div class="col-lg-3 col-md-12 mb-4 mb-md-0 p-3 text-right">
-          © Leckere Weine 2021 
-          </div>
-        </div>
-      </div>
-    </footer>
-  </div>
+    </div>
+</footer>
+
     <script src="js/jquery-3.6.0.min.js"></script> 
     <script src="js/popper.min.js"></script>
     <script src="js/bootstrap.min.js"></script> 
@@ -200,11 +205,11 @@
 </html>
 
 <script>
-  /*
+  
   $(document).ready(function(){
-    clasificacion="Vino blanco";
     updatecont()
   }); 
+  /*
   var clasificacion;
   $("#blanco-tab").on('click', function(){
     clasificacion = "Vino blanco";
@@ -237,37 +242,46 @@
   function updatecont(){
     var url  = "http://localhost:3000/users";
     $.getJSON(url, function( data ) {
-      var obj = data;
-      $("#userInfo").empty();
-      for(var i=0;i<obj.length;i++)
-      {
-        var tr  ="<div class=\"row\">"+
-                    "<div class=\"col-md-6\">"+
-                        "<label>"+"Correo"+"</label>"+
+        var obj = data;
+        $("#userInfo").empty();
+        for(var i=0;i<obj.length;i++)
+        {
+            if (obj[i]["id"]==1){
+                var tr  ="<div class=\"row\">"+
+                        "<div class=\"col-md-6\">"+
+                            "<label>"+"Correo"+"</label>"+
+                        "</div>"+
+                        "<div class=\"col-md-6\">"+
+                            "<p>"+obj[i]["email"]+"</p>"+
+                        "</div>"+
                     "</div>"+
-                    "<div class=\"col-md-6\">"+
-                        "<p>"+obj[i]["email"]+"</p>"+
+                    "<div class=\"row\">"+
+                        "<div class=\"col-md-6\">"+
+                            "<label>"+"Nombre"+"</label>"+
+                        "</div>"+
+                        "<div class=\"col-md-6\">"+
+                            "<p>"+obj[i]["firstName"]+ " " + obj[i]["paternalName"]+ " " + obj[i]["maternalName"]+"</p>"+
+                        "</div>"+
                     "</div>"+
-                "</div>"+
-                "<div class=\"row\">"+
-                    "<div class=\"col-md-6\">"+
-                        "<label>"+"Nombre"+"</label>"+
+                    "<div class=\"row\">"+
+                        "<div class=\"col-md-6\">"+
+                            "<label>"+"Contraseña"+"</label>"+
+                        "</div>"+
+                        "<div class=\"col-md-6\">"+
+                            "<p>"+obj[i]["password"]+"</p>"+
+                        "</div>"+
                     "</div>"+
-                    "<div class=\"col-md-6\">"+
-                        "<p>"+obj[i]["name"]+ " " + obj[i]["lastNameP"]+ " " + obj[i]["lastNameM"]+"</p>"+
-                    "</div>"+
-                "</div>"+
-                "<div class=\"row\">"+
-                    "<div class=\"col-md-6\">"+
-                        "<label>"+"Contraseña"+"</label>"+
-                    "</div>"+
-                    "<div class=\"col-md-6\">"+
-                        "<p>"+obj[i]["password"]+"</p>"+
-                    "</div>"+
-                "</div>";
-        $("#userInfo").append(tr);
-        
-      }
+                    "<div class=\"row\">"+
+                        "<div class=\"col-md-6\">"+
+                            "<label>"+"Fecha de cumpleaños"+"</label>"+
+                        "</div>"+
+                        "<div class=\"col-md-6\">"+
+                            "<p>"+obj[i]["birthDate"]+"</p>"+
+                        "</div>"+
+                    "</div>";
+                $("#userInfo").append(tr);
+            }
+        }
     });
   }
   $(document).on('submit', '#productos_form',function(event){
@@ -324,11 +338,11 @@
             var obj = products.find( product => product.id ==  $(this).attr("id"));
             $('#productosModal').modal('show');
             $('.modal-title').text("Editar perfil de usuario");
-            $('#name').val(obj.name);
-            $('#lastNameP').val(obj.clasificacion.lastNameP);
-            $('#lastNameM').val(obj.clasificacion.lastNameM);
-            $('#stock').val(obj.stock);
-            $('#costo').val(obj.costo);
+            $('#name').val(obj.firstName);
+            $('#lastNameP').val(obj.paternalName);
+            $('#lastNameM').val(obj.maternalName);
+            $('#stock').val(obj.password);
+            $('#costo').val(obj.email);
             $('#id').val(obj.id);
             $('#productos_uploaded_image').html(obj.imagen);
             $('#action').val("Update");
