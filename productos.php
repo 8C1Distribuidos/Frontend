@@ -32,14 +32,26 @@
   </body>
 </html>
 
-<script>
+<script type="text/javascript" language="javascript">
   
   $(document).ready(function(){
     var clasification;
     var products = [];
     var classifications;
     var urlProducts = "http://25.98.13.19:5555/api/Product/GetAll"
-
+    var usuario = usuarioLocalStorage();
+    if(usuario != null || usuario.role.role != "Cliente"){
+        location.href = 'index.php';
+    }
+    function usuarioLocalStorage() {
+        let usuario;
+        if(localStorage.getItem('usuario') == null) {
+            usuario = null;
+        } else {
+            usuario = JSON.parse(localStorage.getItem('usuario'));
+        }
+        return usuario;
+    }
     //GET productos
     $.getJSON(urlProducts, function( data ) {
         products = data;

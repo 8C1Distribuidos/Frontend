@@ -5,10 +5,7 @@
     <link rel="shortcut icon" href="img/logo_icon.jpg" >
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/loginStyle.css">    
 </head>
   <body>
@@ -38,9 +35,11 @@
                                 </div>
                                 <div id="alerta">
                                 </div>
+                                <h6><a style="color:white" href="recuperarContraseña.php">Olvidaste tu contraseña?</a></h6>
                                 <div class="form-group">
                                 <button  type="submit" class="btn btn-success"> Ingresar</button>
                                 </div>
+                               
                             </div>
                         </div>
                     </form>
@@ -92,15 +91,25 @@
       
             </div>
         </div>
+        <?php include('footer.html'); ?>
         <!--scripts-->
         <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
         <script src="js/bootstrap.min.js"></script> 
-        <?php include('footer.html'); ?>
+        
   </body>
 </html>
 
 <script type="text/javascript" language="javascript">
     $(document).ready(function(){
+        usuarioLocalStorage();
+        function usuarioLocalStorage() {
+            let usuario;
+            if(localStorage.getItem('usuario') == null) {
+                usuario = null;
+            } else {
+                location.href = 'userspage.php';
+            }
+        }
     document.getElementById("passwordR")
     .addEventListener('input', function(evt) {
         const campo = evt.target,
@@ -135,14 +144,6 @@
         $(document).on('submit', '#registration-form',function(event){
             event.preventDefault();
             //Creacion del objeto a formato json
-        function usuarioLocalStorage() {
-            let usuario;
-            if(localStorage.getItem('usuario') == null) {
-                usuario = null;
-            } else {
-                location.href = 'userpage.php';
-            }
-        }
             var json = toJSONString( this );
             if( $('#createAccount').val() == "Add"){
                 //POST
@@ -157,7 +158,6 @@
                             $('.modal-title').text("Usuario creado");
                             $('#mensaje').text("El usuario se ha registrado correctamente, ya puedes iniciar sesión");
                             $('#myModalError').modal('show');
-                            location.href = 'login.php';
                         },
                         400: function(responseObject, textStatus, errorThrown) {
                             $('.modal-title').text("Usuario duplicado");
@@ -186,19 +186,22 @@
                     400: function(responseObject, textStatus, errorThrown) {
                         var alerta = "<div class='alert alert-info role='alert'>Error de servidor, intenta más tarde</div>";
                         $("#alerta").append(alerta);
+                    },
+                    200: function(responseObject, textStatus, errorThrown) {
+                        
+
                     }
                 },
                 success:function(data)
                 { 
-                    console.log(data);
                     if(data != null){
-                        localStorage.setItem('usuario', data);
+                        localStorage.setItem('usuario', JSON.stringify(data));
                         if(data.role.role == "Cliente"){
                             location.href = 'index.php';
                         }else if(data.role.role == "Almacenista"){
                             location.href = 'almacenista.php';
-                        }else if(data.role.role == "Administrador"){
-
+                        }else if(data.role.role == "Administra"){
+                            location.href = 'useralmacenista.php';
                         }
                     }
                 }

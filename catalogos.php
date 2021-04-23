@@ -69,8 +69,21 @@
 
 </html>
 
-<script>
+<script type="text/javascript" language="javascript">
 $(document).ready(function(){
+  var usuario = usuarioLocalStorage();
+    if(usuario != null || usuario.role.role != "Cliente"){
+        location.href = 'index.php';
+    }
+    function usuarioLocalStorage() {
+        let usuario;
+        if(localStorage.getItem('usuario') == null) {
+            usuario = null;
+        } else {
+            usuario = JSON.parse(localStorage.getItem('usuario'));
+        }
+        return usuario;
+    }
   var catalogs;
    $.getJSON("http://25.98.13.19:5555/api/Catalog/GetAll", function( data ) {
     catalogs = data;

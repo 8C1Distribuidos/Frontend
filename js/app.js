@@ -201,7 +201,6 @@ function eliminarProductoLocalStorage(id) {
       p.splice(index, 1);
     }
   });
-  console.log(p);
   // Añadimos el arreglo actual a storage
   localStorage.setItem('productos', JSON.stringify(p) );
   cargarCarrito(p);
@@ -211,4 +210,6 @@ function eliminarProductoLocalStorage(id) {
 function vaciarLocalStorage() {
   localStorage.clear();
 }
+
+
 

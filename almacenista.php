@@ -1,25 +1,19 @@
 <html>
 	<head>
 		<title>Productos</title>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
 		<script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
 		<script src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>		
 		<link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css" />
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-		<link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-        
 		<link rel="stylesheet" href="css/almacenista.css">
 		
 	</head>
 	<body>
+    <?php include('header.html'); ?>
 		<div class="milky" align="center">Lista de productos</div>
-		<div class="container box">
+		<div style="margin-top:130px" class="container box">
 			<br />
 			<div class="table-responsive">
 				<br />
-				
 				<div align="center">
 				<img src="img/logo-top-1.png"height="120px"><button type="button" id="add_button"  data-toggle="modal" data-target="#productosModal" class="btn btn-default orange-circle-button">+</button>
 				</div>
@@ -43,7 +37,6 @@
                     </tbody>
 				</table>
 			</div>
-		
 </body>
 </html>
 </div>
@@ -86,16 +79,28 @@
 </div>
 
 
-<script>
+<script type="text/javascript" language="javascript">
     $(document).ready(function(){
-
+        var usuario = usuarioLocalStorage();
+    if(usuario== null || usuario.role.role != "Almacenist"){
+        location.href = 'index.php';
+    }
+    function usuarioLocalStorage() {
+        let usuario;
+        if(localStorage.getItem('usuario') == null) {
+            usuario = null;
+        } else {
+            usuario = JSON.parse(localStorage.getItem('usuario'));
+        }
+        return usuario;
+    }
         //Varibles
         var products;
         var classifications;
-        var urlProducts = "http://25.98.13.19:5555/api/Product/"
+        var urlProducts = "http:localhost:3000/Products"
 
         //GET productos
-        $.getJSON(urlProducts+"GetAll", function( data ) {
+        $.getJSON(urlProducts, function( data ) {
             products = data;
             loadTable();
         });
@@ -117,7 +122,7 @@
             $("#productos_data").append(tr);
             };
         }
-        function uploadFile(imagen){
+        function uploadFile(imagen,url){
             //var filename = $('#filename').val();   
             var filename  = imagen;               //To save file with this name
             var file_data = $('.fileToUpload').prop('files')[0];    //Fetch the file
@@ -125,7 +130,7 @@
                 form_data.append("file",file_data);
                 form_data.append("filename",filename);
                 $.ajax({
-                    url: "load.php",                      //Server api to receive the file
+                    url: url,                      //Server api to receive the file
                     type: "POST",
                     dataType: 'script',
                     cache: false,
@@ -141,7 +146,7 @@
 }
 
         //GET clasificaciones 
-        $.getJSON("http://25.98.13.19:5555/api/Category/GetAll", function( data ) {
+        $.getJSON("http://localhost:3000/Category", function( data ) {
             classifications = data;
             for(var i=0;i<classifications.length;i++)
             {
@@ -223,15 +228,15 @@
                         obj[name]= parseInt(value);
                     }
                 }
-                return JSON.stringify( obj );
+                console.log(JSON.stringify(obj));
+                return JSON.stringify(obj);
             }
             
             var json = toJSONString( this );
             if( $('#action').val() == "Add"){
                 //POST
-                console.log(json);
                 $.ajax({
-                    url:urlProducts+"Post",
+                    url:urlProducts,
                     type:"POST",
                     data:json,
                     dataType:"json",
@@ -239,7 +244,7 @@
                     success:function(data)
                     {
 
-                        uploadFile(obj.imageLink);
+                        uploadFile("upload/" + obj.imageLink, "loadFoto.php");
                         setTimeout(reload,100);
                         $('#productos_form')[0].reset();
                     }
@@ -248,14 +253,14 @@
                 console.log(json);
                 //PUT
                 $.ajax({
-                    url:urlProducts+"Put",
+                    url:urlProducts,
                     type:"PUT",
                     data:json,
                     dataType:"json",
                     contentType:"application/json",
                     success:function(data)
                     {
-                        uploadFile(obj.imageLink);
+                        uploadFile("upload/" + obj.imageLink, "loadFoto.php");
                         setTimeout(reload,100);
                         $('#productos_form')[0].reset();
                     }
@@ -281,16 +286,20 @@
                         var imagen;
                         for( var i = 0; i < products.length; i++){     
                             if ( products[i]["id"] == productos_id) { 
-                                imagen = products[i]["image_Link"];
+                                imagen = products[i]["imageLink"];
                                 products.splice(i, 1); 
                                 break; 
                             }
                         }  
                         $('#productos_data > tbody').empty();
+                        uploadFile("upload/" + imagen, "deleteImage.php");
+                        setTimeout(reload,100);
                         loadTable();
-                        uploadFile(imagen);
                     }
                 });
+                function reload() {
+                location.reload();
+                }
             }
             else
             {

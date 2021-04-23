@@ -65,6 +65,9 @@ body{
     color: #e3ddcf;
     margin-top: 20px;
 }
+.registration-form .btn-success:hover{
+    background-color: #9c0613;
+}
 
 .registration-form .form-icon{
     width: 70px;
