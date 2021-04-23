@@ -95,14 +95,6 @@
                                 <p></p>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <label>Fecha de cumpleaños</label>
-                            </div>
-                            <div class="col-md-6">
-                                <p></p>
-                            </div>
-                        </div>
                       </div>
               </div>
           </div>
@@ -207,57 +199,44 @@
 <script>
   
   $(document).ready(function(){
-    usuarioLocalStorage()
+    var usuario = usuarioLocalStorage();
     if (usuario == null) {
         location.href = 'userspage.php';
     }
     updatecont()
   }); 
   function updatecont(){
-    var url  = "http://localhost:3000/users";
-    $.getJSON(url, function( data ) {
-        var obj = data;
+    var obj = usuarioLocalStorage()
         $("#userInfo").empty();
         for(var i=0;i<obj.length;i++)
         {
-            if (obj[i]["id"]==usuario[i]["id"]){
-                var tr  ="<div class=\"row\">"+
-                        "<div class=\"col-md-6\">"+
-                            "<label>"+"Correo"+"</label>"+
-                        "</div>"+
-                        "<div class=\"col-md-6\">"+
-                            "<p>"+obj[i]["email"]+"</p>"+
-                        "</div>"+
+            var tr  ="<div class=\"row\">"+
+                    "<div class=\"col-md-6\">"+
+                        "<label>"+"Correo"+"</label>"+
                     "</div>"+
-                    "<div class=\"row\">"+
-                        "<div class=\"col-md-6\">"+
-                            "<label>"+"Nombre"+"</label>"+
-                        "</div>"+
-                        "<div class=\"col-md-6\">"+
-                            "<p>"+obj[i]["firstName"]+ " " + obj[i]["paternalName"]+ " " + obj[i]["maternalName"]+"</p>"+
-                        "</div>"+
+                    "<div class=\"col-md-6\">"+
+                        "<p>"+obj[i]["email"]+"</p>"+
                     "</div>"+
-                    "<div class=\"row\">"+
-                        "<div class=\"col-md-6\">"+
-                            "<label>"+"Contraseña"+"</label>"+
-                        "</div>"+
-                        "<div class=\"col-md-6\">"+
-                            "<p>"+obj[i]["password"]+"</p>"+
-                        "</div>"+
+                "</div>"+
+                "<div class=\"row\">"+
+                    "<div class=\"col-md-6\">"+
+                        "<label>"+"Nombre"+"</label>"+
                     "</div>"+
-                    "<div class=\"row\">"+
-                        "<div class=\"col-md-6\">"+
-                            "<label>"+"Fecha de cumpleaños"+"</label>"+
-                        "</div>"+
-                        "<div class=\"col-md-6\">"+
-                            "<p>"+obj[i]["birthDate"]+"</p>"+
-                        "</div>"+
-                    "</div>";
-                $("#userInfo").append(tr);
-            }
+                    "<div class=\"col-md-6\">"+
+                        "<p>"+obj[i]["firstName"]+ " " + obj[i]["paternalName"]+ " " + obj[i]["maternalName"]+"</p>"+
+                    "</div>"+
+                "</div>"+
+                "<div class=\"row\">"+
+                    "<div class=\"col-md-6\">"+
+                        "<label>"+"Contraseña"+"</label>"+
+                    "</div>"+
+                    "<div class=\"col-md-6\">"+
+                        "<p>"+obj[i]["password"]+"</p>"+
+                    "</div>"+
+                "</div>";
+            $("#userInfo").append(tr);
         }
-    });
-  }
+    }
   $(document).on('submit', '#productos_form',function(event){
         var extension = $('#imagen').val().split('.').pop().toLowerCase();
         if(extension != '')
@@ -286,7 +265,7 @@
         var json = toJSONString( this );
         event.preventDefault();
         var x= $('#action').val();
-        if( x == "Add"){
+        if( x == "Update"){
             $.ajax({
                 url:"http://localhost:3000/users",
                 type:"POST",
@@ -297,19 +276,15 @@
                 {
                     $('#users-form')[0].reset();
                     $('#productosModal').modal('hide');
-                    obj.push(json);
-                    $('#productos_data > tbody').empty();
-                    loadTable();
+
                 }
             });
-        }else{
-            //UPDATE
-        } 
+        }
     });
 
     //Modal UPDATE
     $(document).on('click', '.profileEdit', function(){
-            var obj = products.find( product => product.id ==  $(this).attr("id"));
+        var obj = usuario;
             $('#productosModal').modal('show');
             $('.modal-title').text("Editar perfil de usuario");
             $('#name').val(obj.firstName);
@@ -327,7 +302,7 @@
         if(localStorage.getItem('usuario') == null) {
             usuario = null;
         } else {
-            usuario = JSON.parse( localStorage.getItem('usuario'));
+            usuario = JSON.parse(localStorage.getItem('usuario'));
         }
         return usuario;
     }
