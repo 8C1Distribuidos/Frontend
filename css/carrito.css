@@ -19,8 +19,6 @@ h1 {
 }
 .submenu {
   position: relative;
-  list-style-type: none;
-  width: 50%;
 }
 .submenu #carrito{
   display: none;

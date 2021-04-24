@@ -4,6 +4,7 @@
     <!-- Required meta tags -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="css/vinos.css">
     <!-- Bootstrap CSS -->
     <title>Vinos</title>
     <link rel="shortcut icon" href="img/logo_icon.jpg" >
@@ -38,9 +39,9 @@
     var clasification;
     var products = [];
     var classifications;
-    var urlProducts = "http://25.98.13.19:5555/api/Product/GetAll"
+    var urlProducts = "http://25.4.107.19:3000/Products"
     var usuario = usuarioLocalStorage();
-    if(usuario != null || usuario.role.role != "Cliente"){
+    if(usuario == null || usuario.role.role != "Cliente"){
         location.href = 'index.php';
     }
     function usuarioLocalStorage() {
@@ -59,7 +60,7 @@
     });
 
     //GET clasificaciones 
-    $.getJSON("http://25.98.13.19:5555/api/Category/GetAll", function( data ) {
+    $.getJSON("http://25.4.107.19:3000/Category", function( data ) {
         classifications = data;
         for(var i=0;i<classifications.length;i++)
         {

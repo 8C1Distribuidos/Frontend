@@ -1,6 +1,7 @@
 <html>
 	<head>
 		<title>Productos</title>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
 		<script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
 		<script src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>		
 		<link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css" />
@@ -10,7 +11,7 @@
 	<body>
     <?php include('header.html'); ?>
 		<div class="milky" align="center">Lista de productos</div>
-		<div style="margin-top:130px" class="container box">
+		<div style="margin-top:5rem" class="container box">
 			<br />
 			<div class="table-responsive">
 				<br />
@@ -81,7 +82,7 @@
 
 <script type="text/javascript" language="javascript">
     $(document).ready(function(){
-        var usuario = usuarioLocalStorage();
+    var usuario = usuarioLocalStorage();
     if(usuario== null || usuario.role.role != "Almacenist"){
         location.href = 'index.php';
     }

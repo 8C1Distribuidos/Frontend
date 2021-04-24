@@ -5,7 +5,6 @@
     <link rel="stylesheet" href="css/carrito.css">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="fontawesome/css/all.css">
-    <link rel="stylesheet" href="css/vinos.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
@@ -26,15 +25,12 @@
                       Productos
                     </a>
                 </li>
-                
-              </ul>
-            <ul class="nav navbar-nav">
+            </ul>
+            <ul style="width: 10%;" class="nav navbar-nav navbar-right">
                 <li class="nav-item text-center" id="signup-btn">
                     <a href="login.php" class="nav-link" type="button"><span class="fa fa-user"></span><span class="d-none d-sm-inline d-xl-block px-1"></span></a>
                 </li>
-                <li class="nav-item text-center" id="salir">
-                </li>
-                <li class="submenu">
+                <li class=" nav-item text-center submenu" >
                   <a href="#" id="img-carrito" class="nav-link" data-toggle="modal" data-target="#"><span class="fa fa-shopping-cart"></span><span class="d-none d-sm-inline d-xl-block px-1"></span></a>
                   <div id="carrito">
                     <table id="lista-carrito" class="u-full-width">
@@ -50,9 +46,11 @@
                       </thead>
                       <tbody></tbody>
                     </table>
-                    <a href="#" id="pagar" style="display: none;" class="button-l u-full-width">Pagar</a>
+                    <a href="pago.php" id="pagar" style="display: none;" class="button-l u-full-width">Pagar</a>
                     <a href="#" id="vaciar-carrito" class="button-l u-full-width">Vaciar Carrito</a>
                   </div>
+                </li>
+                <li class="nav-item text-center" id="salir">
                 </li>
             </ul>
         </div>
@@ -65,12 +63,14 @@
   $(document).ready(function(){
     var usuario = usuarioLocalStorage();
     if(usuario != null){
-      var salir = "<a class='nav-link' type='button' id='cerrar' class='nav-link' type='button'><i class='fas fa-sign-out-alt'></i></a>"
+      var salir = "<a class='nav-link' type='button' id='cerrar' class='nav-link' type='button'><i class='fas fa-sign-out-alt'></i></a>";
       var div = document.getElementById("salir");
       div.innerHTML += salir;
       if(usuario != null && usuario.role.role != "Cliente"){
         document.getElementById("img-carrito").style.visibility = "hidden";
-      }if( usuario.role.role == "Almacenist" ){
+        document.getElementById("img-carrito").remove('nav-link');
+      }
+      if(usuario.role.role == "Almacenist" ){
         var inicio = document.getElementById("Productos");
         inicio.textContent = "Almacen";
         inicio.href = "almacenista.php";

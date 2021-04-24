@@ -14,40 +14,7 @@
     <link rel="shortcut icon" href="img/logo_icon.jpg" >
   </head>
   <body>
-  <header>
-  <div align= "center"style="background: #E3DDCF"><a href="index.php"><img src="img/logo-top-1.png" height="50px" text-align= "center"></div></a>
-  <nav class="navbar navbar-dark bg-dark navbar-expand-md justify-content-center">
-        <div class="navbar-collapse collapse justify-content-between align-items-center w-100" id="collapsingNavbar2">
-            <ul class="navbar-nav mx-auto">
-                <li class="nav-item active">
-                   <a class="nav-link" href="index.php" id="navbar" type="button" >
-                      Inicio
-                    </a>
-                </li>
-                <li class="nav-item dropdown">
-                <a class="nav-link" href="catalogos.php" id="navbar" type="button" >
-                      Productos
-                    </a>
-                 </li>
-             
-               </ul>
-            <ul class="nav navbar-nav">
-                <li class="nav-item text-center" id="signup-btn">
-                <a href="userspage.php" class="nav-link" type="button"><span class="fa fa-user"></span><span class="d-none d-sm-inline d-xl-block px-1"></span></a>
-                </li>
-                <li class="nav-item text-center" id="login-btn">
-                    <a href="#" class="nav-link" data-toggle="modal" data-target="#"><span class="fa fa-shopping-cart"></span><span class="d-none d-sm-inline d-xl-block px-1"></span></a>
-                </li>
-                
-            </ul>
-        </div>
-    </nav>
-
-  <br>
-  </header>
-
-  <body>
-
+  <?php include('header.html'); ?> 
   <div class="milky">
     <p style = "font-family:Brush;">
       Catálogos
@@ -72,7 +39,7 @@
 <script type="text/javascript" language="javascript">
 $(document).ready(function(){
   var usuario = usuarioLocalStorage();
-    if(usuario != null || usuario.role.role != "Cliente"){
+    if(usuario == null || usuario.role.role != "Cliente"){
         location.href = 'index.php';
     }
     function usuarioLocalStorage() {
@@ -102,11 +69,10 @@ $(document).ready(function(){
       }
     }
 
-  var sec = document.getElementById('section');
-  sec.onclick = function(event) {
+  $(document).on('click', '.category', function(){
     location.href = 'productos.php';
-    local.storage("catalog", $(this).attr("id"));
-  };
+    localStorage("catalog", $(this).attr("id"));
+  });
 
 });
       

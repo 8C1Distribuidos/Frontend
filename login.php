@@ -180,11 +180,13 @@
                 contentType:"application/json",
                 statusCode: {
                     404: function(responseObject, textStatus, errorThrown) {
-                        var alerta = "<div class='alert alert-danger' role='alert'>Credenciales incorrectas</div>";
+                        $("#alerta").html("");
+                        var alerta = "<div class='alert alert-danger' id ='alert' role='alert'>Credenciales incorrectas</div>";
                         $("#alerta").append(alerta);
                     },
                     400: function(responseObject, textStatus, errorThrown) {
-                        var alerta = "<div class='alert alert-info role='alert'>Error de servidor, intenta más tarde</div>";
+                        $("#alerta").html("");
+                        var alerta = "<div class='alert alert-info id ='alert' role='alert'>Error de servidor, intenta más tarde</div>";
                         $("#alerta").append(alerta);
                     },
                     200: function(responseObject, textStatus, errorThrown) {
