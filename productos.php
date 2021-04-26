@@ -27,22 +27,23 @@
       <div id="tarjetita">
       </div>
     </div>
-   
-
-<script src="js/app.js"></script>
   </body>
 </html>
 
 <script type="text/javascript" language="javascript">
   
   $(document).ready(function(){
+    const productos = document.getElementById('list-products');
+    productos.addEventListener('click', comprar);
     var clasification;
     var products = [];
     var classifications;
-    var urlProducts = "http://25.4.107.19:3000/Products"
+    var urlProducts = "http://localhost:3000/Products"
     var usuario = usuarioLocalStorage();
-    if(usuario == null || usuario.role.role != "Cliente"){
+    if(usuario!=null){
+    if(usuario.role.role != "Cliente"){
         location.href = 'index.php';
+    }
     }
     function usuarioLocalStorage() {
         let usuario;
@@ -60,7 +61,7 @@
     });
 
     //GET clasificaciones 
-    $.getJSON("http://25.4.107.19:3000/Category", function( data ) {
+    $.getJSON("http://localhost:3000/Category", function( data ) {
         classifications = data;
         for(var i=0;i<classifications.length;i++)
         {

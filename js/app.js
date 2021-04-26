@@ -1,6 +1,6 @@
 // Variables
 const carrito = document.getElementById('carrito');
-const productos = document.getElementById('list-products');
+
 const listaProductos = document.querySelector('#lista-carrito tbody');
 const vaciarCarritoBtn = document.getElementById('vaciar-carrito');
 const pagarBtn = document.getElementById('pagar');
@@ -12,7 +12,7 @@ const pagarBtn = document.getElementById('pagar');
 cargarEventListeners();
 function cargarEventListeners() {
   // Dispara cuando se presiona "Agregar Carrito"
-  productos.addEventListener('click', comprar);
+
   // Cuando se elimina un curso del carrito
   carrito.addEventListener('click', eliminarProducto);
   // Al Vaciar el carrito

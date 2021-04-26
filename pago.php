@@ -1,8 +1,9 @@
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<link rel="stylesheet" href="css/payment.css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <link href="fontawesome/css/all.css" rel="stylesheet">
+<link rel="stylesheet" href="css/payment.css">
+<?php include('header.html'); ?>
+<form id="pago_form">
 <div class="container mt-5 d-flex justify-content-center">
     <div class="card p-4" style="width: 35rem;">
         <div class="d-flex justify-content-between align-items-center">
@@ -16,14 +17,13 @@
                     <th>Imagen</th>
                     <th>Nombre</th>
                     <th>Precio</th>
-                    <th> </th>
                     <th>Cantidad</th>
-                    <th> </th>
                   </tr>
                 </thead>
                 <tbody></tbody>
               </table>
         </div>
+        <h5 class="total-amount">Información de facturación</h5>
         <div class="d-flex justify-content-between pt-4">
             <div> 
                 <label style="margin-left: 2rem;">
@@ -31,18 +31,18 @@
                         <i style="margin-left: 10px;" class="fas fa-city"></i>
                     </span> 
                 </label> 
-                <select style="margin-left: 2rem; font-size: 16px; width: 17rem; height: 3rem;" name="municipio" class="form-control expiry-class"></select></div>
+                <select style="margin-left: 2rem; font-size: 16px; width: 17rem; margin-rigth:7rem;" name="municipio" class="form-control expiry-class"></select></div>
             <div > 
-                <label style="margin-left: -9.5rem;">
+                <label style="margin-left: 5rem;">
                     <span class="label-text">CP
                         <i style="margin-left: 10px;" class="fas fa-mail-bulk"></i>
                     </span> 
                 </label> 
-                <input style="margin-left: -9.5rem; font-size: 16px;" type="tel" name="cvvTarjeta" class="form-control cvv-class" maxlength="4" pattern="\d*"> 
+                <input style="margin-left: 3rem; font-size: 16px; width:3rem" type="tel" name="cp" class="form-control cvv-class" maxlength="4" pattern="\d*" required> 
             </div>
         </div>
-        <div class="pt-4"> <label style="margin-left: 2rem;" class="d-flex justify-content-between"> <span class="label-text label-text-cc-number">DIRECCIÓN <i class="fas fa-map-pin"></i></span></label> <input  style="margin-left: 2rem; width: 28rem;" type="tel" name="credit-number" class="form-control credit-card-number" maxlength="19" placeholder="Calle San Andres #1234"> </div>
-        <div class="pt-4"> <label style="margin-left: 2rem;" class="d-flex justify-content-between"> <span class="label-text label-text-cc-number">NUMERO DE TARJETA <i style="margin-left: 10px;" class="fas fa-credit-card"></i></span></label> <input  style="margin-left: 2rem; width: 28rem;" type="tel" name="credit-number" class="form-control credit-card-number" maxlength="19" placeholder="Card number"> </div>
+        <div class="pt-4"> <label style="margin-left: 2rem;" class="d-flex justify-content-between"> <span class="label-text label-text-cc-number">DIRECCIÓN <i class="fas fa-map-pin"></i></span></label> <input  style="margin-left: 2rem; width: 28rem;" type="tel" name="direccion" class="form-control credit-card-number" maxlength="19" placeholder="Calle San Andres #1234" required> </div>
+        <div class="pt-4"> <label style="margin-left: 2rem;" class="d-flex justify-content-between"> <span class="label-text label-text-cc-number">NUMERO DE TARJETA <i style="margin-left: 10px;" class="fas fa-credit-card"></i></span></label> <input  style="margin-left: 2rem; width: 28rem;" type="tel" name="numeroTarjeta" class="form-control credit-card-number" maxlength="19" placeholder="Card number" required> </div>
         <div class="d-flex justify-content-between pt-4">
             <div> 
                 <label style="margin-left: 2rem;">
@@ -50,27 +50,27 @@
                         <i style="margin-left: 10px;" class="fas fa-calendar-alt"></i>
                     </span> 
                 </label> 
-                <input style="margin-left: 2rem; font-size: 16px;" type="text" name="fechaTarjeta" class="form-control expiry-class" placeholder="MM / YY" pattern="^(0[1-9]|1[0-2])\/?([0-9]{2})$" maxlength="5"></div>
+                <input style="margin-left: 2rem; font-size: 16px;" type="text" name="fechaTarjeta" class="form-control expiry-class" placeholder="MM / YY" pattern="^(0[1-9]|1[0-2])\/?([0-9]{2})$" maxlength="5" required></div>
             <div > 
                 <label style="margin-left: -9.5rem;">
                     <span class="label-text">CVV 
                         <i style="margin-left: 10px;" class="fas fa-lock"></i>
                     </span> 
                 </label> 
-                <input style="margin-left: -9.5rem; font-size: 16px;" type="tel" name="cvvTarjeta" class="form-control cvv-class" maxlength="4" pattern="\d*"> 
+                <input style="margin-left: -9.5rem; font-size: 16px;" type="tel" name="cvvTarjeta" class="form-control cvv-class" maxlength="4" pattern="\d*" required> 
             </div>
         </div>
-        <div class="d-flex justify-content-between pt-5 align-items-center"> <button type="button" class="btn cancel-btn">Cancelar</button> 
-            <button type="button" class="btn payment-btn">Pagar</button> </div>
+        <div class="d-flex justify-content-between pt-5 align-items-center"> <button type="button" id ="cancelar" class="btn cancel-btn">Cancelar</button> 
+            <input  type="submit" class="btn payment-btn" id="pagar" value="Pagar"></div>
     </div>
 </div>
+</form>
 
 <div class="modal fade" id="myModalError" role="dialog">
     <div class="modal-dialog">
 <!-- Modal content-->
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" id="close" class="close" data-dismiss="modal">&times;</button>
                 <h4 class="modal-title">Usuario no autenticado</h4>
             </div>
             <div class="modal-body"> 
@@ -83,6 +83,8 @@
 
     </div>
 </div>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+        <script src="js/bootstrap.min.js"></script> 
 
 <script>
      $(document).ready(function(){
@@ -93,42 +95,58 @@
             location.href = "index.php";
         }
         function usuarioLocalStorage() {
-            let usuario;
-            if(localStorage.getItem('usuario') == null) {
-                usuario = null;
-            } else {
-                location.href = 'userspage.php';
-            }
+            var usuario = JSON.parse(localStorage.getItem('usuario'));
+            return usuario;
         }
         $('#close').click(function(){
             location.href = 'login.php';
         });
+        cargarCarrito();
+        function toJSONString( form ) {
+            var obj = {};
+            var elements = form.querySelectorAll( "input, select" );
+            var ident=Math.floor(Math.random() * 999999);
+            for( var i = 0; i < elements.length; ++i ) {
+                var element = elements[i];
+                var name = element.name;
+                var value = element.value;
+                if( name && name!="pagar") {
+                    obj[name] = value;
+                }
+            }
+            obj.products = JSON.parse(localStorage.getItem('productos'));
+            console.log(obj);
+            return JSON.stringify(obj);
+        }
 
-function cargarCarrito(){
-    var productos = localStorage.getItem('productos');
-    if(productos.length == 0){
-        location.href = "catalogos.php";
+        $(document).on('submit', '#pago_form',function(e){
+            e.preventDefault();
+            var json = toJSONString(this);
+
+        });
+
+    function cargarCarrito(){
+        var productos = JSON.parse(localStorage.getItem('productos'));
+        if(productos.length == 0){
+            location.href = "catalogos.php";
+        }   
+        console.log(productos);
+        productos.forEach(function(producto){
+        // constrir el template
+        const row = document.createElement('tr');
+        row.innerHTML = `
+        <td>
+        <img src="${producto.image}" height=70 width=70>
+        </td>
+        <td>${producto.name}</td>
+        <td>${producto.price}</td>
+        <td>${producto.amount}</td>
+        </td>
+        `;
+        document.getElementById("carrito-pago").appendChild(row);
+        }); 
+        calcularTotal();
     }
-  productos.forEach(function(producto){
-    // constrir el template
-    const row = document.createElement('tr');
-      row.innerHTML = `
-      <td>
-      <img src="${producto.image}" height=70 width=70>
-      </td>
-      <td>${producto.name}</td>
-      <td>${producto.price}</td>
-      <td><span style="font-size: 1.7rem;"class="mas" ><i class="fas fa-minus-square"></i><span></td>
-      <td>${producto.amount}</td>
-      <td><span style="font-size: 1.7rem;"class="mas" ><i class="fas fa-plus-square"></i><span></td>
-      <td>
-      <a href="#" style="font-size: 1.7rem;" class="borrar-producto" data-id="${producto.id}"><span style="font-size: 1.7rem; color:red"><i class="fas fa-times-circle"></i></span></a>
-      </td>
-      `;
-    document.getElementById("carrito-pago").appendChild(row);
-    });
-    calcularTotal();
-}
 function calcularTotal(){
   let productos = obtenerProductosLocalStorage();
   var total = 0;
@@ -136,7 +154,7 @@ function calcularTotal(){
   productos.forEach(function(producto) {
     total = total + (producto.amount * parseFloat(producto.price.substring(1)));
   });
-  document.getElementById('precioTotal').val("Pagar: $"+ total);
+  document.getElementById('precioTotal').value = total;
 }
 });
 
