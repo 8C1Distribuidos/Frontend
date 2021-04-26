@@ -130,9 +130,6 @@
                     <label>Email</label>
 					<input type="text" name="email" id="email" class="form-control"required />
 					<br />
-					<label>Seleccionar imagen del usuario</label>
-					<input type="file" name="imagen" id="imagen" onclick="upload_image();" class="form-control" required/>
-					<span id="productos_uploaded_image"></span>
 				</div>
 				<div class="modal-footer">
 					<input type="hidden" name="id" id="id" />
@@ -249,10 +246,10 @@
                 "</div>"+
                 "<div class=\"row\">"+
                     "<div class=\"col-md-6\">"+
-                        "<label>"+"Contraseña"+"</label>"+
+                        "<label>"+"*****"+"</label>"+
                     "</div>"+
                     "<div class=\"col-md-6\">"+
-                        "<p>"+obj["password"]+"</p>"+
+                        "<p>"+"*****"+"</p>"+
                     "</div>"+
                 "</div>";
             $("#userInfo").append(tr);
