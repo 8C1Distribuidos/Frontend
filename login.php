@@ -109,7 +109,7 @@
             } else {
                 location.href = 'userspage.php';
             }
-        }
+    }
     document.getElementById("passwordR")
     .addEventListener('input', function(evt) {
         const campo = evt.target,

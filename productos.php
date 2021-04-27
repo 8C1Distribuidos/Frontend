@@ -38,7 +38,7 @@
     var clasification;
     var products = [];
     var classifications;
-    var urlProducts = "http://localhost:3000/Products"
+    var urlProducts = "http://25.98.13.19:5555/api/Product/GetAll"
     var usuario = usuarioLocalStorage();
     if(usuario!=null){
     if(usuario.role.role != "Cliente"){
@@ -61,7 +61,7 @@
     });
 
     //GET clasificaciones 
-    $.getJSON("http://localhost:3000/Category", function( data ) {
+    $.getJSON("http://25.98.13.19:5555/api/Category/GetAll", function( data ) {
         classifications = data;
         for(var i=0;i<classifications.length;i++)
         {
@@ -78,6 +78,7 @@
     var ul = document.getElementById('myTab');
     ul.onclick = function(event) {
       clasification = event.target.innerHTML;
+      console.log(clasification);
       updatecont(products);
     };
 

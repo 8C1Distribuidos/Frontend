@@ -39,9 +39,11 @@
 <script type="text/javascript" language="javascript">
 $(document).ready(function(){
   var usuario = usuarioLocalStorage();
-    if(usuario == null || usuario.role.role != "Cliente"){
+  if(usuario != null){
+    if(usuario.role.role != "Cliente"){
         location.href = 'index.php';
     }
+  }
     function usuarioLocalStorage() {
         let usuario;
         if(localStorage.getItem('usuario') == null) {
@@ -53,6 +55,7 @@ $(document).ready(function(){
     }
   var catalogs;
    $.getJSON("http://25.98.13.19:5555/api/Catalog/GetAll", function( data ) {
+     console.log(data);
     catalogs = data;
     loadSection();
   });

@@ -1,12 +1,7 @@
 <html>
 	<head>
 		<title>Productos</title>
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
-		<script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
-		<script src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>		
-		<link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css" />
-		<link rel="stylesheet" href="css/almacenista.css">
-		
+        <link rel="stylesheet" href="css/almacenista.css">
 	</head>
 	<body>
     <?php include('header.html'); ?>
@@ -38,6 +33,14 @@
                     </tbody>
 				</table>
 			</div>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+		<script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+		<script src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>		
+		<link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css" />
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+		<link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		
 </body>
 </html>
 </div>
@@ -82,7 +85,7 @@
 
 <script type="text/javascript" language="javascript">
     $(document).ready(function(){
-    var usuario = usuarioLocalStorage();
+    /*var usuario = usuarioLocalStorage();
     if(usuario== null || usuario.role.role != "Almacenist"){
         location.href = 'index.php';
     }
@@ -94,11 +97,11 @@
             usuario = JSON.parse(localStorage.getItem('usuario'));
         }
         return usuario;
-    }
+    }*/
         //Varibles
         var products;
         var classifications;
-        var urlProducts = "http:localhost:3000/Products"
+        var urlProducts = "http://25.98.13.19:5555/api/Product/GetAll"
 
         //GET productos
         $.getJSON(urlProducts, function( data ) {
@@ -147,7 +150,7 @@
 }
 
         //GET clasificaciones 
-        $.getJSON("http://localhost:3000/Category", function( data ) {
+        $.getJSON("http://25.98.13.19:5555/api/Category/GetAll", function( data ) {
             classifications = data;
             for(var i=0;i<classifications.length;i++)
             {
