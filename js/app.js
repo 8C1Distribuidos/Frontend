@@ -39,9 +39,14 @@ function añadir(e) {
   let ListaCarrito = obtenerProductosLocalStorage();
   for (var i in ListaCarrito) {
     if (ListaCarrito[i].id == productoId) {
-       ListaCarrito[i].amount = ListaCarrito[i].amount + 1;
-       cargarCarrito(ListaCarrito);
-       break;
+      if(ListaCarrito[i].amount + 1 <= ListaCarrito[i].stock){
+        ListaCarrito[i].amount = ListaCarrito[i].amount + 1;
+        cargarCarrito(ListaCarrito);
+        
+      }else{
+        //
+      }
+      break;
     }
   }
 }

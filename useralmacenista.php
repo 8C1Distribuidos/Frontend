@@ -103,7 +103,7 @@
 
 <script>
     $(document).ready(function(){
-    /*let usuario = usuarioLocalStorage();
+    let usuario = usuarioLocalStorage();
     if(usuario== null || usuario.role.role != "Administra"){
         location.href = 'index.php';
     }
@@ -116,7 +116,7 @@
             usuario = JSON.parse(localStorage.getItem('usuario'));
         }
         return usuario;
-    }*/
+    }
         //Varibles
         var users;
         var urlStorers = "http://25.4.107.19:8080/storers"

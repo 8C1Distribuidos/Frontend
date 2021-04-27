@@ -127,6 +127,7 @@
             $('#createAccount').val("Add");
         }); 
         function toJSONString( form ) {
+            var ident=Math.floor(Math.random() * 999999);
             var obj = {};
             var elements = form.querySelectorAll( "input" );
             var nameUser;//almacena el nombre del usuario
@@ -136,6 +137,9 @@
                 var value = element.value;
                 if( name && name!="createAccount") {
                     obj[name] = value;
+                }
+                if(name == "createAccount"){
+                    obj["photo"] = ident;
                 }
             }
             return JSON.stringify(obj);

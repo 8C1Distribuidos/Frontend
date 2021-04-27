@@ -85,7 +85,7 @@
 
 <script type="text/javascript" language="javascript">
     $(document).ready(function(){
-    /*var usuario = usuarioLocalStorage();
+    var usuario = usuarioLocalStorage();
     if(usuario== null || usuario.role.role != "Almacenist"){
         location.href = 'index.php';
     }
@@ -97,7 +97,7 @@
             usuario = JSON.parse(localStorage.getItem('usuario'));
         }
         return usuario;
-    }*/
+    }
         //Varibles
         var products;
         var classifications;

@@ -4,18 +4,6 @@
     <!-- Required meta tags -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="fontawesome/css/all.css">
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
-    <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>		
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css" />
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-    <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-	
 
     <link rel="stylesheet" href="css/userspage.css">
 
@@ -29,7 +17,6 @@
         }
 
     </style>
-   <div align= "center"style="background: #E3DDCF"><a href="index.php"><img src="img/logo-top-1.png" height="90px" text-align= "center"></div></a>
     <?php include('header.html'); ?>
   <!--/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
   
@@ -48,9 +35,7 @@
                               <h5>
                                   Usuario
                               </h5>
-                              <h6>
-                                  Tipo de usuario: Usuario
-                              </h6>
+                              <div id="tipo" ></div>
                       <ul class="nav nav-tabs" id="myTab" role="tablist">
                           <li class="nav-item">
                               <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Información</a>
@@ -59,7 +44,7 @@
                   </div>
               </div>
               <div class="col-md-2">
-                  <button type="button" class="profile-edit-btn" name="profileEdit" id="add_button"  data-toggle="modal" data-target="#productosModal">Editar Perfil</button>
+                  <button type="button" class="profile-edit-btn" name="profileEdit" id="editProfile">Editar Perfil</button>
               </div>
           </div>
           <div class="row">
@@ -113,26 +98,25 @@
 				</div>
 				<div class="modal-body">
 					<label>Nombre(s)</label>
-					<input type="text" name="name" id="name" class="form-control "required />
+					<input type="text" name="firstName" id="firstName" class="form-control "required />
 					<br />
 					<label>Apellido paterno</label>
-                    <input type="text" class="form-control" name="lastNameP" id="lastNameP" required/>
+                    <input type="text" class="form-control" name="paternalName" id="paternalName" required/>
                     <br/>
                     <label>Apellido materno</label>
-					<input type="text" name="lastNameM" id="lastNameM" class="form-control"required />
+					<input type="text" name="maternalName" id="maternalName" class="form-control"required />
 					<br />
                     <label>Contraseña</label>
-					<input type="text" name="password" id="password" class="form-control"required />
-					<br />
-                    <label>Repetir contraseña</label>
-					<input type="text" name="passwordR" id="passwordR" class="form-control"required />
+					<input type="text" name="password" id="password" class="form-control"/>
 					<br />
                     <label>Email</label>
-					<input type="text" name="email" id="email" class="form-control"required />
+					<input type="text" name="email" id="email" class="form-control" disabled />
 					<br />
 				</div>
 				<div class="modal-footer">
 					<input type="hidden" name="id" id="id" />
+                    <input type="hidden" name="role" id="role" />
+                    <input type="hidden" name="photo" id="photo" />
 					<input type="submit" name="action" id="action" class="btn btn-success"/> 
 					<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
 				</div>
@@ -185,17 +169,28 @@
         </div>
     </div>
 </footer>
-
-    <script src="js/jquery-3.6.0.min.js"></script> 
-    <script src="js/popper.min.js"></script>
-    <script src="js/bootstrap.min.js"></script> 
-    </body>
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+		<script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+		<script src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>		
+		<link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css" />
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+		<link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		
+</body>
 </html>
 
 <script>
-    //uploadFile("users/"+obj.photo, "loadFoto.php");
-    function uploadFile(imagen, url){
+  
+  $(document).ready(function(){
+    var usuario = usuarioLocalStorage();
+    if (usuario == null) {
+        location.href = 'login.php';
+    }
+    updatecont();
+ 
+  //uploadFile("users/"+obj.photo, "loadFoto.php");
+  function uploadFile(imagen, url){
             var filename  = imagen;  
             //To save file with this name
                 var file_data = $('.fileToUpload').prop('files')[0];    //Fetch the file
@@ -216,14 +211,6 @@
                 }
             });
         }
-  
-  $(document).ready(function(){
-    var usuario = usuarioLocalStorage();
-    if (usuario == null) {
-        location.href = 'login.php';
-    }
-    updatecont();
-  }); 
   function updatecont(){
     var obj = usuarioLocalStorage();
     console.log(obj);
@@ -253,8 +240,11 @@
                     "</div>"+
                 "</div>";
             $("#userInfo").append(tr);
+            document.getElementById('tipo').textContent = "Tipo de usuario: " + usuario.role.role;
+            
     }
   $(document).on('submit', '#productos_form',function(event){
+      event.preventDefault();
         var extension = $('#imagen').val().split('.').pop().toLowerCase();
         if(extension != '')
         {
@@ -276,10 +266,12 @@
                 if( name && name!="action") {
                     obj[ name ] = value;
                 }
-                if( name && name!="role") {
+                if( name && name == "role") {
+                    console.log(value);
                     obj[ name ] = JSON.parse(value);
                 }
             }
+            console.log(JSON.stringify( obj ))
             return JSON.stringify( obj );
         }
         var json = toJSONString( this );
@@ -287,14 +279,15 @@
         var x= $('#action').val();
         if( x == "Update"){
             $.ajax({
-                url:"http://localhost:3000/users",
-                type:"POST",
+                url:"http://25.4.107.19:8080/users",
+                type:"PUT",
                 data:json,
                 dataType:"json",
                 contentType:"application/json",
                 success:function(data)
                 {
-                    $('#users-form')[0].reset();
+                    localStorage.setItem('usuario',json);
+                    updatecont();
                     $('#productosModal').modal('hide');
                 }
             });
@@ -302,17 +295,18 @@
     });
 
     //Modal UPDATE
-    $(document).on('click', '.profileEdit', function(){
+    $('#editProfile').click(function(){
         var obj = usuarioLocalStorage();
         console.log(obj);
             $('#productosModal').modal('show');
             $('.modal-title').text("Editar perfil de usuario");
-            $('#name').val(obj.firstName);
-            $('#lastNameP').val(obj.paternalName);
-            $('#lastNameM').val(obj.maternalName);
-            $('#stock').val(obj.password);
-            $('#costo').val(obj.email);
+            $('#firstName').val(obj.firstName);
+            $('#paternalName').val(obj.paternalName);
+            $('#maternalName').val(obj.maternalName);
+            $('#password').val(obj.password);
+            $('#email').val(obj.email);
             $('#id').val(obj.id);
+            $('#photo').val(obj.photo);
             $('#role').val(JSON.stringify(obj.role));
             $('#productos_uploaded_image').html(obj.imagen);
             $('#action').val("Update");
@@ -327,4 +321,5 @@
         }
         return usuario;
     }
+     }); 
 </script>
