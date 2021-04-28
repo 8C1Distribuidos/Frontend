@@ -4,24 +4,19 @@
     <!-- Required meta tags -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-
     <link rel="stylesheet" href="css/userspage.css">
-
     <title>Usuario</title>
     <link rel="shortcut icon" href="img/logo_icon.jpg" >
   </head>
-  <body>
-    <style>
-        .dropdown:hover>.dropdown-menu{
-            display: block;
-        }
-
-    </style>
-    <?php include('header.html'); ?>
+    
   <!--/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
-  
+<body>
+        <div align= "center">
+            <?php include('header.html'); ?>
+        </div>
+        
 <form method="post">
-    <div class="container emp-profile">
+    <div style="margin-top: 10rem;" class="container emp-profile">
       <form method="post">
           <div class="row">
               <div class="col-md-4">
@@ -36,11 +31,38 @@
                                   Usuario
                               </h5>
                               <div id="tipo" ></div>
-                      <ul class="nav nav-tabs" id="myTab" role="tablist">
+                      <ul style = "margin-top: 3%;"class="nav nav-tabs" id="myTab" role="tablist">
                           <li class="nav-item">
                               <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Información</a>
                           </li>
                       </ul>
+                      <div style = "margin-top: 7%;" class="tab-content profile-tab" id="userInfo">
+                        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab"></div>
+                          <div class="row">
+                              <div class="col-md-6">
+                                  <label>Correo</label>
+                              </div>
+                              <div class="col-md-6">
+                                  <p></p>
+                              </div>
+                          </div>
+                          <div class="row">
+                              <div class="col-md-6">
+                                  <label>Nombre</label>
+                              </div>
+                              <div class="col-md-6">
+                                  <p></p>
+                              </div>
+                          </div>
+                          <div class="row">
+                              <div class="col-md-6">
+                                  <label>Contraseña</label>
+                              </div>
+                              <div class="col-md-6">
+                                  <p></p>
+                              </div>
+                          </div>
+                        </div>
                   </div>
               </div>
               <div class="col-md-2">
@@ -49,38 +71,10 @@
           </div>
           <div class="row">
               <div class="col-md-4">
-                  <div class="profile-work">
-                      
-                  </div>
+                  
               </div>
               <div class="col-md-8">
-                  <div class="tab-content profile-tab" id="userInfo">
-                      <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab"></div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <label>Correo</label>
-                            </div>
-                            <div class="col-md-6">
-                                <p></p>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <label>Nombre</label>
-                            </div>
-                            <div class="col-md-6">
-                                <p></p>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <label>Contraseña</label>
-                            </div>
-                            <div class="col-md-6">
-                                <p></p>
-                            </div>
-                        </div>
-                      </div>
+                  
               </div>
           </div>
       </form>           
@@ -107,8 +101,9 @@
 					<input type="text" name="maternalName" id="maternalName" class="form-control"required />
 					<br />
                     <label>Contraseña</label>
-					<input type="text" name="password" id="password" class="form-control"/>
-					<br />
+					<input type="text" name="password" id="passwordR" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,30}$" class="form-control"/>
+					<label for="passwordR">Longitud mínima de 8 caracteres, incluyendo mayúsculas, minúsculas y números</label>
+                    <br />
                     <label>Email</label>
 					<input type="text" name="email" id="email" class="form-control" disabled />
 					<br />
@@ -150,36 +145,14 @@
 </div>
   <!--/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
 
-  
-<footer class="bg-dark text-center text-lg-start text-light">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-3">
-                <div> <img src="img/logo_invert.jpg"  height="50px"> </div>
-            </div>
-            <div class="col-lg-3 col-md-11 mb-4 mb-md-0 p-3">
-                <span class="fa fa-phone-alt"></span> (+33)31235608
-            </div>
-            <div class="col-lg-3 col-md-12 mb-4 mb-md-0 p-3">
-                <span class="fa fa-envelope"></span> info@leckereweine.com
-            </div>
-            <div class="col-lg-3 col-md-12 mb-4 mb-md-0 p-3 text-right">
-                © Leckere Weine 2021 
-            </div>
-        </div>
-    </div>
-</footer>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
-		<script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
-		<script src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>		
-		<link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css" />
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-		<link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-		
+  <?php include('footer.html'); ?>
 </body>
 </html>
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  
 <script>
   
   $(document).ready(function(){
@@ -212,10 +185,10 @@
                 "</div>"+
                 "<div class=\"row\">"+
                     "<div class=\"col-md-6\">"+
-                        "<label>"+"*****"+"</label>"+
+                        "<label>"+"Contraseña"+"</label>"+
                     "</div>"+
                     "<div class=\"col-md-6\">"+
-                        "<p>"+"*****"+"</p>"+
+                        "<p>"+"********"+"</p>"+
                     "</div>"+
                 "</div>";
             $("#userInfo").append(tr);
@@ -269,11 +242,22 @@
                 return false;
             }
         }
-        //$('#userImageModal').modal('hide');
         uploadFile("users/"+usuario.photo, "loadFoto.php");
-        alert("1");
-        setTimeout(verificarFoto,100);
-        
+        setTimeout(reload,100);
+    });
+    function reload(){
+        location.reload();
+    }
+    document.getElementById("passwordR")
+    .addEventListener('input', function(evt) {
+        const campo = evt.target,
+        regex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,30}$/;
+        //Se muestra un texto válido/inválido a modo de ejemplo
+        if (regex.test(campo.value)) {
+            this.style.backgroundColor = "palegreen";
+        } else {
+            this.style.backgroundColor = "indianred";
+        }
     });
   $(document).on('submit', '#productos_form',function(event){
       event.preventDefault();
@@ -320,13 +304,13 @@
     //Modal UPDATE
     $('#editProfile').click(function(){
         var obj = usuarioLocalStorage();
-        console.log(obj);
+            $('#passwordR').val("");
+            document.getElementById("passwordR").style.backgroundColor = "transparent";
             $('#productosModal').modal('show');
             $('.modal-title').text("Editar perfil de usuario");
             $('#firstName').val(obj.firstName);
             $('#paternalName').val(obj.paternalName);
             $('#maternalName').val(obj.maternalName);
-            $('#password').val(obj.password);
             $('#email').val(obj.email);
             $('#id').val(obj.id);
             $('#photo').val(obj.photo);

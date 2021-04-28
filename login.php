@@ -71,7 +71,7 @@
                 </div>
             </div>
         </div>
-            
+        <?php include('footer.html'); ?>
         <!--footer goes here--->
         <div class="modal fade" id="myModalError" role="dialog">
             <div class="modal-dialog">
@@ -91,11 +91,11 @@
       
             </div>
         </div>
-        <?php include('footer.html'); ?>
+        
+        
         <!--scripts-->
         <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
         <script src="js/bootstrap.min.js"></script> 
-        
   </body>
 </html>
 
