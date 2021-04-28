@@ -1,4 +1,6 @@
 // Variables
+
+
 const carrito = document.getElementById('carrito');
 
 const listaProductos = document.querySelector('#lista-carrito tbody');
@@ -12,7 +14,6 @@ const pagarBtn = document.getElementById('pagar');
 cargarEventListeners();
 function cargarEventListeners() {
   // Dispara cuando se presiona "Agregar Carrito"
-
   // Cuando se elimina un curso del carrito
   carrito.addEventListener('click', eliminarProducto);
   // Al Vaciar el carrito
@@ -39,12 +40,24 @@ function añadir(e) {
   let ListaCarrito = obtenerProductosLocalStorage();
   for (var i in ListaCarrito) {
     if (ListaCarrito[i].id == productoId) {
-      if(ListaCarrito[i].amount + 1 <= ListaCarrito[i].stock){
+      if((ListaCarrito[i].amount + 1) <= ListaCarrito[i].stock){
         ListaCarrito[i].amount = ListaCarrito[i].amount + 1;
         cargarCarrito(ListaCarrito);
-        
-      }else{
-        //
+        if(ListaCarrito[i].amount == ListaCarrito[i].stock){
+          var children = listaProductos.childNodes;
+          for (var i = 0; i < children.length; i++) {
+            var botones = children[i].querySelectorAll('i');
+            var boton = children[i].querySelector('a');
+            if(productoId == boton.getAttribute('data-id')){
+              for (var i = 0; i < botones.length; i++) {
+                if(botones[i].classList.contains('fa-plus-square')){
+                  botones[i].style.color = "gray";
+                  break;
+                }
+              }
+            }
+          }
+        }
       }
       break;
     }
@@ -64,7 +77,6 @@ function disminuir(e) {
       break;
     }
   }
-  
 }
 
 // Lee los datos del curso
@@ -72,7 +84,7 @@ function leerDatosProducto(infoProduct, product2) {
   console.log(product2);
   const product = {
     id: infoProduct.querySelector('button').getAttribute('data-id'),
-    stock: infoProduct.querySelector('input').val,
+    stock: infoProduct.querySelector('input').value,
     image: product2.querySelector('img').src,
     name: infoProduct.querySelector('h1').textContent,
     price: infoProduct.querySelector('h2').textContent,
@@ -176,7 +188,7 @@ function cargarCarrito(productos){
       <td>${producto.price}</td>
       <td><span style="font-size: 1.7rem;"class="mas" ><i class="fas fa-minus-square"></i><span></td>
       <td>${producto.amount}</td>
-      <td><span style="font-size: 1.7rem;"class="mas" ><i class="fas fa-plus-square"></i><span></td>
+      <td><span style="font-size: 1.7rem;"class="mas"><i class="fas fa-plus-square"></i><span></td>
       <td>
       <a href="#" style="font-size: 1.7rem;" class="borrar-producto" data-id="${producto.id}"><span style="font-size: 1.7rem; color:red"><i class="fas fa-times-circle"></i></span></a>
       </td>

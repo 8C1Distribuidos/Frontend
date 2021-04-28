@@ -38,7 +38,8 @@
     var clasification;
     var products = [];
     var classifications;
-    var urlProducts = "http://25.98.13.19:5555/api/Product/GetAll"
+    var urlProducts = "http://localhost:3000/Products";
+    //var urlProducts = "http://25.98.13.19:5555/api/Product/GetAll"
     var usuario = usuarioLocalStorage();
     if(usuario!=null){
     if(usuario.role.role != "Cliente"){
@@ -60,8 +61,8 @@
         console.log(products);
     });
 
-    //GET clasificaciones 
-    $.getJSON("http://25.98.13.19:5555/api/Category/GetAll", function( data ) {
+    //GET clasificaciones "http://25.98.13.19:5555/api/Category/GetAll"
+    $.getJSON("http://localhost:3000/Category", function( data ) {
         classifications = data;
         for(var i=0;i<classifications.length;i++)
         {
@@ -73,7 +74,7 @@
           
         }
         clasification = classifications[0]["name"];
-        updatecont(products);
+        updatecont();
     });
     var ul = document.getElementById('myTab');
     ul.onclick = function(event) {
@@ -83,7 +84,6 @@
     };
 
     function updatecont(){
-      console.log(products);
         for(var i=0;i<products.length;i++)
         {
           if (products[i]["category"]["name"]== clasification) {

@@ -26,7 +26,7 @@
           <div class="row">
               <div class="col-md-4">
                   <div class="profile-img">
-                      <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" alt=""/>
+                      <img id="imagenUsuario" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" alt=""/>
                       <button type="button" id="add_button"  data-toggle="modal" data-target="#userImageModal" class="file btn btn-lg btn-primary">Cambiar foto</button>
                   </div>
               </div>
@@ -128,7 +128,7 @@
 <!--Form to edit the user data-->
 <div id="userImageModal" class="modal fade">
 	<div class="modal-dialog">
-		<form method="post" id="productos_form" enctype="multipart/form-data">
+		<form method="post" id="foto_form" enctype="multipart/form-data">
 			<div class="modal-content">
 				<div class="modal-header">
                     <h4 class="modal-title">Editar perfil</h4>
@@ -136,12 +136,12 @@
 				</div>
 				<div class="modal-body">
 					<label>Seleccionar imagen del usuario</label>
-					<input type="file" name="imagen" id="imagen" onclick="upload_image();" class="form-control" required/>
+					<input type="file" name="imagen" id="imagen" class="fileToUpload" class="form-control" required/>
 					<span id="productos_uploaded_image"></span>
 				</div>
 				<div class="modal-footer">
 					<input type="hidden" name="id" id="id" />
-					<input type="submit" name="action" id="action" class="btn btn-success"/> 
+					<input type="submit" name="action" id="action" value="Guardar"class="btn btn-success"/> 
 					<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
 				</div>
 			</div>
@@ -188,29 +188,8 @@
         location.href = 'login.php';
     }
     updatecont();
- 
+    verificarFoto();
   //uploadFile("users/"+obj.photo, "loadFoto.php");
-  function uploadFile(imagen, url){
-            var filename  = imagen;  
-            //To save file with this name
-                var file_data = $('.fileToUpload').prop('files')[0];    //Fetch the file
-                var form_data = new FormData();
-                form_data.append("file",file_data);
-                form_data.append("filename",filename);
-                $.ajax({
-                    url: url,                      //Server api to receive the file
-                    type: "POST",
-                    dataType: 'script',
-                    cache: false,
-                    contentType: false,
-                    processData: false,
-                    data: form_data,
-                    success:function(dat2){
-                    if(dat2==1) alert("OK");
-                    else alert("Error");
-                }
-            });
-        }
   function updatecont(){
     var obj = usuarioLocalStorage();
     console.log(obj);
@@ -243,8 +222,43 @@
             document.getElementById('tipo').textContent = "Tipo de usuario: " + usuario.role.role;
             
     }
-  $(document).on('submit', '#productos_form',function(event){
-      event.preventDefault();
+    function verificarFoto(urlToFile) {
+        var image = new Image();
+
+        image.onload = function() {
+            // image exists and is loaded
+            document.getElementById("imagenUsuario").src = "users/"+usuario.photo;         
+        }
+        image.onerror = function() {
+            // image did not load
+        }
+        image.src = "users/"+usuario.photo;
+    }
+
+    function uploadFile(imagen,url){
+        //var filename = $('#filename').val();   
+        var filename  = imagen;               //To save file with this name
+        var file_data = $('.fileToUpload').prop('files')[0];    //Fetch the file
+        var form_data = new FormData();
+        form_data.append("file",file_data);
+        form_data.append("filename",filename);
+        $.ajax({
+            url: url,                      //Server api to receive the file
+            type: "POST",
+            dataType: 'script',
+            cache: false,
+            contentType: false,
+            processData: false,
+            data: form_data,
+            success:function(dat2){
+            if(dat2==1) alert("OK");
+            else alert("Error");
+        } 
+        });
+    }
+    
+    $(document).on('submit', '#foto_form',function(event){
+        event.preventDefault();
         var extension = $('#imagen').val().split('.').pop().toLowerCase();
         if(extension != '')
         {
@@ -255,6 +269,15 @@
                 return false;
             }
         }
+        //$('#userImageModal').modal('hide');
+        uploadFile("users/"+usuario.photo, "loadFoto.php");
+        alert("1");
+        setTimeout(verificarFoto,100);
+        
+    });
+  $(document).on('submit', '#productos_form',function(event){
+      event.preventDefault();
+        
         function toJSONString( form ) {
             var obj = {};
             var elements = form.querySelectorAll( "input, select, textarea" );

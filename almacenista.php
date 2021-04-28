@@ -89,6 +89,7 @@
     if(usuario== null || usuario.role.role != "Almacenist"){
         location.href = 'index.php';
     }
+    
     function usuarioLocalStorage() {
         let usuario;
         if(localStorage.getItem('usuario') == null) {
@@ -144,6 +145,7 @@
                     success:function(dat2){
                     if(dat2==1) alert("OK");
                     else alert("Error");
+
                 }
            });
         
