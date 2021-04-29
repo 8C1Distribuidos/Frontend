@@ -1,19 +1,13 @@
 <html>
 	<head>
 		<title>Historial de compras</title>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-        <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
-		<script src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>		
-		<link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css" />
-		<link rel="stylesheet" href="css/almacenista.css">
+        <link rel="stylesheet" href="css/almacenista.css">
 		
 	</head>
 	<body>
     <?php include('header.html'); ?>
-		<div class="milky" align="center">Historial de compras</div>
-		<div style="margin-top:130px" class="container box">
+		<div class="milky" style="margin-top:7rem" align="center">Historial de compras</div>
+		<div style="margin-top:12rem" class="container box">
 			<br />
 			<div class="table-responsive">
 				<br />
@@ -40,8 +34,20 @@
 <script type="text/javascript" language="javascript">
 $(document).ready(function(){
         var compras;
-        //var productos;
-        var urlCompras = "http://localhost:3000/Compras";
+        var usuario = usuarioLocalStorage();
+        if(usuario == null || usuario.role.role != "Cliente"){
+            location.href = 'index.php';
+        }
+        function usuarioLocalStorage() {
+            let usuario;
+            if(localStorage.getItem('usuario') == null) {
+                usuario = null;
+            } else {
+                usuario = JSON.parse(localStorage.getItem('usuario'));
+            }
+            return usuario;
+        }
+        var urlCompras = "http://25.81.215.48:8080/compra/historialCompras?id_usuario="+usuario.id;
     
         //GET compras
         $.getJSON(urlCompras, function( data ) {
@@ -49,26 +55,21 @@ $(document).ready(function(){
             loadTable();
         });
 
-
     function loadTable(){
        
             for(var i=0;i<compras.length;i++)
             {
             var tr  ="<tr>"+
-                    //" <td>"+Compras[i]["Productname"]+' , '+"</td>"+
-
-                    " <td>"+compras[i]["fechasCompra"]+"</td>"+
-                    " <td><ul>"; 
-
-                    for(var producto in compras[i]["Products"]){
-                        tr+= "<li>" + "Producto: "+ compras[i]["Products"][producto].name + " "+ "Cantidad: "+compras[i]["Products"][producto].amount + "</li>"; 
-                        
-                    }
-                        tr+=  " </ul></td><td>"+compras[i]["CantidadTotal"]+"</td></tr>";
-
-                        $("#compras_data").append(tr);
+            " <td>"+compras[i]["dateTime"]+"</td>"+
+            " <td><ul>"; 
+            console.log(compras[i]["purchaseList"]);
+            for(var y=0; y<compras[i]["purchaseList"].length; y++){
+                tr+= "<li>" + "Producto: "+ compras[i]["purchaseList"][y]["name"] + " "+ "Cantidad: "+compras[i]["purchaseList"][y]["amount"] + "</li>"; 
                 
-                   
+            }
+                tr+=  " </ul></td><td>"+compras[i]["totalPrice"]+"</td></tr>";
+
+                $("#compras_data").append(tr); 
         }
     }
     }); 

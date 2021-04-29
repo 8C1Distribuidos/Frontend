@@ -5,16 +5,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/productos.css">
-    <link rel="stylesheet" href="fontawesome/css/all.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
     <title>Catálogos</title>
     <link rel="shortcut icon" href="img/logo_icon.jpg" >
   </head>
   <body>
-  <?php include('header.html'); ?> 
+  <header>
+    <?php include('header.html'); ?> 
+  </header>
   <div class="milky">
     <p style = "font-family:Brush;">
       Catálogos
@@ -26,13 +24,9 @@
   </div>
 
 </section> <br><br><br>  <br><br><br>  <br><br><br>  <br><br><br> 
-<section class="footer">
-
-   <?php include('footer.html'); ?> 
-   </section>
+<?php include('footer.html'); ?> 
   
   </body>
-  <script src="js/sidebar.js"></script> 
 
 </html>
 
@@ -72,9 +66,11 @@ $(document).ready(function(){
       }
     }
 
-  $(document).on('click', '.category', function(){
+  $("#catalogs_data").click( function(e){
+    var c = e.target.parentElement.id;
+    localStorage.setItem("catalogo", c);
     location.href = 'productos.php';
-    localStorage("catalog", $(this).attr("id"));
+    
   });
 
 });

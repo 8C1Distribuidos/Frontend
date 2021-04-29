@@ -12,22 +12,9 @@
     --width-container: 1200px;
   }
   
-  *{
-    border: 0;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
   
-  html{
-    height: 100%;
-    font-family: 'Montserrat', sans-serif;
-    font-size: 14px;
-  }
   
   body{
-    height: 100%;
-    padding-bottom: -20px;
     background-image: url(../img/barricas.jpg);
     background-position: center center;
     background-repeat: no-repeat;
@@ -44,8 +31,7 @@
     padding: var(--spacing-xxl) var(--spacing-l);
     width: 100%;
     height: 100%;
-    
-
+  
     }
   
   .ard-grid{

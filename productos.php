@@ -31,20 +31,23 @@
 </html>
 
 <script type="text/javascript" language="javascript">
-  
   $(document).ready(function(){
     const productos = document.getElementById('list-products');
     productos.addEventListener('click', comprar);
     var clasification;
     var products = [];
     var classifications;
-    var urlProducts = "http://localhost:3000/Products";
-    //var urlProducts = "http://25.98.13.19:5555/api/Product/GetAll"
+    //var urlProducts = "http://localhost:3000/Products";
+    var urlProducts = "http://25.98.13.19:5555/api/Product/GetAll"
     var usuario = usuarioLocalStorage();
-    if(usuario!=null){
-    if(usuario.role.role != "Cliente"){
-        location.href = 'index.php';
+    var idCatalog = localStorage.getItem('catalogo');
+    if(idCatalog == null){
+      location.href = 'catalogos.php';
     }
+    if(usuario!=null){
+      if(usuario.role.role != "Cliente"){
+          location.href = 'index.php';
+      }
     }
     function usuarioLocalStorage() {
         let usuario;
@@ -60,9 +63,9 @@
         products = data;
         console.log(products);
     });
-
+    //"http://localhost:3000/Category"
     //GET clasificaciones "http://25.98.13.19:5555/api/Category/GetAll"
-    $.getJSON("http://localhost:3000/Category", function( data ) {
+    $.getJSON("http://25.98.13.19:5555/api/Category/GetByCatalog?id="+idCatalog, function( data ) {
         classifications = data;
         for(var i=0;i<classifications.length;i++)
         {
@@ -80,29 +83,36 @@
     ul.onclick = function(event) {
       clasification = event.target.innerHTML;
       console.log(clasification);
-      updatecont(products);
+      updatecont();
     };
 
     function updatecont(){
+      document.getElementById("list-products").innerHTML =" ";
         for(var i=0;i<products.length;i++)
         {
+          console.log(clasification);
           if (products[i]["category"]["name"]== clasification) {
             var tr  ="<div class=\"container\">"+
-                      "<div class=\"img-t\">"+
-                        "<img src= upload/"+products[i]["image_Link"]+">"+
+                      "<div class='img-t'>"+
+                        "<img src='upload/"+products[i]["imageLink"]+"'>"+
                       "</div>"+
                       "<div class=\"product\">"+
                         "<p>"+products[i]["category"]["name"]+"</p>"+
                         "<h1>"+products[i]["name"]+"</h1>"+
                         "<h2>"+"$"+products[i]["price"]+"</h2>"+
                         "<input type=hidden value="+products[i]["stock"]+">"+
-                        "<p class=\"desc\">"+"</p>"+
-                        "<div class=\"buttons\">"+
+                        "<p class=\"desc\">"+"</p>";
+                        if(products[i]["stock"]>0){
+                        tr += "<div class=\"buttons\">"+
                           "<button class=\"add\"  data-id="+products[i]["id"]+">"+"Agregar al carrito"+"</button>"+
                         "</div>"+
                       "</div>"+
                     "</div>";
-            $("#tarjetita").append(tr);
+                        }else{
+                          tr += "</div>"+
+                              "</div>";
+                        }
+            $("#list-products").append(tr);
           }
         }
     }

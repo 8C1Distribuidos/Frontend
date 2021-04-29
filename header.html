@@ -16,7 +16,7 @@
 
 <nav class="navbar navbar-dark bg-dark navbar-expand-md justify-content-center">
         <div class="navbar-collapse collapse justify-content-between align-items-center w-100" id="collapsingNavbar2">
-            <ul class="navbar-nav mx-auto">
+            <ul id="nav" class="navbar-nav mx-auto">
                 <li class="nav-item active">
                    <a class="nav-link" href="index.php" id="Inicio" type="button" >
                       Inicio
@@ -48,7 +48,7 @@
                       </thead>
                       <tbody></tbody>
                     </table>
-                    <a href="pago.php" id="pagar" style="display: none;" class="button-l u-full-width">Pagar</a>
+                    <a href="pago.php" id="pagar" style="display: none;" class="btn btn-info">Pagar</a>
                     <a href="#" id="vaciar-carrito" class="button-l u-full-width">Vaciar Carrito</a>
                   </div>
                 </li>
@@ -71,8 +71,15 @@
       if(usuario != null && usuario.role.role != "Cliente"){
         document.getElementById("img-carrito").style.visibility = "hidden";
         document.getElementById("img-carrito").remove('nav-link');
-      }
-      if(usuario.role.role == "Almacenist" ){
+      }if(usuario.role.role == "Cliente" ){
+        var compras = "<li class='nav-item active'>"
+                   +"<a class='nav-link' href='compras.php' type='button'>"
+                      +"Historial"
+                    +"</a>"
+                +"</li>";
+        var lu = document.getElementById("nav");
+        lu.innerHTML += compras;
+      }else if(usuario.role.role == "Almacenist" ){
         var inicio = document.getElementById("Productos");
         inicio.textContent = "Almacen";
         inicio.href = "almacenista.php";
@@ -86,6 +93,9 @@
     $('#cerrar').on('click',function(){
       localStorage.removeItem('usuario');
       location.href = 'index.php';
+    });
+    $('#pagar').on('click',function(){
+      location.href = 'pago.php';
     });
     function usuarioLocalStorage() {
         let usuario;

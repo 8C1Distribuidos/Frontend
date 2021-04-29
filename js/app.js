@@ -2,7 +2,6 @@
 
 
 const carrito = document.getElementById('carrito');
-
 const listaProductos = document.querySelector('#lista-carrito tbody');
 const vaciarCarritoBtn = document.getElementById('vaciar-carrito');
 const pagarBtn = document.getElementById('pagar');
@@ -14,6 +13,7 @@ const pagarBtn = document.getElementById('pagar');
 cargarEventListeners();
 function cargarEventListeners() {
   // Dispara cuando se presiona "Agregar Carrito"
+  pagarBtn.addEventListener('click', pagar);
   // Cuando se elimina un curso del carrito
   carrito.addEventListener('click', eliminarProducto);
   // Al Vaciar el carrito
@@ -22,6 +22,10 @@ function cargarEventListeners() {
   document.addEventListener('DOMContentLoaded', leerLocalStorage);
 }
 
+function pagar(){
+  alert("1");
+  location.href = "pago.php";
+}
 // Funciones
 // Función que añade el curso al carrito
 function comprar(e) {
@@ -117,6 +121,7 @@ function eliminarProducto(e) {
   e.preventDefault();
   let producto,
       productoId;
+      console.log(e.target.classList);
   if(e.target.classList.contains('fa-times-circle') ) {
     producto = e.target.parentElement.parentElement.parentElement;
     productoId = producto.querySelector('a').getAttribute('data-id');
@@ -127,6 +132,9 @@ function eliminarProducto(e) {
   }
   else if(e.target.classList.contains('fa-minus-square') ){
     disminuir(e);
+  }
+  else if(e.target.classList.contains('btn') ){
+    pagar();
   }
 }
 

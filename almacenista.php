@@ -102,10 +102,10 @@
         //Varibles
         var products;
         var classifications;
-        var urlProducts = "http://25.98.13.19:5555/api/Product/GetAll"
+        var urlProducts = "http://25.98.13.19:5555/api/Product"
 
         //GET productos
-        $.getJSON(urlProducts, function( data ) {
+        $.getJSON(urlProducts+"/GetAll", function( data ) {
             products = data;
             loadTable();
         });
@@ -148,7 +148,6 @@
 
                 }
            });
-        
 }
 
         //GET clasificaciones 
@@ -242,7 +241,7 @@
             if( $('#action').val() == "Add"){
                 //POST
                 $.ajax({
-                    url:urlProducts,
+                    url:urlProducts+"/Post",
                     type:"POST",
                     data:json,
                     dataType:"json",
@@ -259,7 +258,7 @@
                 console.log(json);
                 //PUT
                 $.ajax({
-                    url:urlProducts,
+                    url:urlProducts+"/Put",
                     type:"PUT",
                     data:json,
                     dataType:"json",
@@ -283,29 +282,32 @@
             if(confirm("¿Estás seguro de eliminar esto?"))
             {
                 $.ajax({
-                    url:urlProducts+ "/"+productos_id,
+                    url:urlProducts+ "/Delete?id="+productos_id,
                     type:"DELETE",
                     dataType:"json",
                     contentType:"application/json",
+                    statusCode: {
+                        200: function(responseObject, textStatus, jqXHR) {
+                            var imagen;
+                            for( var i = 0; i < products.length; i++){     
+                                if ( products[i]["id"] == productos_id) { 
+                                    imagen = products[i]["imageLink"];
+                                    products.splice(i, 1); 
+                                    break; 
+                                }
+                            } 
+                            $('#productos_data > tbody').empty();
+                            uploadFile("upload/" + imagen, "deleteImage.php");
+                            loadTable();
+                        }
+                    },
                     success:function(data)
                     {
-                        var imagen;
-                        for( var i = 0; i < products.length; i++){     
-                            if ( products[i]["id"] == productos_id) { 
-                                imagen = products[i]["imageLink"];
-                                products.splice(i, 1); 
-                                break; 
-                            }
-                        }  
-                        $('#productos_data > tbody').empty();
-                        uploadFile("upload/" + imagen, "deleteImage.php");
-                        setTimeout(reload,100);
-                        loadTable();
                     }
                 });
-                function reload() {
+                /*function reload() {
                 location.reload();
-                }
+                }*/
             }
             else
             {

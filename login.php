@@ -92,7 +92,6 @@
             </div>
         </div>
         
-        
         <!--scripts-->
         <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
         <script src="js/bootstrap.min.js"></script> 
@@ -194,7 +193,18 @@
                         $("#alerta").append(alerta);
                     },
                     200: function(responseObject, textStatus, errorThrown) {
-                        
+                        /*if(responseObject!= null){
+                            console.log(responseObject);
+
+                        /*localStorage.setItem('usuario', JSON.stringify(data));
+                        if(data.role.role == "Cliente"){
+                            location.href = 'index.php';
+                        }else if(data.role.role == "Almacenista"){
+                            location.href = 'almacenista.php';
+                        }else if(data.role.role == "Administra"){
+                            location.href = 'useralmacenista.php';
+                        }
+                        }*/
 
                     }
                 },

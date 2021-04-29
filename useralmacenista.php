@@ -66,7 +66,7 @@
 		<form method="post" id="usuarios_form" enctype="multipart/form-data">
 			<div class="modal-content">
 				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<button style="" type="button" class="close" data-dismiss="modal">&times;</button>
 					<h4 class="modal-title">Añadir usuario</h4>
 				</div>
 				<div class="modal-body">
@@ -100,13 +100,17 @@
 	</div>
 </div>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
 <script>
+    
     $(document).ready(function(){
+        
     let usuario = usuarioLocalStorage();
     if(usuario== null || usuario.role.role != "Administra"){
         location.href = 'index.php';
     }
+
     
     function usuarioLocalStorage() {
         let usuario;
@@ -129,11 +133,10 @@
         });
 
         //Formato de usuarios en tabla 
-        function loadTable(){
+        async function loadTable(){
             for(var i=0;i<users.length;i++)
             {
-            var tr  ="<tr>"+
-                    "<td><img width = '300' heigth = '400' src= users/"+users[i]["photo"]+"></td>"+
+                    var tr = + "<tr>"+"<td><img width = '300' heigth = '400' src= "+users[i]["photo"]+"></td>"+
                     "<td>"+users[i]["id"]+"</td>"+
                     "<td>"+users[i]["firstName"]+"</td>"+
                     "<td>"+users[i]["paternalName"]+" "+users[i]["maternalName"]+"</td>"+

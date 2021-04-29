@@ -8,7 +8,7 @@
     <div class="card p-4" style="width: 35rem;">
         <div class="d-flex justify-content-between align-items-center">
             <h5 class="total-amount">Cantidad total</h5>
-            <div class="amount-container"><span class="amount-text"><span class="dollar-sign">$</span> <input readOnly="true" type="text" style="text-align: center;" name="precioTotal" id="precioTotal" value="375"> </span></div>
+            <div class="amount-container"><span class="amount-text"><span class="dollar-sign">$</span> <input readOnly="true" type="text" style="text-align: center;" name="precioFinal" id="precioTotal" value="375"> </span></div>
         </div>
         <div id="productos" class="d-flex justify-content-between align-items-center">
             <table id="carrito-pago" class="u-full-width">
@@ -31,14 +31,14 @@
                         <i style="margin-left: 10px;" class="fas fa-city"></i>
                     </span> 
                 </label> 
-                <select style="margin-left: 2rem; font-size: 16px; width: 17rem; margin-rigth:7rem;" name="municipio" class="form-control expiry-class"></select></div>
+                <select id="ciudad_menu" name="ciudad" style="margin-left: 2rem; font-size: 16px; width: 17rem; margin-rigth:7rem;"class="form-control expiry-class"></select></div>
             <div > 
                 <label style="margin-left: 5rem;">
                     <span class="label-text">CP
                         <i style="margin-left: 10px;" class="fas fa-mail-bulk"></i>
                     </span> 
                 </label> 
-                <input style="margin-left: 3rem; font-size: 16px; width:3rem" type="tel" name="cp" class="form-control cvv-class" maxlength="4" pattern="\d*" required> 
+                <input style="margin-left: 3rem; font-size: 16px; width:3rem" name="cp" type="tel" name="cp" class="form-control cvv-class" maxlength="4" pattern="\d*" required> 
             </div>
         </div>
         <div class="pt-4"> <label style="margin-left: 2rem;" class="d-flex justify-content-between"> <span class="label-text label-text-cc-number">DIRECCIÓN <i class="fas fa-map-pin"></i></span></label> <input  style="margin-left: 2rem; width: 28rem;" type="tel" name="direccion" class="form-control credit-card-number" maxlength="19" placeholder="Calle San Andres #1234" required> </div>
@@ -50,7 +50,7 @@
                         <i style="margin-left: 10px;" class="fas fa-calendar-alt"></i>
                     </span> 
                 </label> 
-                <input style="margin-left: 2rem; font-size: 16px;" type="text" name="fechaTarjeta" class="form-control expiry-class" placeholder="MM / YY" pattern="^(0[1-9]|1[0-2])\/?([0-9]{2})$" maxlength="5" required></div>
+                <input style="margin-left: 2rem; font-size: 16px;" type="text" name="stringFecha" class="form-control expiry-class" placeholder="MM / YY" pattern="^(0[1-9]|1[0-2])\/?([0-9]{2})$" maxlength="5" required></div>
             <div > 
                 <label style="margin-left: -9.5rem;">
                     <span class="label-text">CVV 
@@ -89,6 +89,7 @@
 <script>
      $(document).ready(function(){
         var usuario = usuarioLocalStorage();
+        var ciudades = {};
         if(usuario == null){
             $('#myModalError').modal('show');
         }else if(usuario.role.role == "Administra" || usuario.role.role == "Almacenist" ){
@@ -98,8 +99,26 @@
             var usuario = JSON.parse(localStorage.getItem('usuario'));
             return usuario;
         }
+        $.getJSON("http://25.81.215.48:8080/compra/ciudad", function( data ) {
+            ciudades = data;
+            for(var i=0;i<ciudades.length;i++)
+            {
+                var option  ="<option value="+ciudades[i]["id"]+">"+ciudades[i]["name"]+"</option>";
+                $("#ciudad_menu").append(option);
+                console.log(option);
+            }
+        });
         $('#close').click(function(){
             location.href = 'login.php';
+        });
+        $('#succ').click(function(){
+            location.href = 'compras.php';
+        });
+        $('#cancelar').click(function(){
+            location.href = 'index.php';
+        });
+        $('#err').click(function(){
+            document.getElementById("err").id = "close";
         });
         cargarCarrito();
         function toJSONString( form ) {
@@ -113,8 +132,19 @@
                 if( name && name!="pagar") {
                     obj[name] = value;
                 }
+                if( name && name=="ciudad") { 
+                        obj[name]= ciudades.find( ciudades => ciudades.id ==  value);
+                }
             }
-            obj.products = JSON.parse(localStorage.getItem('productos'));
+            var productos = JSON.parse(localStorage.getItem('productos'));
+            
+            for(var i=0;i<productos.length;i++){
+                productos[i]["price"] = productos[i]["price"].substring(1);
+                productos[i]["amount"] = productos[i]["amount"].toString();
+            }
+            console.log(productos);
+            obj.listaProductos = productos;
+            obj.id_usuario = usuario.id;
             console.log(obj);
             return JSON.stringify(obj);
         }
@@ -122,6 +152,34 @@
         $(document).on('submit', '#pago_form',function(e){
             e.preventDefault();
             var json = toJSONString(this);
+            $.ajax({
+                    url:"http://25.81.215.48:8080/compra/recibir",
+                    type:"POST",
+                    data:json,
+                    dataType:"json",
+                    contentType:"application/json",
+                    statusCode: {
+                        422: function(responseObject, textStatus, jqXHR) {
+                            $('.modal-title').text("Saldo insuficiente");
+                            $('#mensaje').text("No es posible realizar la compra");
+                            document.getElementById("close").id = "err";
+                            $('#myModalError').modal('show');
+                        },
+                        404: function(responseObject, textStatus, errorThrown) {
+                            $('.modal-title').text("Tarjeta no encontrada");
+                            $('#mensaje').text("Tu método de pago es invalido");
+                            document.getElementById("close").id = "err");
+                            $('#myModalError').modal('show');
+                        }
+                    },
+                    success:function(data)
+                    {
+                        $('.modal-title').text("Compra realizada");
+                        $('#mensaje').text("La compra ha sido realizada con exito");
+                        document.getElementById("close").id = "succ";
+                        $('#myModalError').modal('show');
+                    }
+                });
 
         });
 
