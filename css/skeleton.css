@@ -296,6 +296,7 @@
   –––––––––––––––––––––––––––––––––––––––––––––––––– */
   .u-full-width {
     width: 100%;
+    z-index: 1;
     box-sizing: border-box; }
   .u-max-full-width {
     max-width: 100%;

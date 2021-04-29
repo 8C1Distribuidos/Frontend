@@ -2,6 +2,7 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <link href="fontawesome/css/all.css" rel="stylesheet">
 <link rel="stylesheet" href="css/payment.css">
+<title>Compra</title>
 <?php include('header.html'); ?>
 <form id="pago_form">
 <div class="container mt-5 d-flex justify-content-center">

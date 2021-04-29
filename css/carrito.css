@@ -19,14 +19,18 @@ h1 {
 }
 .submenu {
   position: relative;
+  z-index: 1;
 }
 .submenu #carrito{
   display: none;
+  z-index: 1;
+  
 }
 .submenu:hover #carrito{
   display: block;
   position: absolute;
   right:0;
+  z-index: 1;
   top:100%;
   background-color: white;
   padding: 20px;

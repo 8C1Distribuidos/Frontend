@@ -23,7 +23,6 @@ function cargarEventListeners() {
 }
 
 function pagar(){
-  alert("1");
   location.href = "pago.php";
 }
 // Funciones
@@ -132,9 +131,6 @@ function eliminarProducto(e) {
   }
   else if(e.target.classList.contains('fa-minus-square') ){
     disminuir(e);
-  }
-  else if(e.target.classList.contains('btn') ){
-    pagar();
   }
 }
 

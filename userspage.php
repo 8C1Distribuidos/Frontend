@@ -5,18 +5,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link rel="stylesheet" href="css/userspage.css">
-    <title>Usuario</title>
+   <title>Usuario</title>
     <link rel="shortcut icon" href="img/logo_icon.jpg" >
   </head>
-    
+  <style>
+      
+  </style>
   <!--/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
 <body>
-        <div align= "center">
-            <?php include('header.html'); ?>
-        </div>
+<div align= "center">
+    <?php include('header.html'); ?>
+</div>
         
 <form method="post">
-    <div style="margin-top: 10rem;" class="container emp-profile">
+    <div style="margin-top: 6rem; z-index:-1" class="container emp-profile">
       <form method="post">
           <div class="row">
               <div class="col-md-4">
@@ -144,15 +146,13 @@
 	</div>
 </div>
   <!--/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
-
-  <?php include('footer.html'); ?>
+<div style="bottom: 0 !important">
+    <?php include('footer.html'); ?>
+</div>
+  
 </body>
 </html>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-  <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-  
+
 <script>
   
   $(document).ready(function(){

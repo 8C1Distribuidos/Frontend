@@ -4,12 +4,12 @@
     <!-- Required meta tags -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="fontawesome/css/all.css">
     <title>Leckere Weine</title>
     <link rel="shortcut icon" href="img/logo_icon.jpg" >
   </head>
+  <style>
+
+  </style>
   <body>
     
     <!-- Header -->
@@ -58,7 +58,25 @@
     </div>
 
     <!-- Footer -->
-    <?php   include('footer.html'); ?>
+    <footer style=" position: absolute; width: 100%;" class="bg-dark text-center text-lg-start text-light" >
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-3">
+            <div> <img src="img/logo_invert.jpg"  height="50px"> </div>
+        </div>
+        <div class="col-lg-3 col-md-11 mb-4 mb-md-0 p-3">
+          <span class="fa fa-phone-alt"></span> (+33)31235608
+        </div>
+        <div class="col-lg-3 col-md-12 mb-4 mb-md-0 p-3">
+        <span class="fa fa-envelope"></span> info@leckereweine.com
+        </div>
+        <div class="col-lg-3 col-md-12 mb-4 mb-md-0 p-3 text-right">
+          © Leckere Weine 2021 
+          </div>
+        </div>
+      </div>
+</footer>
+
 
   </body>
 

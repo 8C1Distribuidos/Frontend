@@ -6,7 +6,7 @@
 	</head>
 	<body>
     <?php include('header.html'); ?>
-		<div class="milky" style="margin-top:7rem" align="center">Historial de compras</div>
+		<div class="milky"  align="center">Historial de compras</div>
 		<div style="margin-top:12rem" class="container box">
 			<br />
 			<div class="table-responsive">
