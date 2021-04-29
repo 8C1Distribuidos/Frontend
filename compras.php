@@ -7,7 +7,7 @@
 	<body>
     <?php include('header.html'); ?>
 		<div class="milky"  align="center">Historial de compras</div>
-		<div style="margin-top:12rem" class="container box">
+		<div style="margin-top:2rem" class="container box">
 			<br />
 			<div class="table-responsive">
 				<br />

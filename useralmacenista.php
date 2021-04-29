@@ -125,7 +125,7 @@
          function loadTable(){
             for(var i=0;i<users.length;i++)
             {
-                    var tr = "<tr>"+"<td><img width = '300' heigth = '400' src= "+users[i]["photo"]+"></td>"+
+                    var tr = "<tr>"+"<td><img width = '300' heigth = '400' src=users/"+users[i]["photo"]+"></td>"+
                     "<td>"+users[i]["id"]+"</td>"+
                     "<td>"+users[i]["firstName"]+"</td>"+
                     "<td>"+users[i]["paternalName"]+" "+users[i]["maternalName"]+"</td>"+
@@ -242,7 +242,7 @@
                             $('#mensaje').text("El usuario se ha registrado correctamente, ya puedes iniciar sesión");
                             $('#myModalError').modal('show');
                         },
-                        400: function(responseObject, textStatus, errorThrown) {
+                        404: function(responseObject, textStatus, errorThrown) {
                             $('#usuariosModal').modal('hide');
                             $('.modal-title').text("Usuario duplicado");
                             $('#mensaje').text("El correo electrónico que intentas ingresar ya ha sido registrado");

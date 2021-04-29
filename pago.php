@@ -164,12 +164,13 @@
                             $('.modal-title').text("Saldo insuficiente");
                             $('#mensaje').text("No es posible realizar la compra");
                             document.getElementById("close").id = "err";
+                            console.log(document.getElementById("close"));
                             $('#myModalError').modal('show');
                         },
                         404: function(responseObject, textStatus, errorThrown) {
                             $('.modal-title').text("Tarjeta no encontrada");
                             $('#mensaje').text("Tu método de pago es invalido");
-                            document.getElementById("close").id = "err");
+                            document.getElementById("close").id = "err";
                             $('#myModalError').modal('show');
                         }
                     },
@@ -179,6 +180,7 @@
                         $('#mensaje').text("La compra ha sido realizada con exito");
                         document.getElementById("close").id = "succ";
                         $('#myModalError').modal('show');
+                        localStore.removeItem('productos');
                     }
                 });
 

@@ -135,8 +135,7 @@
                     processData: false,
                     data: form_data,
                     success:function(dat2){
-                    if(dat2==1) alert("OK");
-                    else alert("Error");
+                    alert("OK");
 
                 }
            });

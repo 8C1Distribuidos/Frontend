@@ -71,7 +71,24 @@
                 </div>
             </div>
         </div>
-        <?php include('footer.html'); ?>
+        <footer style=" position: absolute; width: 100%;" class="bg-dark text-center text-lg-start text-light" >
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-3">
+            <div> <img src="img/logo_invert.jpg"  height="50px"> </div>
+        </div>
+        <div class="col-lg-3 col-md-11 mb-4 mb-md-0 p-3">
+          <span class="fa fa-phone-alt"></span> (+33)31235608
+        </div>
+        <div class="col-lg-3 col-md-12 mb-4 mb-md-0 p-3">
+        <span class="fa fa-envelope"></span> info@leckereweine.com
+        </div>
+        <div class="col-lg-3 col-md-12 mb-4 mb-md-0 p-3 text-right">
+          © Leckere Weine 2021 
+          </div>
+        </div>
+      </div>
+</footer>
         <!--footer goes here--->
         <div class="modal fade" id="myModalError" role="dialog">
             <div class="modal-dialog">
@@ -193,18 +210,17 @@
                         $("#alerta").append(alerta);
                     },
                     200: function(responseObject, textStatus, errorThrown) {
-                        /*if(responseObject!= null){
+                        if(responseObject!= null){
                             console.log(responseObject);
-
-                        /*localStorage.setItem('usuario', JSON.stringify(data));
-                        if(data.role.role == "Cliente"){
+                        localStorage.setItem('usuario', JSON.stringify(responseObject));
+                        if(responseObject.role.role == "Cliente"){
                             location.href = 'index.php';
-                        }else if(data.role.role == "Almacenista"){
+                        }else if(responseObject.role.role == "Almacenista"){
                             location.href = 'almacenista.php';
-                        }else if(data.role.role == "Administra"){
+                        }else if(responseObject.role.role == "Administra"){
                             location.href = 'useralmacenista.php';
                         }
-                        }*/
+                        }
 
                     }
                 },

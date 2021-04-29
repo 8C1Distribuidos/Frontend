@@ -94,7 +94,7 @@
           if (products[i]["category"]["name"]== clasification) {
             var tr  ="<div class=\"container\">"+
                       "<div class='img-t'>"+
-                        "<img src='upload/"+products[i]["imageLink"]+"'>"+
+                        "<img width=300px heigth=200px src='upload/"+products[i]["imageLink"]+"'>"+
                       "</div>"+
                       "<div class=\"product\">"+
                         "<p>"+products[i]["category"]["name"]+"</p>"+
