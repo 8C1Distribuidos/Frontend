@@ -56,7 +56,7 @@ $(document).ready(function(){
 
     function loadSection(){
       for(var i=0;i<catalogs.length;i++){
-      var tr = "<a class= ard name='category' id = "+catalogs[i].id+">"+
+      var tr = "<a class= ard name='category' id = " + catalogs[i].id + "value=" + catalogs[i].name + ">" +
                 "<div class= 'ard__background' style='background-image: url(catalogs/"+catalogs[i].name+".jpg)'></div>"+
                   "<div class= 'ard__content'>"+
                     "<h1 size= 120px class= ard__heading >"+catalogs[i].name+"</h1>"+
@@ -69,6 +69,8 @@ $(document).ready(function(){
   $("#catalogs_data").click( function(e){
     var c = e.target.parentElement.id;
     localStorage.setItem("catalogo", c);
+    var n = e.target.parentElement.value;
+    localStorage.setItem("catalogoN", n);
     location.href = 'productos.php';
     
   });

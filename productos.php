@@ -41,6 +41,10 @@
     var urlProducts = "http://25.98.13.19:5555/api/Product/GetAll"
     var usuario = usuarioLocalStorage();
     var idCatalog = localStorage.getItem('catalogo');
+    var nombreCatalog = localStorage.getItem('catalogoN');
+    if(nombreCatalog == null){
+      location.href = 'catalogos.php';
+    }
     if(idCatalog == null){
       location.href = 'catalogos.php';
     }
@@ -66,6 +70,9 @@
     //"http://localhost:3000/Category"
     //GET clasificaciones "http://25.98.13.19:5555/api/Category/GetAll"
     $.getJSON("http://25.98.13.19:5555/api/Category/GetByCatalog?id="+idCatalog, function( data ) {
+        var up = "<div class=vinos_menu>"
+          "<h3>"+nombreCatalog+"</h3>"
+        "</div>>";
         classifications = data;
         for(var i=0;i<classifications.length;i++)
         {
