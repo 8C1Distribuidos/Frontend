@@ -8,6 +8,22 @@
     <link rel="shortcut icon" href="img/logo_icon.jpg" >
   </head>
   <style>
+    p5 {
+      text-shadow:
+        0 0 1px black,
+        -1px -1px 0 black,  
+        1px -1px 0 black,
+        -1px 1px 0 black,
+        1px 1px 0 black;
+    }
+    h5 {
+      text-shadow:
+        0 0 1px black,
+        -1px -1px 0 black,  
+        1px -1px 0 black,
+        -1px 1px 0 black,
+        1px 1px 0 black;
+    }
 
   </style>
   <body>
@@ -42,7 +58,7 @@
         <div class="carousel-item">
           <img src="img/contacto.jpg" class="d-block w-100" alt="..." height="100%">
           <div class="carousel-caption d-none d-md-block">
-            <h5>Contactanos</h5>
+            <h5>Contáctanos</h5>
             <p5>Nuestra información se encuentra al final de la página.</p5>
           </div>
         </div>
