@@ -1,69 +1,18 @@
+<head>
+    <title>Recuperar contraseña</title>
+    <link rel="shortcut icon" href="img/logo_icon.jpg" >
+</head>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<?php include('header.html'); ?>
 <link rel="stylesheet" href="css/skeleton.css">
 <link rel="stylesheet" href="css/carrito.css">
 <link rel="stylesheet" href="css/bootstrap.min.css">
 <link rel="stylesheet" href="fontawesome/css/all.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
 
-
-<!------ Include the above in your HEAD tag ---------->
-
- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
- <nav class="navbar navbar-dark bg-dark navbar-expand-md justify-content-center">
-        <div class="navbar-collapse collapse justify-content-between align-items-center w-100" id="collapsingNavbar2">
-            <ul class="navbar-nav mx-auto">
-                <li class="nav-item active">
-                   <a class="nav-link" href="index.php" id="navbar" type="button" >
-                      Inicio
-                    </a>
-                </li>
-                <li class="nav-item active">
-                   <a class="nav-link" href="catalogos.php" id="navbar" type="button">
-                      Productos
-                    </a>
-                </li>
-              <!--
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" type="button"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      Productos
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                      <a class="dropdown-item" href="#">Vinos</a>
-                      <a class="dropdown-item" href="#">Destilados</a>
-                    </div>
-                 </li>
-                 -->
-              </ul>
-            <ul class="nav navbar-nav">
-                <li class="nav-item text-center" id="signup-btn">
-                    <a href="login.php" class="nav-link" type="button"><span class="fa fa-user"></span><span class="d-none d-sm-inline d-xl-block px-1"></span></a>
-                </li>
-                <li class="submenu">
-                  <a href="#" id="img-carrito" class="nav-link" data-toggle="modal" data-target="#"><span class="fa fa-shopping-cart"></span><span class="d-none d-sm-inline d-xl-block px-1"></span></a>
-                  <div id="carrito">
-                    <table id="lista-carrito" class="u-full-width">
-                      <thead>
-                        <tr>
-                          <th>Imagen</th>
-                          <th>Nombre</th>
-                          <th>Precio</th>
-                          <th> </th>
-                          <th>Cantidad</th>
-                          <th> </th>
-                        </tr>
-                      </thead>
-                      <tbody></tbody>
-                    </table>
-                    <a href="#" id="pagar" style="display: none;" class="button-l u-full-width">Pagar</a>
-                    <a href="#" id="vaciar-carrito" class="button-l u-full-width">Vaciar Carrito</a>
-                  </div>
-                </li>
-            </ul>
-        </div>
-    </nav>
- <div class="form-gap" ></div>
 <div class="container">
 	<div class="row">
 		<div class="col-md-4 col-md-offset-4">
@@ -71,8 +20,8 @@
               <div style="font-size: large;" class="panel-body">
                 <div class="text-center">
                   <h3><i class="fa fa-lock fa-4x"></i></h3>
-                  <h2 class="text-center">Olvidaste tu ontraseña?</h2>
-                  <p>Pudes restablecerla</p>
+                  <h2 class="text-center">¿Olvidaste tu contraseña?</h2>
+                  <p>Puedes reestablecerla</p>
                   <div class="panel-body">
                     <form id="register-form" role="form" autocomplete="off" class="form" method="post">
     
