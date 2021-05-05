@@ -41,17 +41,17 @@
 		<form method="post" id="productos_form" enctype="multipart/form-data">
 			<div class="modal-content">
 				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal">&times;</button>
 					<h4 class="modal-title">Añadir Producto</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
 				</div>
 				<div class="modal-body">
 					<label>Ingrese el nombre</label>
 					<input type="text" name="name" id="name" class="form-control "required />
 					<br />
-					<label>Ingrese clasificacion</label>
+					<label>Ingrese clasificación</label>
                     <select class="form-control" name="category" id="clasificacion_menu" required></select>
                     <br/>
-                    <label>Catalogo</label>
+                    <label>Catálogo</label>
 					<input type="text" name="catalog" id="catalog" class="form-control" readonly="true"/>
 					<br />
                     <label>Ingrese stock</label>
@@ -60,7 +60,7 @@
                     <label>Ingrese el costo</label>
 					<input type="number" name="price" id="price" class="form-control"required />
 					<br />
-					<label>Seleccionar imagen del producto</label>
+					<label>Seleccione la imagen del producto</label>
 					<input type="file" name="imagen" id="imagen"  class="fileToUpload" required/>
 					<span id="imageLink"></span>
 				</div>

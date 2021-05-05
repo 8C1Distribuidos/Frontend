@@ -31,6 +31,12 @@ body
 	left: 50%;
 }
 
+/*ADD PRODUCT HEADER*/
+.modal-header{
+	display: flex;
+  	justify-content: space-between;
+}
+
 .milky {
     font-family: "Optima";
 	display: block;
