@@ -8,6 +8,11 @@
     <link rel="shortcut icon" href="img/logo_icon.jpg" >
   </head>
   <style>
+    html, body {
+      margin:0;
+      padding:0;
+      height:100%;
+    }
     p5 {
       text-shadow:
         0 0 1px black,
@@ -24,6 +29,13 @@
         -1px 1px 0 black,
         1px 1px 0 black;
     }
+    #pagina {
+  position: relative;
+  min-height: 100%;
+}
+#contenido {
+  padding-bottom:50px; /* este valor debe ser igual o mayor al alto del pie */
+}
 
   </style>
   <body>
@@ -33,7 +45,8 @@
     <?php include('header.html'); ?>
            
     <!-- Imágenes -->
-
+    <div id="pagina">
+    <div id="contenido">
     <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
       <ol class="carousel-indicators">
         <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
@@ -72,27 +85,11 @@
         <span class="sr-only">Next</span>
       </a>
     </div>
-
-    <!-- Footer -->
-    <footer style=" position: absolute; width: 100%;" class="bg-dark text-center text-lg-start text-light" >
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-md-3">
-            <div> <img src="img/logo_invert.jpg"  height="50px"> </div>
-        </div>
-        <div class="col-lg-3 col-md-11 mb-4 mb-md-0 p-3">
-          <span class="fa fa-phone-alt"></span> (+33)31235608
-        </div>
-        <div class="col-lg-3 col-md-12 mb-4 mb-md-0 p-3">
-        <span class="fa fa-envelope"></span> info@leckereweine.com
-        </div>
-        <div class="col-lg-3 col-md-12 mb-4 mb-md-0 p-3 text-right">
-          © Leckere Weine 2021 
-          </div>
-        </div>
-      </div>
-</footer>
-
+    </div>
+    <div style="bottom: 0 !important">
+    <?php include('footer.html'); ?>
+    </div>
+    
 
   </body>
 

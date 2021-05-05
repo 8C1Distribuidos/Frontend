@@ -71,24 +71,9 @@
                 </div>
             </div>
         </div>
-        <footer style=" position: absolute; width: 100%;" class="bg-dark text-center text-lg-start text-light" >
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-md-3">
-            <div> <img src="img/logo_invert.jpg"  height="50px"> </div>
-        </div>
-        <div class="col-lg-3 col-md-11 mb-4 mb-md-0 p-3">
-          <span class="fa fa-phone-alt"></span> (+33)31235608
-        </div>
-        <div class="col-lg-3 col-md-12 mb-4 mb-md-0 p-3">
-        <span class="fa fa-envelope"></span> info@leckereweine.com
-        </div>
-        <div class="col-lg-3 col-md-12 mb-4 mb-md-0 p-3 text-right">
-          © Leckere Weine 2021 
-          </div>
-        </div>
-      </div>
-</footer>
+        <div style="bottom: 0 !important">
+    <?php include('footer.html'); ?>
+</div>
         <!--footer goes here--->
         <div class="modal fade" id="myModalError" role="dialog">
             <div class="modal-dialog">

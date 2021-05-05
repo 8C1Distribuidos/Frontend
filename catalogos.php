@@ -23,8 +23,10 @@
   <div class="ard-grid" id="catalogs_data">
   </div>
 
-</section> <br><br><br>  <br><br><br>  <br><br><br>  <br><br><br> 
-<?php include('footer.html'); ?> 
+</section> 
+    <div style="bottom: 0 !important">
+    <?php include('footer.html'); ?>
+    </div>
   
   </body>
 
