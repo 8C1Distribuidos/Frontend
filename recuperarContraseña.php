@@ -2,16 +2,27 @@
     <title>Recuperar contraseña</title>
     <link rel="shortcut icon" href="img/logo_icon.jpg" >
 </head>
-
+<font size="3">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-<?php include('header.html'); ?>
 <link rel="stylesheet" href="css/skeleton.css">
-<link rel="stylesheet" href="css/carrito.css">
 <link rel="stylesheet" href="css/bootstrap.min.css">
 <link rel="stylesheet" href="fontawesome/css/all.css">
+<link rel="stylesheet" href="css/carrito.css">
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<?php include('header.html'); ?>
 
+<style>
+  i{
+    font-size: 15px;
+  }
+
+h{
+  font-size: 30px;
+  font-weight: bold; 
+}
+
+</style>
 
 <div class="container">
 	<div class="row">
@@ -20,14 +31,16 @@
               <div style="font-size: large;" class="panel-body">
                 <div class="text-center">
                   <h3><i class="fa fa-lock fa-4x"></i></h3>
-                  <h2 class="text-center">¿Olvidaste tu contraseña?</h2>
+                  <div class="text-center">
+                  <h>¿Olvidaste tu contraseña?</h>
                   <p>Puedes reestablecerla</p>
+                  </div>
                   <div class="panel-body">
                     <form id="register-form" role="form" autocomplete="off" class="form" method="post">
     
                       <div class="form-group">
                         <div class="input-group">
-                          <span class="input-group-addon"><i class="glyphicon glyphicon-envelope color-blue"></i></span>
+                          <span class="input-group-text"><i class="glyphicon glyphicon-envelope color-blue"></i></span>
                           <input id="email" name="email" id="email" placeholder="email" class="form-control"  type="email" required>
                         </div>
                       </div>
@@ -44,7 +57,7 @@
 	</div>
 </div>
 <?php include('footer.html'); ?>
-
+</font>
 <!--footer goes here--->
 <div class="modal fade" id="myModalError" role="dialog">
             <div class="modal-dialog">
@@ -62,6 +75,7 @@
                 </div>
             </div>
         </div>
+
 
 <script type="text/javascript" language="javascript">
     $('#close').click(function(){
