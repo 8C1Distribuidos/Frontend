@@ -34,12 +34,12 @@
                 </label> 
                 <select id="ciudad_menu" name="ciudad" style="margin-left: 2rem; font-size: 16px; width: 17rem; margin-rigth:7rem;"class="form-control expiry-class"></select></div>
             <div > 
-                <label style="margin-left: 5rem;">
-                    <span class="label-text">CP
-                        <i style="margin-left: 10px;" class="fas fa-mail-bulk"></i>
+                <label style="margin-left: 3rem;">
+                    <span  style="margin-right: 7rem;" class="label-text">CP
+                        <i style="margin-left: 30px; margin-top:-20px" class="fas fa-mail-bulk"></i>
                     </span> 
                 </label> 
-                <input style="margin-left: 3rem; font-size: 16px; width:3rem" name="cp" type="tel" name="cp" class="form-control cvv-class" maxlength="4" pattern="\d*" required> 
+                <input style="margin-left: 3rem; font-size: 16px; width:4rem" name="cp" type="tel" name="cp" class="form-control cvv-class" maxlength="4" pattern="\d*" required> 
             </div>
         </div>
         <div class="pt-4"> <label style="margin-left: 2rem;" class="d-flex justify-content-between"> <span class="label-text label-text-cc-number">DIRECCIÓN <i class="fas fa-map-pin"></i></span></label> <input  style="margin-left: 2rem; width: 28rem;" type="tel" name="direccion" class="form-control credit-card-number" maxlength="19" placeholder="Calle San Andres #1234" required> </div>
@@ -91,6 +91,7 @@
      $(document).ready(function(){
         var usuario = usuarioLocalStorage();
         var ciudades = {};
+        
         if(usuario == null){
             $('#myModalError').modal('show');
         }else if(usuario.role.role == "Administra" || usuario.role.role == "Almacenist" ){
@@ -99,7 +100,7 @@
         function usuarioLocalStorage() {
             var usuario = JSON.parse(localStorage.getItem('usuario'));
             return usuario;
-        }
+        } 
         $.getJSON("http://25.81.215.48:8080/compra/ciudad", function( data ) {
             ciudades = data;
             for(var i=0;i<ciudades.length;i++)
