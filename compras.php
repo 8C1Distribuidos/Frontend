@@ -1,8 +1,7 @@
 <html>
 	<head>
 		<title>Historial de compras</title>
-        <link rel="stylesheet" href="css/almacenista.css">
-		<link rel="stylesheet" href="css/generalStyle.css">
+        <link rel="stylesheet" href="css/compras.css">
         <link rel="shortcut icon" href="img/logo_icon.jpg" >
 	</head>
 	<body>
@@ -13,10 +12,7 @@
 		<div style="margin-top:2rem" class="container box">
 			<br />
 			<div class="table-responsive">
-				<br />
 				
-			
-				<br /><br />
 				<table id="compras_data" class="table table-bordered table-striped">
 					<thead>
 						<tr>
@@ -31,8 +27,9 @@
 				</table>
 			</div>
         </div>
-        </div>
+        </div></div>
         <div style="bottom: 0 !important">
+        <br /><br /><br />
     <?php include('footer.html'); ?>
 </div>
 </body>
