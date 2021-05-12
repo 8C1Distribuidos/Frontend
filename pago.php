@@ -1,6 +1,7 @@
 
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <link href="fontawesome/css/all.css" rel="stylesheet">
+<link rel="shortcut icon" href="img/logo_icon.jpg" >
 <link rel="stylesheet" href="css/payment.css">
 <title>Compra</title>
 <?php include('header.html'); ?>

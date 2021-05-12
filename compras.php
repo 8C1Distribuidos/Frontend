@@ -3,6 +3,7 @@
 		<title>Historial de compras</title>
         <link rel="stylesheet" href="css/almacenista.css">
 		<link rel="stylesheet" href="css/generalStyle.css">
+        <link rel="shortcut icon" href="img/logo_icon.jpg" >
 	</head>
 	<body>
     <?php include('header.html'); ?>
