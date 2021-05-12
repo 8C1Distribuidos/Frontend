@@ -139,9 +139,8 @@
                 if( name && name!="createAccount") {
                     obj[name] = value;
                 }
-                if(name == "createAccount"){
-                    obj["photo"] = ident;
-                }
+                obj["photo"] = ident;
+                
             }
             return JSON.stringify(obj);
         }
@@ -150,6 +149,7 @@
             event.preventDefault();
             //Creacion del objeto a formato json
             var json = toJSONString( this );
+            console.log(json);
             if( $('#createAccount').val() == "Add"){
                 //POST
                 $.ajax({
