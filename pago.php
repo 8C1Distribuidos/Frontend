@@ -36,7 +36,7 @@
             <div > 
                 <label style="margin-left: 3rem;">
                     <span  style="margin-right: 7rem;" class="label-text">CP
-                        <i style="margin-left: 30px; margin-top:-20px" class="fas fa-mail-bulk"></i>
+                        <i style="margin-left: 25px; margin-top:-20px" class="fas fa-mail-bulk"></i>
                     </span> 
                 </label> 
                 <input style="margin-left: 3rem; font-size: 16px; width:4rem" name="cp" type="tel" name="cp" class="form-control cvv-class" maxlength="4" pattern="\d*" required> 
@@ -53,12 +53,12 @@
                 </label> 
                 <input style="margin-left: 2rem; font-size: 16px;" type="text" name="stringFecha" class="form-control expiry-class" placeholder="MM / YY" pattern="^(0[1-9]|1[0-2])\/?([0-9]{2})$" maxlength="5" required></div>
             <div > 
-                <label style="margin-left: -9.5rem;">
+                <label style="margin-left: 2rem;">
                     <span class="label-text">CVV 
                         <i style="margin-left: 10px;" class="fas fa-lock"></i>
                     </span> 
                 </label> 
-                <input style="margin-left: -9.5rem; font-size: 16px;" type="tel" name="cvvTarjeta" class="form-control cvv-class" maxlength="4" pattern="\d*" required> 
+                <input style="margin-left: 2rem; font-size: 16px; width: 7rem" type="tel" name="cvvTarjeta" class="form-control cvv-class" maxlength="4" pattern="\d*" required> 
             </div>
         </div>
         <div class="d-flex justify-content-between pt-5 align-items-center"> <button type="button" id ="cancelar" class="btn cancel-btn">Cancelar</button> 

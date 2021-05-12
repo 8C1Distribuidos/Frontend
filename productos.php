@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link rel="stylesheet" href="css/vinos.css">
     <!-- Bootstrap CSS -->
-    <title>Vinos</title>
+    <title>Productos</title>
     <link rel="shortcut icon" href="img/logo_icon.jpg" >
   </head>
   <body > 
@@ -15,8 +15,7 @@
     <?php include('header.html'); ?>
 
     <!--Header for wines-->
-    <div class="vinos_menu">
-      <h3>Vinos</h3>
+    <div id = "title" class="vinos_menu">
     </div>
     </div>
     <div class="nav" id="wine_menu">
@@ -59,6 +58,8 @@
         }
         return usuario;
     }
+    
+    $("#title").append(nombreCatalog);
     //GET productos
     $.getJSON(urlProducts, function( data ) {
         products = data;
@@ -66,11 +67,8 @@
     });
     //"http://localhost:3000/Category"
     //GET clasificaciones "http://25.98.13.19:5555/api/Category/GetAll"
-    $.getJSON("http://25.98.13.19:5555/api/Category/GetByCatalog?id=1", function( data ) {
-        
-        var up = "<div class=vinos_menu>"
-          "<h3>"+nombreCatalog+"</h3>"
-        "</div>>";
+    $.getJSON("http://25.98.13.19:5555/api/Category/GetByCatalog?id="+idCatalog, function( data ) {
+        $("#list-products").append(tr);
         classifications = data;
         for(var i=0;i<classifications.length;i++)
         {
