@@ -9,9 +9,6 @@
     <link rel="shortcut icon" href="img/logo_icon.jpg" >
     <link rel="stylesheet" href="css/generalStyle.css">
   </head>
-  <style>
-      
-  </style>
   <!--/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
 <body>
 <?php include('header.html'); ?>

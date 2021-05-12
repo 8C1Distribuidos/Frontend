@@ -75,8 +75,7 @@
     });
     //"http://localhost:3000/Category"
     //GET clasificaciones "http://25.98.13.19:5555/api/Category/GetAll"
-    $.getJSON("http://25.98.13.19:5555/api/Category/GetByCatalog?id="+idCatalog, function( data ) {
-        $("#list-products").append(tr);
+    $.getJSON("http://25.98.13.19:5555/api/Category/GetByCatalog?id=" + idCatalog, function( data ) {
         classifications = data;
         for(var i=0;i<classifications.length;i++)
         {

@@ -74,12 +74,13 @@ $(document).ready(function(){
                 "</div>";
                 $("#catalogs_data").append(tr);
       }
+
     }
 
   $("#catalogs_data").click( function(e){
     var c = e.target.parentElement.id;
     localStorage.setItem("catalogo", c);
-    var n = e.target.parentElement.value;
+    var n = e.target.parentElement.name;
     localStorage.setItem("catalogoN", n);
     location.href = 'productos.php';
     
