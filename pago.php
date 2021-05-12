@@ -179,6 +179,12 @@
                             $('#mensaje').text("Se ha agotado algún producto de tu compra");
                             document.getElementById("close").id = "err";
                             $('#myModalError').modal('show');
+                        },
+                        409: function(responseObject, textStatus, errorThrown) {
+                            $('.modal-title').text("Error en la compra");
+                            $('#mensaje').text("Se ha agotado algún producto de tu compra");
+                            document.getElementById("close").id = "err";
+                            $('#myModalError').modal('show');
                         }
                     },
                     success:function(data)
