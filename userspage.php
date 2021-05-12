@@ -7,16 +7,16 @@
     <link rel="stylesheet" href="css/userspage.css">
    <title>Usuario</title>
     <link rel="shortcut icon" href="img/logo_icon.jpg" >
+    <link rel="stylesheet" href="css/generalStyle.css">
   </head>
   <style>
       
   </style>
   <!--/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
 <body>
-<div align= "center">
-    <?php include('header.html'); ?>
-</div>
-        
+<?php include('header.html'); ?>
+<div id="pagina">
+<div id="contenido">
 <form method="post">
     <div style="margin-top: 6rem; z-index:-1" class="container emp-profile">
       <form method="post">
@@ -144,6 +144,8 @@
 			</div>
 		</form>
 	</div>
+</div>
+</div>
 </div>
   <!--/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
 <div style="bottom: 0 !important">

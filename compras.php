@@ -2,10 +2,12 @@
 	<head>
 		<title>Historial de compras</title>
         <link rel="stylesheet" href="css/almacenista.css">
-		
+		<link rel="stylesheet" href="css/generalStyle.css">
 	</head>
 	<body>
     <?php include('header.html'); ?>
+    <div id="pagina">
+    <div id="contenido">
 		<div class="milky"  align="center">Historial de compras</div>
 		<div style="margin-top:2rem" class="container box">
 			<br />
@@ -27,6 +29,11 @@
                     </tbody>
 				</table>
 			</div>
+        </div>
+        </div>
+        <div style="bottom: 0 !important">
+    <?php include('footer.html'); ?>
+</div>
 </body>
 </html>
 </div>

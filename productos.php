@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link rel="stylesheet" href="css/vinos.css">
+    <link rel="stylesheet" href="css/generalStyle.css">
     <!-- Bootstrap CSS -->
     <title>Productos</title>
     <link rel="shortcut icon" href="img/logo_icon.jpg" >
@@ -12,8 +13,10 @@
   <body > 
     <!-- Header -->
     <div align= "center"style="background: #E3DDCF"><a href="index.php"><img src="img/logo-top-1.png" height="90px" text-align= "center"></div></a>
+   
     <?php include('header.html'); ?>
-
+    <div id="pagina">
+    <div id="contenido">
     <!--Header for wines-->
     <div id = "title" class="vinos_menu">
     </div>
@@ -25,6 +28,11 @@
     <div id="list-products">
       <div id="tarjetita">
       </div>
+    </div>
+    </div>
+    </div>
+    <div style="bottom: 0 !important">
+    <?php include('footer.html'); ?>
     </div>
   </body>
 </html>

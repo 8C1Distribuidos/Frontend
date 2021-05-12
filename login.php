@@ -215,7 +215,7 @@
                         localStorage.setItem('usuario', JSON.stringify(data));
                         if(data.role.role == "Cliente"){
                             location.href = 'index.php';
-                        }else if(data.role.role == "Almacenista"){
+                        }else if(data.role.role == "Almacenist"){
                             location.href = 'almacenista.php';
                         }else if(data.role.role == "Administra"){
                             location.href = 'useralmacenista.php';

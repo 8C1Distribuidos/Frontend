@@ -162,10 +162,9 @@
                     contentType:"application/json",
                     statusCode: {
                         422: function(responseObject, textStatus, jqXHR) {
+                            document.getElementById("close").id = "err";
                             $('.modal-title').text("Saldo insuficiente");
                             $('#mensaje').text("No es posible realizar la compra");
-                            document.getElementById("close").id = "err";
-                            console.log(document.getElementById("close"));
                             $('#myModalError').modal('show');
                         },
                         404: function(responseObject, textStatus, errorThrown) {

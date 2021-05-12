@@ -1,4 +1,4 @@
-body
+body, html
 {
 	margin:0;
 	padding:0;
@@ -8,8 +8,21 @@ body
     background-repeat: repeat;
     background-position: top;
 	font-size: 18px;   
+	height:100%;
 
 }
+#pagina {
+	position: relative;
+	min-height: 100%;
+  }
+	#contenido {
+	 width: 100%;
+	  max-width: 1200px;
+	  margin: 0 auto;
+	  padding: 0 1rem;
+	  box-sizing: border-box;
+	  font-size: var(--font-normal);
+  }
 .box
 {
 	width:1270px;

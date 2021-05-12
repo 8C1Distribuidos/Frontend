@@ -5,6 +5,8 @@
 	</head>
 	<body>
     <?php include('header.html'); ?>
+    <div id="pagina">
+    <div id="contenido">
 		<div class="milky" align="center">Lista de productos</div>
 		<div style="margin-top:5rem" class="container box">
 			<br />
@@ -33,6 +35,11 @@
                     </tbody>
 				</table>
 			</div>
+            </div>
+            </div>
+            <div style="bottom: 0 !important">
+    <?php include('footer.html'); ?>
+</div>
 </body>
 </html>
 </div>

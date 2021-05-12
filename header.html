@@ -69,7 +69,8 @@
         document.getElementById("img-carrito").style.visibility = "hidden";
         document.getElementById("img-carrito").remove('nav-link');
       }if(usuario.role.role == "Cliente" ){
-        var compras = "<li class='nav-item active'>"
+        document.getElementById("nav").style.width = "10%";
+        var compras = "<li  class='nav-item active'>"
                    +"<a class='nav-link' href='compras.php' type='button'>"
                       +"Historial"
                     +"</a>"
