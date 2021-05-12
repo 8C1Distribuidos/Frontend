@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="css/productos.css">
+    <link rel="stylesheet" href="css/generalStyle.css">
     <title>Catálogos</title>
     <link rel="shortcut icon" href="img/logo_icon.jpg" >
   </head>
@@ -13,6 +14,9 @@
   <header>
     <?php include('header.html'); ?> 
   </header>
+  
+<div id="pagina">
+  <div id="contenido">
   <div class="milky">
     <p style = "font-family:Brush;">
       Catálogos
@@ -24,6 +28,7 @@
   </div>
 
 </section> 
+</div></div>
     <div style="bottom: 0 !important">
     <?php include('footer.html'); ?>
     </div>

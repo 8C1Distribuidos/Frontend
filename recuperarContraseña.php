@@ -9,6 +9,7 @@
 <link rel="stylesheet" href="css/bootstrap.min.css">
 <link rel="stylesheet" href="fontawesome/css/all.css">
 <link rel="stylesheet" href="css/carrito.css">
+<link rel="stylesheet" href="css/generalStyle.css">
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <?php include('header.html'); ?>
 
@@ -23,7 +24,8 @@ h{
 }
 
 </style>
-
+<div id="pagina">
+<div id="contenido">
 <div class="container">
 	<div class="row">
 		<div class="col-md-4 col-md-offset-4">
@@ -55,6 +57,8 @@ h{
             </div>
           </div>
 	</div>
+</div>
+</div>
 </div>
 <?php include('footer.html'); ?>
 </font>

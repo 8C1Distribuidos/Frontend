@@ -6,38 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title>Leckere Weine</title>
     <link rel="shortcut icon" href="img/logo_icon.jpg" >
+    <link rel="stylesheet" href="css/generalStyle.css">
   </head>
-  <style>
-    html, body {
-      margin:0;
-      padding:0;
-      height:100%;
-    }
-    p5 {
-      text-shadow:
-        0 0 1px black,
-        -1px -1px 0 black,  
-        1px -1px 0 black,
-        -1px 1px 0 black,
-        1px 1px 0 black;
-    }
-    h5 {
-      text-shadow:
-        0 0 1px black,
-        -1px -1px 0 black,  
-        1px -1px 0 black,
-        -1px 1px 0 black,
-        1px 1px 0 black;
-    }
-    #pagina {
-  position: relative;
-  min-height: 100%;
-}
-#contenido {
-  padding-bottom:50px; /* este valor debe ser igual o mayor al alto del pie */
-}
 
-  </style>
   <body>
     
     <!-- Header -->
