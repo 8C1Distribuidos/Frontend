@@ -130,6 +130,28 @@
             users = data;
             loadTable();
         });
+        function verificarFoto(urlToFile, t, f, i) {
+            var image = new Image();
+            var table = document.getElementById("usuarios_data");
+
+            image.onload = function() {
+                // image exists and is loaded
+                /*var row = table.insertRow();
+                var cell = row.insertCell();
+                var newText = document.createTextNode(t);
+                cell.appendChild(newText);*/
+                $(table).find('tbody').append(t);
+                //document.getElementById("usuarios_data").
+                //$("#usuarios_data > tbody").append();     
+                console.log(t);    
+            }
+            image.onerror = function() {
+                document.getElementById("usuarios_data").innerHTML += f;
+                //$("#usuarios_data > tbody").append(f);  
+                console.log(f);
+            }
+            image.src = "users/"+urlToFile;
+        }
 
         //Formato de usuarios en tabla 
          function loadTable(){
@@ -145,6 +167,9 @@
                     "<td><button type=button name=delete id="+users[i]["id"]+ " class= 'btn btn-default delete-circle-button delete'><svg xmlns=http://www.w3.org/2000/svg width=16 height=16 fill=currentColor class='bi bi-trash-fill' viewBox=0 0 16 16><path d='M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z'/></svg></button></td></tr>";
             $("#usuarios_data > tbody").append(tr);
             };
+        }
+        function doStuff(){
+
         }
         function uploadFile(imagen, url){
             var filename  = imagen;  
@@ -195,6 +220,7 @@
 
         //POST/UPDATE/Create product
         $(document).on('submit', '#usuarios_form',function(e){
+            var succede = false;
             e.preventDefault();
             //verify the extension
             var extension = $('#imagen').val().split('.').pop().toLowerCase();
@@ -260,6 +286,7 @@
                     },
                     success:function(data)
                     {
+                        succede = true;
                         uploadFile("users/"+obj.photo, "loadFoto.php");
                         setTimeout(reload,100);
                         $('#usuarios_form')[0].reset();
@@ -275,16 +302,24 @@
                     contentType:"application/json",
                     success:function(data)
                     {
+                        succede = true;
                         uploadFile("users/"+obj.photo, "loadFoto.php");
                         setTimeout(reload,100);
                         $('#usuarios_form')[0].reset();
                     }
                 });
+            }
+            if(!succede){
+                $('.modal-title').text("Error de conexión");
+                            $('#mensaje').text("Tenemos problemas con el servicio, intenta mas tarde");
+                            $('#myModalError').modal('show');
+                   
             }  
              
 	    });
         $(document).on('click', '.delete', function(e){
         e.preventDefault();
+        var succede = false;
 		var usuarios_id = $(this).attr("id");
             if(confirm("¿Estás seguro de eliminar esto?"))
             {
@@ -295,6 +330,7 @@
                     contentType:"application/json",
                     statusCode: {
                         200: function(responseObject, textStatus, jqXHR) {
+                            succede = true;
                             var imagen;
                             for( var i = 0; i < users.length; i++){     
                                 if ( users[i]["id"] == usuarios_id) { 

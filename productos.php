@@ -18,7 +18,9 @@
     <div id="pagina">
     <div id="contenido">
     <!--Header for wines-->
-    <div id = "title" class="vinos_menu">
+    <div id = "title" style = "text-align: center;">
+    </div>
+    <div class="vinos_menu">
     </div>
     </div>
     <div class="nav" id="wine_menu">
@@ -67,14 +69,13 @@
         return usuario;
     }
     
-    $("#title").append(nombreCatalog);
+    $("#title").append("<h2>"+nombreCatalog+"</h2>");
     //GET productos
     $.getJSON(urlProducts, function( data ) {
         products = data;
         console.log(products);
     });
-    //"http://localhost:3000/Category"
-    //GET clasificaciones "http://25.98.13.19:5555/api/Category/GetAll"
+    
     $.getJSON("http://25.98.13.19:5555/api/Category/GetByCatalog?id=" + idCatalog, function( data ) {
         classifications = data;
         for(var i=0;i<classifications.length;i++)

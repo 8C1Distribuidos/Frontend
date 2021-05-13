@@ -107,17 +107,19 @@
             ciudades = data;
             for(var i=0;i<ciudades.length;i++)
             {
-                var option  ="<option value="+ciudades[i]["id"]+">"+ciudades[i]["name"]+"</option>";
+                var option = "<option value="+ciudades[i]["id"]+">"+ciudades[i]["name"]+"</option>";
                 $("#ciudad_menu").append(option);
                 console.log(option);
             }
         });
+
         $('#close').click(function(){
             if(accion == "succ"){
                 location.href = 'compras.php';
             }
-            
+            document.getElementById("pagar").disabled = false; 
         });
+
         $('#cancelar').click(function(){
             location.href = 'index.php';
         });
@@ -151,6 +153,7 @@
         }
 
         $(document).on('submit', '#pago_form',function(e){
+            document.getElementById("pagar").disabled = true; 
             e.preventDefault();
             var json = toJSONString(this);
             $.ajax({

@@ -80,8 +80,8 @@
       <!-- Modal content-->
                 <div class="modal-content">
                     <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title"></h4>
+                    <h4 class="modal-title"></h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>  
                     </div>
                     <div class="modal-body"> 
                     <h2 id="mensaje"></h2>
@@ -147,6 +147,7 @@
         //POST/UPDATE/Create product
         $(document).on('submit', '#registration-form',function(event){
             event.preventDefault();
+            var succede = false;
             //Creacion del objeto a formato json
             var json = toJSONString( this );
             console.log(json);
@@ -160,6 +161,7 @@
                     contentType:"application/json",
                     statusCode: {
                         200: function(responseObject, textStatus, jqXHR) {
+                            succede = true;
                             $('.modal-title').text("Usuario creado");
                             $('#mensaje').text("El usuario se ha registrado correctamente, ya puedes iniciar sesión");
                             $('#myModalError').modal('show');
@@ -171,11 +173,18 @@
                         }
                     }
                 });
+                if(!succede){
+                $('.modal-title').text("Error de conexión");
+                            $('#mensaje').text("Tenemos problemas con el servicio, intenta mas tarde");
+                            $('#myModalError').modal('show');
+                   
+            }
             }    
 	    });
 
         $(document).on('submit', '#signUp-form',function(event){
             event.preventDefault();
+            var succede = false;
             var json = toJSONString( this );
             $.ajax({
                 url:"http://25.4.107.19:8080/login",
@@ -211,6 +220,7 @@
                 },
                 success:function(data)
                 { 
+                    succede = true;
                     if(data != null){
                         localStorage.setItem('usuario', JSON.stringify(data));
                         if(data.role.role == "Cliente"){
@@ -223,6 +233,12 @@
                     }
                 }
             });
+            if(!succede){
+                $('.modal-title').text("Error de conexión");
+                            $('#mensaje').text("Tenemos problemas con el servicio, intenta mas tarde");
+                            $('#myModalError').modal('show');
+                   
+            }
         }); 
     }); 
     
