@@ -204,6 +204,7 @@
                         $("#alerta").append(alerta);
                     },
                     200: function(responseObject, textStatus, errorThrown) {
+                        succede = true;
                         if(responseObject!= null){
                             console.log(responseObject);
                         localStorage.setItem('usuario', JSON.stringify(responseObject));
@@ -231,14 +232,10 @@
                             location.href = 'useralmacenista.php';
                         }
                     }
+
                 }
             });
-            if(!succede){
-                $('.modal-title').text("Error de conexión");
-                            $('#mensaje').text("Tenemos problemas con el servicio, intenta mas tarde");
-                            $('#myModalError').modal('show');
-                   
-            }
+        
         }); 
     }); 
     

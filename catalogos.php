@@ -62,6 +62,7 @@ $(document).ready(function(){
 
     function loadSection(){
       for(var i=0;i<catalogs.length;i++){
+        console.log(catalogs[i].id);
       var tr = "<div id='paginaC'>"+
               "<div id='contenido'>"+
               "<a class= ard name='category' id = " + catalogs[i].id + "value=" + catalogs[i].name + ">" +
@@ -78,9 +79,12 @@ $(document).ready(function(){
     }
 
   $("#catalogs_data").click( function(e){
-    var c = e.target.parentElement.id;
+    console.log(e);
+    var c = e.target.id.substring(0,1);
+    var n = e.target.id.substring(7);
     localStorage.setItem("catalogo", c);
-    var n = e.target.parentElement.name;
+    console.log(c);
+    console.log(n);
     localStorage.setItem("catalogoN", n);
     location.href = 'productos.php';
     

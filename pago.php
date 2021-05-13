@@ -175,9 +175,9 @@
                             accion = "err";
                             $('#myModalError').modal('show');
                         },
-                        409: function(responseObject, textStatus, errorThrown) {
-                            $('.modal-title').text("Error en la compra");
-                            $('#mensaje').text("Se ha agotado algún producto de tu compra");
+                        503: function(responseObject, textStatus, errorThrown) {
+                            $('.modal-title').text("Error de conexión");
+                            $('#mensaje').text("No se ha podido verificar tu método de pago");
                             accion = "err";
                             $('#myModalError').modal('show');
                         },
