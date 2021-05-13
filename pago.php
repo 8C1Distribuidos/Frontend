@@ -89,6 +89,7 @@
         <script src="js/bootstrap.min.js"></script> 
 
 <script>
+    var accion;
      $(document).ready(function(){
         var usuario = usuarioLocalStorage();
         var ciudades = {};
@@ -112,16 +113,13 @@
             }
         });
         $('#close').click(function(){
-            location.href = 'login.php';
-        });
-        $('#succ').click(function(){
-            location.href = 'compras.php';
+            if(accion == "succ"){
+                location.href = 'compras.php';
+            }
+            
         });
         $('#cancelar').click(function(){
             location.href = 'index.php';
-        });
-        $('#err').click(function(){
-            document.getElementById("err").id = "close";
         });
         cargarCarrito();
         function toJSONString( form ) {
@@ -163,7 +161,7 @@
                     contentType:"application/json",
                     statusCode: {
                         422: function(responseObject, textStatus, jqXHR) {
-                            document.getElementById("close").id = "err";
+                            accion = "err";
                             $('.modal-title').text("Saldo insuficiente");
                             $('#mensaje').text("No es posible realizar la compra");
                             $('#myModalError').modal('show');
@@ -171,29 +169,34 @@
                         404: function(responseObject, textStatus, errorThrown) {
                             $('.modal-title').text("Tarjeta no encontrada");
                             $('#mensaje').text("Tu método de pago es invalido");
-                            document.getElementById("close").id = "err";
+                            accion = "err";
                             $('#myModalError').modal('show');
                         },
                         409: function(responseObject, textStatus, errorThrown) {
                             $('.modal-title').text("Error en la compra");
                             $('#mensaje').text("Se ha agotado algún producto de tu compra");
-                            document.getElementById("close").id = "err";
+                            accion = "err";
                             $('#myModalError').modal('show');
                         },
                         409: function(responseObject, textStatus, errorThrown) {
                             $('.modal-title').text("Error en la compra");
                             $('#mensaje').text("Se ha agotado algún producto de tu compra");
-                            document.getElementById("close").id = "err";
+                            accion = "err";
                             $('#myModalError').modal('show');
                         }
                     },
                     success:function(data)
                     {
+                        localStorage.removeItem('productos');
+                        var listaProductos = document.querySelector('#lista-carrito tbody');
+                        document.getElementById('pagar').style.display = 'none';
+                        while(listaProductos.firstChild) {
+                            listaProductos.removeChild(listaProductos.firstChild);
+                        }
+                        accion = "succ";
                         $('.modal-title').text("Compra realizada");
                         $('#mensaje').text("La compra ha sido realizada con exito");
-                        document.getElementById("close").id = "succ";
                         $('#myModalError').modal('show');
-                        localStore.removeItem('productos');
                     }
                 });
 

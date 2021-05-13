@@ -104,11 +104,13 @@ function insertarCarrito(product) {
     product.amount = 1;
     ListaCarrito.push(product);
   }else{
-    product.amount = findProduct.amount + 1;
-    for (var i in ListaCarrito) {
-      if (ListaCarrito[i].id == product.id) {
-         ListaCarrito[i] = product;
-         break;
+    if((ListaCarrito[i].amount + 1) <= ListaCarrito[i].stock){
+      product.amount = findProduct.amount + 1;
+      for (var i in ListaCarrito) {
+        if (ListaCarrito[i].id == product.id) {
+          ListaCarrito[i] = product;
+          break;
+        }
       }
     }
   }
@@ -229,7 +231,7 @@ function eliminarProductoLocalStorage(id) {
 
 // Elimina todos los cursos de Local Storage
 function vaciarLocalStorage() {
-  localStorage.clear();
+  localStore.removeItem('productos');
 }
 
 
