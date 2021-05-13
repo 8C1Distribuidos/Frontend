@@ -38,6 +38,9 @@
 			</div>
             </div>
             </div>
+            <br />
+            <br />
+            <br />
             <div style="bottom: 0 !important">
     <?php include('footer.html'); ?>
 </div>
