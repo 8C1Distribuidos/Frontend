@@ -65,3 +65,10 @@
   </body>
 
 </html>
+
+<script>
+ $(document).ready(function(){
+ localStorage.removeItem('usuario2');
+ });
+   
+</script>

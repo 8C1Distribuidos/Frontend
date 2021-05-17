@@ -104,7 +104,7 @@
 <script>
     
     $(document).ready(function(){
-        
+        localStorage.removeItem('usuario2');
     let usuario = usuarioLocalStorage();
     if(usuario== null || usuario.role.role != "Administra"){
         location.href = 'index.php';

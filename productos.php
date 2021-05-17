@@ -41,6 +41,7 @@
 
 <script type="text/javascript" language="javascript">
   $(document).ready(function(){
+    localStorage.removeItem('usuario2');
     const productos = document.getElementById('list-products');
     productos.addEventListener('click', comprar);
     var clasification;

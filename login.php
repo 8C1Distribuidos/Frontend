@@ -102,6 +102,7 @@
 
 <script type="text/javascript" language="javascript">
     $(document).ready(function(){
+    localStorage.removeItem('usuario2');
         usuarioLocalStorage();
         function usuarioLocalStorage() {
             let usuario;
@@ -203,6 +204,12 @@
                         var alerta = "<div class='alert alert-info id ='alert' role='alert'>Error de servidor, intenta más tarde</div>";
                         $("#alerta").append(alerta);
                     },
+                    226: function(responseObject, textStatus, errorThrown) {
+                        var user = responseObject;
+                        user.password = JSON.parse(json).password;
+                        localStorage.setItem('usuario2', JSON.stringify(user));
+                        location.href="sesionExistente.php";
+                    },
                     200: function(responseObject, textStatus, errorThrown) {
                         succede = true;
                         if(responseObject!= null){
@@ -216,12 +223,11 @@
                             location.href = 'useralmacenista.php';
                         }
                         }
-
                     }
                 },
                 success:function(data)
                 { 
-                    succede = true;
+                    /*succede = true;
                     if(data != null){
                         localStorage.setItem('usuario', JSON.stringify(data));
                         if(data.role.role == "Cliente"){
@@ -231,7 +237,7 @@
                         }else if(data.role.role == "Administra"){
                             location.href = 'useralmacenista.php';
                         }
-                    }
+                    }*/
 
                 }
             });

@@ -87,6 +87,7 @@ h{
     });
 
     $(document).ready(function(){
+    localStorage.removeItem('usuario2');
         $(document).on('submit', '#register-form',function(event){
             event.preventDefault();
             var email = {email:document.getElementById("email").value};

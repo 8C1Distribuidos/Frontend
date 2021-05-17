@@ -22,6 +22,7 @@ function cargarEventListeners() {
   document.addEventListener('DOMContentLoaded', leerLocalStorage);
 }
 
+
 function pagar(){
   location.href = "pago.php";
 }
