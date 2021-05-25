@@ -1,0 +1,305 @@
+{
+    "prueba": {},
+    "Catalogs": [
+      {
+        "id": 1,
+        "name": "Vinos"
+      },
+      {
+        "id": 2,
+        "name": "Destilados"
+      }
+    ],
+  
+    "Compras": [
+      {
+  
+        "Products":[
+          {
+          "id":1,
+          "name": "vino1", 
+          "amount":1
+          },
+          {
+          "id":2,
+          "name": "vino2", 
+          "amount":1
+          }],
+        "fechasCompra": "14-09-2022",
+        "CantidadTotal": "200"
+      
+      },
+      {
+        "Products":[
+          {
+          "id":1,
+          "name": "vino3", 
+          "amount":1
+          },
+          {
+          "id":2,
+          "name": "vino4", 
+          "amount":1
+          }],
+        "fechasCompra": "14-09-2020",
+        "CantidadTotal": "100"
+      }
+    ],
+  
+  
+  
+    "Category": [
+      {
+        "id": 1,
+        "name": "Vino blanco",
+        "catalog": {
+          "id": 1,
+          "name": "Vinos"
+        }
+      },
+      {
+        "id": 2,
+        "name": "Vino espumoso",
+        "catalog": {
+          "id": 1,
+          "name": "Vinos"
+        }
+      },
+      {
+        "id": 3,
+        "name": "Vino tinto",
+        "catalog": {
+          "id": 1,
+          "name": "Vinos"
+        }
+      },
+      {
+        "id": 4,
+        "name": "Vino rosado",
+        "catalog": {
+          "id": 1,
+          "name": "Vinos"
+        }
+      },
+      {
+        "id": 5,
+        "name": "Vino champagne",
+        "catalog": {
+          "id": 1,
+          "name": "Vinos"
+        }
+      },
+      {
+        "id": 6,
+        "name": "Vino de postre",
+        "catalog": {
+          "id": 1,
+          "name": "Vinos"
+        }
+      },
+      {
+        "id": 7,
+        "name": "Vino sin alcohol",
+        "catalog": {
+          "id": 1,
+          "name": "Vinos"
+        }
+      },
+      {
+        "id": 8,
+        "name": "Brandy",
+        "catalog": {
+          "id": 2,
+          "name": "Destilados"
+        }
+      },
+      {
+        "id": 9,
+        "name": "Tequila",
+        "catalog": {
+          "id": 2,
+          "name": "Destilados"
+        }
+      },
+      {
+        "id": 10,
+        "name": "Cognac",
+        "catalog": {
+          "id": 2,
+          "name": "Destilados"
+        }
+      },
+      {
+        "id": 11,
+        "name": "Ginebra",
+        "catalog": {
+          "id": 2,
+          "name": "Destilados"
+        }
+      },
+      {
+        "id": 12,
+        "name": "Mezcal",
+        "catalog": {
+          "id": 2,
+          "name": "Destilados"
+        }
+      },
+      {
+        "id": 13,
+        "name": "Ron",
+        "catalog": {
+          "id": 2,
+          "name": "Destilados"
+        }
+      },
+      {
+        "id": 14,
+        "name": "Whisky",
+        "catalog": {
+          "id": 2,
+          "name": "Destilados"
+        }
+      },
+      {
+        "id": 15,
+        "name": "Vodka",
+        "catalog": {
+          "id": 2,
+          "name": "Destilados"
+        }
+      }
+    ],
+  
+    "Products": [
+      {
+        "name": "Vino seleccion",
+        "category": {
+          "id": 14,
+          "name": "Whisky",
+          "catalog": {
+            "id": 2,
+            "name": "Destilados"
+          }
+        },
+        "stock": "40",
+        "price": "30",
+        "image_Link": "VTCetto",
+        "id": 1
+      },
+      {
+        "id": 2,
+        "name": "Vino seleccion",
+        "image_Link": "VRbaigorri",
+        "price": "30",
+        "stock": "40",
+        "category": {
+          "id": 14,
+          "name": "Whisky",
+          "catalog": {
+            "id": 2,
+            "name": "Destilados"
+          }
+        }
+      },
+      {
+        "name": "Vino seleccion",
+        "category": {
+          "id": 14,
+          "name": "Whisky",
+          "catalog": {
+            "id": 2,
+            "name": "Destilados"
+          }
+        },
+        "stock": "40",
+        "price": "31",
+        "imagen": "C:\\fakepath\\VTvilbao.png",
+        "image_Link": "VTprego",
+        "id": 3
+      }
+    ],
+    "Users": [
+      {
+        "firstName": "Santiago",
+        "paternalName": "Lara",
+        "maternalName": "Agraz",
+        "password": "1234",
+        "email": "DarkyGum22@gmail.com",
+        "birthDate": "2002-01-26",
+        "role": "Cliente",
+        "id": 1
+      },
+      {
+        "firstName": "Santiago",
+        "paternalName": "Lara",
+        "maternalName": "Agraz",
+        "password": "567",
+        "email": "blublu@gmail.com",
+        "birthDate": "",
+        "role": "Cliente",
+        "id": 2
+      },
+      {
+        "firstName": "Michel",
+        "paternalName": "Ortiz",
+        "maternalName": "aaa",
+        "password": "123",
+        "email": "anette.michel.ortiz@gmail.com",
+        "birthDate": "2021-04-12",
+        "role": "Cliente",
+        "id": 3
+      },
+      {
+        "firstName": "aaaa",
+        "paternalName": "Ortiz",
+        "maternalName": "aaaaaaaaaaaaa",
+        "password": "aa",
+        "email": "anette.michel.ortiz@gmail.com",
+        "birthDate": "2021-03-30",
+        "role": "Cliente",
+        "id": 4
+      }
+    ],
+    "Almacenistas": [
+      {
+        "firstName": "Enrique Tonatiuh",
+        "paternalName": "Pérez Cortés",
+        "maternalName": "Barba",
+        "password": "1234asd",
+        "email": "a17300218@gmail.com",
+        "birthDate": "2002-02-01",
+        "image_Link": 33266,
+        "id": 1,
+        "role": "Almacenista"
+      }
+    ], 
+    "Info1" : [
+      {
+        "date": "2002-02-01",
+        "description": "aaaaaaaaaaaaa",
+        "status": "UP",
+        "identifier": "1",
+        "user" : "Alan"
+      }
+    ],
+    "Info2" : [
+      {
+        "date": "2002-02-01",
+        "description": "aaaaaaaaaaaaa",
+        "status": "UP",
+        "identifier": "2",
+        "user" : "Quique"
+      }
+    ],
+    "Info3" : [
+      {
+        "date": "2002-02-01",
+        "description": "aaaaaaaaaaaaa",
+        "status": "UP",
+        "identifier": "3",
+        "user" : "Eddie"
+      }
+    ]
+  }
+  

@@ -61,11 +61,10 @@
 
 <script>
     $(document).ready(function(){
-        localStorage.removeItem('usuario2');
-    let usuario = usuarioLocalStorage();
-    if(usuario== null || usuario.role.role != "Programador"){
+    var usuario = usuarioLocalStorage();
+   /* if(usuario== null || usuario.role.role != "Programador"){
         location.href = 'index.php';
-    }
+    }*/
 
     function usuarioLocalStorage() {
         let usuario;
@@ -78,33 +77,31 @@
     }
         //Varibles
         var info;
-        var url[] = new var[3];
-        var url[0]= "http://25.4.107.19:8080/"
-        var url[1] = "http://25.4.107.19:8080/"
-        var url[2]= "http://25.4.107.19:8080/"
+        var urlInfo = "http://localhost:3000/info1"
 
-        //GET usuarios
-        for(var i=0;i<4;i++){     
-            $.getJSON(url[i], function( data ) {
+
+        //GET usuarios 
+            $.getJSON(urlInfo, function( data ) {
                 info = data;
                 loadTable();
             });
-        }
+        
 
         //Formato de la tabla 
          function loadTable(){
             for(var i=0;i<info.length;i++)
             {
-                    var tr = "<tr>"+
+                var tr = "<tr>"+
                     "<td>"+info[i]["date"]+"</td>"+
                     "<td>"+info[i]["description"]+"</td>"+
                     "<td>"+info[i]["status"]+"</td>"+
                     "<td>"+info[i]["identifier"]+"</td>"+
                     "<td>"+info[i]["user"]+"</td>"+
-                    "<tr>";
-            $("#usuarios_data > tbody").append(tr);
+                    "</tr>";
+            $("#usuarios_data").append(tr);
             };
         }
+
         function reload() {
             location.reload();
         }
