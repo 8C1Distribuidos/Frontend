@@ -221,6 +221,8 @@
                             location.href = 'almacenista.php';
                         }else if(responseObject.role.role == "Administra"){
                             location.href = 'useralmacenista.php';
+                        }else if(responseObject.role.role == "Programador"){
+                            location.href = 'userprogramador.php';
                         }
                         }
                     }
