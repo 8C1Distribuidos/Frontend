@@ -62,9 +62,9 @@
 <script>
     $(document).ready(function(){
     var usuario = usuarioLocalStorage();
-   /* if(usuario== null || usuario.role.role != "Programador"){
+   if(usuario== null || usuario.role.role != "Programador"){
         location.href = 'index.php';
-    }*/
+    }
 
     function usuarioLocalStorage() {
         let usuario;
@@ -78,10 +78,26 @@
         //Varibles
         var info;
         var urlInfo = "http://localhost:3000/info1"
+        var urlInfo1 = "http://localhost:3000/info2"
+        var urlInfo2 = "http://localhost:3000/info3"
+       // var infos = ["http://localhost:3000/info1", "http://localhost:3000/info2", "http://localhost:3000/info3"];
+        var info_aux= new Array();
 
+        //array1.forEach(element => console.log(element));
+        
 
         //GET usuarios 
             $.getJSON(urlInfo, function( data ) {
+                info = data;
+                loadTable();
+            });
+
+            $.getJSON(urlInfo1, function( data ) {
+                info = data;
+                loadTable();
+            });
+
+            $.getJSON(urlInfo2, function( data ) {
                 info = data;
                 loadTable();
             });
@@ -99,6 +115,7 @@
                     "<td>"+info[i]["user"]+"</td>"+
                     "</tr>";
             $("#usuarios_data").append(tr);
+            
             };
         }
 
