@@ -276,7 +276,7 @@
     ], 
     "Info1" : [
       {
-        "date": "2002-02-01",
+        "date": "2004-02-01 11:59:25",
         "description": "aaaaaaaaaaaaa",
         "status": "UP",
         "identifier": "1",
@@ -285,17 +285,17 @@
     ],
     "Info2" : [
       {
-        "date": "2002-02-01",
-        "description": "aaaaaaaaaaaaa",
-        "status": "UP",
+        "date": "2003-02-01 18:32:48",
+        "description": "ccccccccccccc",
+        "status": "DOWN",
         "identifier": "2",
         "user" : "Quique"
       }
     ],
     "Info3" : [
       {
-        "date": "2002-02-01",
-        "description": "aaaaaaaaaaaaa",
+        "date": "2002-02-01 04:02:05",
+        "description": "bbbbbbbbbbbbb",
         "status": "UP",
         "identifier": "3",
         "user" : "Eddie"

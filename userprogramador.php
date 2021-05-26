@@ -21,11 +21,11 @@
 				<table id="usuarios_data" class="table table-bordered table-striped">
 					<thead>
 						<tr>
-							<th width="21%">Fecha de la actividad</th>
+							<th width="21%" data-column="fecha" data-order="desc">Fecha de la actividad</th>
 							<th width="31%">Descripcion</th>
-							<th width="16%">Estatus</th>
-                            <th width="16%">Equipo</th>
-                            <th width="16%">Cliente</th>
+							<th width="16%" data-column="estatus" data-order="desc">Estatus</th>
+                            <th width="16%" data-column="equipo" data-order="desc">Equipo</th>
+                            <th width="16%" data-column="cliente" data-order="desc">Cliente</th>
 						</tr>
 					</thead>
                     <tbody>
@@ -59,49 +59,63 @@
         </div>
 </div>
 
+<link href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css" rel="stylesheet"/>
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+
+
 <script>
     $(document).ready(function(){
-    var usuario = usuarioLocalStorage();
-   if(usuario== null || usuario.role.role != "Programador"){
-        location.href = 'index.php';
-    }
+        var usuario = usuarioLocalStorage();
+        /*if(usuario== null || usuario.role.role != "Programador"){
+            location.href = 'index.php';
+        }*/
 
-    function usuarioLocalStorage() {
-        let usuario;
-        if(localStorage.getItem('usuario') == null) {
-            usuario = null;
-        } else {
-            usuario = JSON.parse(localStorage.getItem('usuario'));
+
+        function usuarioLocalStorage() {
+            let usuario;
+            if(localStorage.getItem('usuario') == null) {
+                usuario = null;
+            } else {
+                usuario = JSON.parse(localStorage.getItem('usuario'));
+            }
+            return usuario;
         }
-        return usuario;
-    }
         //Varibles
         var info;
         var urlInfo = "http://localhost:3000/info1"
         var urlInfo1 = "http://localhost:3000/info2"
         var urlInfo2 = "http://localhost:3000/info3"
-       // var infos = ["http://localhost:3000/info1", "http://localhost:3000/info2", "http://localhost:3000/info3"];
+        var infos = ["http://localhost:3000/info1", "http://localhost:3000/info2", "http://localhost:3000/info3"];
         var info_aux= new Array();
 
         //array1.forEach(element => console.log(element));
         
 
         //GET usuarios 
-            $.getJSON(urlInfo, function( data ) {
+        $.getJSON(urlInfo, function( data ) {
                 info = data;
+                info_aux = data;
                 loadTable();
             });
 
             $.getJSON(urlInfo1, function( data ) {
                 info = data;
+                info_aux += data;
                 loadTable();
             });
 
             $.getJSON(urlInfo2, function( data ) {
                 info = data;
+                info_aux += data;
                 loadTable();
+                $('#usuarios_data').DataTable();
             });
-        
+            /*$.getJSON(infos, function(data){
+                info = data;
+                loadTable();
+            });*/
+            
 
         //Formato de la tabla 
          function loadTable(){
@@ -115,7 +129,6 @@
                     "<td>"+info[i]["user"]+"</td>"+
                     "</tr>";
             $("#usuarios_data").append(tr);
-            
             };
         }
 
